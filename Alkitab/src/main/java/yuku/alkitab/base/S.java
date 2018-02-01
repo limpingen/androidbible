@@ -298,6 +298,7 @@ public class S {
 				} else {
 					final MVersion mv = versions.get(which);
 					listener.onVersionSelected(mv);
+
 					dialog.dismiss();
 				}
 				return true;

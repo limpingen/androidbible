@@ -10,6 +10,8 @@ import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.widget.Toast;
+
 import yuku.afw.storage.Preferences;
 import yuku.alkitab.base.App;
 import yuku.alkitab.base.util.AppLog;
@@ -96,6 +98,8 @@ public class ConfigurationWrapper extends ContextWrapper {
 	@NonNull
 	public static Locale getLocaleFromPreferences() {
 		final String lang = Preferences.getString(R.string.pref_language_key, R.string.pref_language_default);
+
+
 		if (lang == null || "DEFAULT".equals(lang)) {
 			return Locale.getDefault();
 		}
@@ -162,6 +166,8 @@ public class ConfigurationWrapper extends ContextWrapper {
 				return new Locale("ja", "JP");
 			case "ko":
 				return new Locale("ko", "KR");
+			case "hi":
+				return new Locale("hi","IN");
 			default:
 				return new Locale(lang);
 		}

@@ -10,9 +10,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
@@ -20,6 +22,11 @@ import android.nfc.NfcAdapter;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.os.StrictMode;
+import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ShareCompat;
@@ -27,6 +34,7 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.graphics.ColorUtils;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SwitchCompat;
@@ -38,6 +46,7 @@ import android.text.format.DateFormat;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.URLSpan;
+import android.util.DisplayMetrics;
 import android.util.SparseBooleanArray;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -53,6 +62,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import yuku.afw.V;
@@ -118,11 +129,17 @@ import yuku.alkitab.util.Ari;
 import yuku.alkitab.util.IntArrayList;
 import yuku.devoxx.flowlayout.FlowLayout;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
+import android.content.res.Configuration;
 
 import static yuku.alkitab.base.util.Literals.Array;
 
@@ -165,6 +182,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		public void onFloaterDragComplete(final float screenX, final float screenY) {
 			floater.hide();
 			floater.onDragComplete(screenX - floaterLocationOnScreen[0], screenY - floaterLocationOnScreen[1]);
+
 		}
 	};
 
@@ -297,7 +315,10 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 	Boolean hasEsvsbAsal;
 	Version activeSplitVersion;
 	String activeSplitVersionId;
-
+	String alkitab_audio_url;
+	MediaPlayer mp;
+	String speakingbibleurl = "";
+	String Perjanjian = "";
 	final CallbackSpan.OnClickListener<Object> parallelListener = (widget, data) -> {
 		if (data instanceof String) {
 			final int ari = jumpTo((String) data);
@@ -424,10 +445,36 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			reloadBothAttributeMaps();
 		}
 	};
+	void changeLang(int langpos){
+		switch (langpos) {
+			case 0: // Arabic
+				PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("LANG", "ar").commit();
+				setLangRecreate("ar");
+				return;
+			case 1: // Indonesian
+				PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("LANG", "in").commit();
+				setLangRecreate("in");
+				return;
+			default: //By default set to english
+				PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("LANG", "en").commit();
+				setLangRecreate("en");
+				return;
+		}
+	}
 
+	public void setLangRecreate(String langval) {
+		Configuration config = getBaseContext().getResources().getConfiguration();
+		Locale locale = new Locale(langval);
+		Locale.setDefault(locale);
+		config.locale = locale;
+		getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+		recreate();
+
+	}
 	@Override protected void onCreate(Bundle savedInstanceState) {
 		AppLog.d(TAG, "@@onCreate start");
 		super.onCreate(savedInstanceState);
+
 		setContentView(R.layout.activity_isi);
 		AppLog.d(TAG, "@@onCreate setCV");
 
@@ -466,7 +513,8 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 				throw new RuntimeException("Layout changed and this is no longer compatible with updateToolbarLocation");
 			}
 		}
-
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+		StrictMode.setThreadPolicy(policy);
 		updateToolbarLocation();
 
 		lsSplit0.setName("lsSplit0");
@@ -600,11 +648,115 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		App.getLbm().registerReceiver(reloadAttributeMapReceiver, new IntentFilter(ACTION_ATTRIBUTE_MAP_CHANGED));
 
 		Announce.checkAnnouncements();
+		mp = new MediaPlayer();
+		BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+		navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
 		App.getLbm().registerReceiver(needsRestartReceiver, new IntentFilter(ACTION_NEEDS_RESTART));
 		AppLog.d(TAG, "@@onCreate end");
-	}
 
+	}
+	private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+			= new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+		@Override
+		public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+			switch (item.getItemId()) {
+				case R.id.playplay:
+
+					if( S.activeVersion().getShortName().equals("TB")||S.activeVersion().getShortName().equals("NKJV")) {
+
+						mp = new MediaPlayer();
+						String jsontext = "";
+						BufferedReader readerkonseling = null;
+						try {
+							URL url = new URL("http://limpingen.org/biblechapter.php?kitab=" + Integer.toString(activeBook.bookId + 1) + "&pasal=" + Integer.toString(chapter_1) + "&versi=" + S.activeVersion().getShortName() + "");
+							HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+							conn.setRequestMethod("GET");
+							conn.setDoOutput(true);
+							conn.setConnectTimeout(15000);
+							conn.setReadTimeout(15000);
+
+							readerkonseling = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+							StringBuilder sb = new StringBuilder();
+							String line = null;
+
+							while ((line = readerkonseling.readLine()) != null) {
+								sb.append(line + "\n");
+							}
+							jsontext = sb.toString();
+						} catch (Exception ex) {
+							ex.printStackTrace();
+						}
+
+						try {
+
+							JSONArray data_array = new JSONArray(jsontext);
+							boolean found = false;
+
+
+							for (int i = 0; i < data_array.length(); i++) {
+
+								JSONObject obj = new JSONObject(data_array.get(i).toString());
+								speakingbibleurl = obj.getString("audio_url");
+								Perjanjian = obj.getString("testament");
+								found = true;
+
+							}
+							if (found == true) {
+
+								if (S.activeVersion().getShortName().equals("TB")) {
+									if (Perjanjian.equals("old")) {
+										alkitab_audio_url = "http://media.sabda.org/alkitab_audio/tb_alkitabsuara/" + "pl/mp3/cd/" + speakingbibleurl + ".mp3";
+									} else {
+										alkitab_audio_url = "http://media.sabda.org/alkitab_audio/tb_alkitabsuara/" + "pb/mp3/cd/" + speakingbibleurl + ".mp3";
+									}
+									Toast.makeText(getApplicationContext(), "Playing TB : " + S.activeVersion().getShortName(),
+											Toast.LENGTH_LONG).show();
+
+								} else if (S.activeVersion().getShortName().equals("NKJV")) {
+									if (Perjanjian.equals("old")) {
+										alkitab_audio_url = "http://media.sabda.org/alkitab_audio/kjv/" + "pl/mp3/cd/" + speakingbibleurl + ".mp3";
+									} else {
+										alkitab_audio_url = "http://media.sabda.org/alkitab_audio/kjv/" + "pb/mp3/cd/" + speakingbibleurl + ".mp3";
+									}
+									Toast.makeText(getApplicationContext(), "Playing NKJV : " + S.activeVersion().getShortName(),
+											Toast.LENGTH_LONG).show();
+								}
+								if (mp != null) {
+									if (mp.isPlaying()) {
+									} else {
+										try {
+											mp.setDataSource((alkitab_audio_url));
+										} catch (Exception e) {
+										}
+										try {
+											mp.prepare();
+											mp.start();
+										} catch (Exception e) {
+										}
+
+
+									}
+								}
+
+							}
+						} catch (JSONException e) {
+							e.printStackTrace();
+						}
+
+					}
+					return true;
+				case R.id.stopstop:
+
+					mp.stop();
+					return true;
+
+			}
+			return false;
+		}
+	};
 	void callAttentionForVerseToBothSplits(final int verse_1) {
 		lsSplit0.callAttentionForVerse(verse_1);
 		if (activeSplitVersion != null) {
@@ -735,6 +887,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 	@Override protected void onResume() {
 		super.onResume();
 		enableNfcForegroundDispatchIfAvailable();
+
 	}
 
 	private void enableNfcForegroundDispatchIfAvailable() {
@@ -819,6 +972,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 	private void displayActiveVersion() {
 		bVersion.setText(S.activeVersion().getInitials());
+
 		splitHandleButton.setLabel1("\u25b2 " + S.activeVersion().getInitials());
 	}
 
@@ -1420,7 +1574,12 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		if (splitHandleButton.getVisibility() == View.VISIBLE) {
 			return; // it's already split, no need to do anything
 		}
-
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.WRAP_CONTENT,
+				Toolbar.LayoutParams.WRAP_CONTENT
+		);
+		params.setMargins(0,0, 0, 0);
+		lsSplit0.setLayoutParams(params);
 		configureSplitSizes();
 
 		bVersion.setVisibility(View.GONE);
@@ -1497,6 +1656,12 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
 			lp.height = ViewGroup.LayoutParams.MATCH_PARENT;
 			lsSplit0.setLayoutParams(lp);
+			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+					LinearLayout.LayoutParams.WRAP_CONTENT,
+					Toolbar.LayoutParams.WRAP_CONTENT
+			);
+			params.setMargins(0,0, 0, 80);
+			lsSplit0.setLayoutParams(params);
 		}
 
 		bVersion.setVisibility(View.VISIBLE);
@@ -1967,7 +2132,14 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 				@Override
 				public void onClick(final Type type, final int arif, final Object source) {
 					if (type == Type.xref) {
-						final XrefDialog dialog = XrefDialog.newInstance(arif);
+						int myari = arif >> 8;
+ 						int arif_source = ( Ari.encode(39,1,11) << 8 ) | 1;
+
+
+ 						final XrefDialog dialog = XrefDialog.newInstance(arif);
+
+						Toast.makeText(IsiActivity.this,  Integer.toString(Ari.toBook(myari+1)) + " " + Integer.toString(Ari.toChapter(myari)) + " " + Integer.toString(Ari.toVerse(myari)) + " " + Integer.toString(Ari.toBookChapter(myari))+ " " + Integer.toString((arif)), Toast.LENGTH_LONG).show();
+						//Toast.makeText(IsiActivity.this,  Integer.toString(Ari.encodeWithBc(Ari.toBookChapter(arif),0)), Toast.LENGTH_LONG).show();
 
 						// TODO setSourceVersion here is not restored when dialog is restored
 						if (source == lsSplit0) { // use activeVersion

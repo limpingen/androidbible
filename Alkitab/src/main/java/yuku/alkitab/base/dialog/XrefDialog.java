@@ -13,11 +13,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import yuku.afw.D;
 import yuku.afw.V;
+import yuku.alkitab.base.IsiActivity;
 import yuku.alkitab.base.S;
 import yuku.alkitab.base.dialog.base.BaseDialog;
+import yuku.alkitab.base.model.MVersionInternal;
+import yuku.alkitab.base.model.VersionImpl;
 import yuku.alkitab.base.util.AppLog;
 import yuku.alkitab.base.util.Appearances;
 import yuku.alkitab.base.util.TargetDecoder;
@@ -55,9 +60,18 @@ public class XrefDialog extends BaseDialog {
 	List<String> displayedVerseTexts;
 	List<String> displayedVerseNumberTexts;
 	IntArrayList displayedRealAris;
+
+	Version myversion = VersionImpl.getInternalVersion();
+	String myversionid = MVersionInternal.getVersionInternalId();
 	Version sourceVersion = S.activeVersion();
 	String sourceVersionId = S.activeVersionId();
-	float textSizeMult = S.getDb().getPerVersionSettings(sourceVersionId).fontSizeMultiplier;
+
+
+
+
+	float textSizeMult = S.getDb().getPerVersionSettings(sourceVersionId).fontSizeMultiplier;  // BY Jeffrey :)
+	//float textSizeMult = S.getDb().getPerVersionSettings(myversionid).fontSizeMultiplier;
+
 
 	public XrefDialog() {
 	}
@@ -88,7 +102,10 @@ public class XrefDialog extends BaseDialog {
 		setStyle(DialogFragment.STYLE_NO_TITLE, 0);
 
 		arif_source = getArguments().getInt(EXTRA_arif);
-		xrefEntry = sourceVersion.getXrefEntry(arif_source);
+		//arif_source = ( Ari.encode(39,1,11) << 8 ) | 1;
+
+		xrefEntry = myversion.getXrefEntry(arif_source);
+		//xrefEntry = myversion.getXrefEntry(arif_source);
 	}
 	
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -181,7 +198,8 @@ public class XrefDialog extends BaseDialog {
 		displayedVerseNumberTexts = new ArrayList<>();
 		displayedRealAris = new IntArrayList();
 
-		int verse_count = sourceVersion.loadVersesByAriRanges(ranges, displayedRealAris, displayedVerseTexts);
+		//int verse_count = sourceVersion.loadVersesByAriRanges(ranges, displayedRealAris, displayedVerseTexts);
+		int verse_count =  sourceVersion.loadVersesByAriRanges(ranges, displayedRealAris, displayedVerseTexts);
 		if (verse_count > 0) {
 			// set up verse number texts
 			for (int i = 0; i < verse_count; i++) {
@@ -204,13 +222,20 @@ public class XrefDialog extends BaseDialog {
 				}
 				
 				@Override public String getVerseNumberText(int verse_0) {
+
+
+					//Toast.makeText(getActivity(), Integer.toString(verse_0), Toast.LENGTH_LONG).show();
+
 					return displayedVerseNumberTexts.get(verse_0);
 				}
 			}
 	
 			int firstAri = displayedRealAris.get(0);
+			;
 
-			versesView.setData(Ari.toBookChapter(firstAri), new Verses(), null, null, 0, sourceVersion, sourceVersionId);
+
+			//versesView.setData(Ari.toBookChapter(firstAri), new Verses(), null, null, 0, sourceVersion, sourceVersionId);
+			versesView.setData(Ari.toBookChapter(firstAri), new Verses(), null, null, 0, myversion, myversionid);
 		}
 		
 		renderXrefText();

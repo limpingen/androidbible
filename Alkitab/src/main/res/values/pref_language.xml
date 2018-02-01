@@ -25,6 +25,7 @@
         <item>한국어</item>
         <item>简体中文</item>
         <item>繁體中文</item>
+        <item>Hindi</item>
     </string-array>
 
     <!-- Also edit "pref_language_labels" and "ConfigurationWrapper" class! -->
@@ -52,5 +53,6 @@
         <item>ko</item>
         <item>zh-CN</item>
         <item>zh-TW</item>
+        <item>hi</item>
     </string-array>
 </resources>

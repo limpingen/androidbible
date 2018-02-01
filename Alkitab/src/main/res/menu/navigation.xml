@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/stopstop"
+        android:icon="@android:drawable/ic_media_pause"
+        android:title="Stop" />
+
+    <item
+        android:id="@+id/playplay"
+        android:icon="@android:drawable/ic_media_play"
+        android:title="Play" />
+
+</menu>
