@@ -536,6 +536,7 @@
   <string name="announce_notif_number_new_announcements">%s 새 공지사항</string>
   <!-- Dictionary -->
   <string name="menuDictionary">사전</string>
+  <string name="menuDictionary2">Strong Numbers</string>
   <string name="dict_open_full">사전 열기</string>
   <string name="dict_no_results">선택한 단어에 대한 정의 없음</string>
   <string name="dict_download_prompt">성경 사전 다운로드</string>

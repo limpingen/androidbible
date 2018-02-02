@@ -536,6 +536,7 @@
   <string name="announce_notif_number_new_announcements">%s 新的公告</string>
   <!-- Dictionary -->
   <string name="menuDictionary">字典</string>
+  <string name="menuDictionary2">Strong Numbers</string>
   <string name="dict_open_full">开启字典</string>
   <string name="dict_no_results">找不到所选字词的解释。</string>
   <string name="dict_download_prompt">下载「圣经字典」以学习圣经中更多的字词！</string>

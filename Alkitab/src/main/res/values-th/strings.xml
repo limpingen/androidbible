@@ -536,6 +536,7 @@
   <string name="announce_notif_number_new_announcements">ข่าวประกาศใหม่ %s รายการ</string>
   <!-- Dictionary -->
   <string name="menuDictionary">พจนานุกรม</string>
+  <string name="menuDictionary2">Strong Numbers</string>
   <string name="dict_open_full">เปิดพจนานุกรม</string>
   <string name="dict_no_results">ไม่พบบทนิยามสำหรับคำศัพท์ที่ถูกเลือกค่ะ</string>
   <string name="dict_download_prompt">ดาวน์โหลด \"Bible Dictionary\" (พจนานุกรมพระคำภีร์) เพื่อเรียนเกี่ยวกับคำศัพท์ในพระคำภีร์เพิ่มเติม</string>

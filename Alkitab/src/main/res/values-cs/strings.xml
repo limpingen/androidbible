@@ -536,6 +536,7 @@
   <string name="announce_notif_number_new_announcements">%s nových oznámení</string>
   <!-- Dictionary -->
   <string name="menuDictionary">Slovník</string>
+  <string name="menuDictionary2">Strong Numbers</string>
   <string name="dict_open_full">Otevřít slovník</string>
   <string name="dict_no_results">Pro vybrané slovo nebyly nalezeny žádné definice.</string>
   <string name="dict_download_prompt">Stáhnout \"Bible Dictionary\"!</string>

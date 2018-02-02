@@ -530,6 +530,7 @@
   <string name="announce_notif_number_new_announcements">%s件の新着情報</string>
   <!-- Dictionary -->
   <string name="menuDictionary">辞書</string>
+  <string name="menuDictionary2">Strong Numbers</string>
   <string name="dict_open_full">辞書を開く</string>
   <string name="dict_no_results">セレクトされた文字の定義は見つかりませんでした。</string>
   <string name="dict_download_prompt">「聖書辞書」をダウンロードし聖書の単語を学ぼう！</string>

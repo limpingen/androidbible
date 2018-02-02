@@ -536,6 +536,7 @@
   <string name="announce_notif_number_new_announcements">%s нови обявления</string>
   <!-- Dictionary -->
   <string name="menuDictionary">Речник</string>
+  <string name="menuDictionary2">Strong Numbers</string>
   <string name="dict_open_full">Отвори речника</string>
   <string name="dict_no_results">Не е намерена статия за избраната дума.</string>
   <string name="dict_download_prompt">Инсталирай \"Библейски речник\", за да узнаете повече за думите използвани в Библията!</string>

@@ -536,6 +536,7 @@
   <string name="announce_notif_number_new_announcements">%s neue Meldungen</string>
   <!-- Dictionary -->
   <string name="menuDictionary">Wörterbuch</string>
+  <string name="menuDictionary2">Strong Numbers</string>
   <string name="dict_open_full">Wörterbuch öffnen</string>
   <string name="dict_no_results">Keine Defintion für das ausgewählte Wort gefunden.</string>
   <string name="dict_download_prompt">Laden Sie \"Bible Dictionary\" herunter, um mehr über die Worte in der Bibel zu erfahren!</string>

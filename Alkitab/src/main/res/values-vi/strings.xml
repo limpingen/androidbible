@@ -536,6 +536,7 @@
   <string name="announce_notif_number_new_announcements">%s Thông báo mới</string>
   <!-- Dictionary -->
   <string name="menuDictionary">Từ điển</string>
+  <string name="menuDictionary2">Strong Numbers</string>
   <string name="dict_open_full">Mở từ điển</string>
   <string name="dict_no_results">Không tìm thấy từ cần định nghĩa.</string>
   <string name="dict_download_prompt">Tải \"Kinh Thánh điển\" để tìm hiểu thêm về những lời trong Kinh Thánh!</string>
