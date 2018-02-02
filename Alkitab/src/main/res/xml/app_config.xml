@@ -17,6 +17,7 @@
 	</devotions>
 
 	<!-- <internal locale="in" shortName="AYT"      longName="Alkitab Yang Terbuka" prefix="ayt"  preset_name='in-ayt' /> -->
-	 <internal locale="hi" shortName="Hin"      longName="India" prefix="ind"  preset_name='ind' />
+	<!-- <internal locale="hi" shortName="Hin"      longName="India" prefix="ind"  preset_name='ind' /> -->
 	 <!-- <internal locale="id" shortName="TB"      longName="Terjemahan Baru" prefix="tb"  preset_name='in-tb' /> -->
+	<internal locale="id" shortName="AYT-E"      longName="AYT Embeded" prefix="ayt_embeded"  preset_name='ayt_embeded' />
 </config>
