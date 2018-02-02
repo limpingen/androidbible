@@ -2344,12 +2344,13 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			final MenuItem menuGuide = menu.findItem(R.id.menuGuide);
 			final MenuItem menuCommentary = menu.findItem(R.id.menuCommentary);
 			final MenuItem menuDictionary = menu.findItem(R.id.menuDictionary);
-
+			final MenuItem menuDictionary2 = menu.findItem(R.id.menuDictionary2);
 			// force-show these items on sw600dp, otherwise never show
 			final int showAsAction = getResources().getConfiguration().smallestScreenWidthDp >= 600 ? MenuItem.SHOW_AS_ACTION_ALWAYS : MenuItem.SHOW_AS_ACTION_NEVER;
 			menuGuide.setShowAsActionFlags(showAsAction);
 			menuCommentary.setShowAsActionFlags(showAsAction);
 			menuDictionary.setShowAsActionFlags(showAsAction);
+			menuDictionary2.setShowAsActionFlags(showAsAction);
 
 			// set visibility according to appconfig
 			final AppConfig c = AppConfig.get();
@@ -2360,6 +2361,12 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			menuDictionary.setVisible(c.menuDictionary
 					&& !Preferences.getBoolean(getString(R.string.pref_autoDictionaryAnalyze_key), getResources().getBoolean(R.bool.pref_autoDictionaryAnalyze_default))
 			);
+
+			menuDictionary2.setVisible(c.menuDictionary
+					&& !Preferences.getBoolean(getString(R.string.pref_autoDictionaryAnalyze_key), getResources().getBoolean(R.bool.pref_autoDictionaryAnalyze_default))
+			);
+
+
 
 			{ // extensions
 				extensions = ExtensionManager.getExtensions();
@@ -2600,6 +2607,18 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 				startDictionaryMode(aris);
 			} return true;
+
+			case R.id.menuDictionary2: {
+					final int ariBc = Ari.encode(IsiActivity.this.activeBook.bookId, IsiActivity.this.chapter_1, 0);
+					final SparseBooleanArray aris = new SparseBooleanArray();
+					for (int i = 0, len = selected.size(); i < len; i++) {
+						final int verse_1 = selected.get(i);
+						final int ari = Ari.encodeWithBc(ariBc, verse_1);
+						aris.put(ari, true);
+					}
+
+					startDictionaryMode2(aris);
+				} return true;
 			default: if (itemId >= MENU_EXTENSIONS_FIRST_ID && itemId < MENU_EXTENSIONS_FIRST_ID + extensions.size()) {
 				final ExtensionManager.Info extension = extensions.get(itemId - MENU_EXTENSIONS_FIRST_ID);
 
@@ -2759,7 +2778,16 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		lsSplit0.setDictionaryModeAris(aris);
 		lsSplit1.setDictionaryModeAris(aris);
 	}
+	void startDictionaryMode2(final SparseBooleanArray aris) {
+		if (!OtherAppIntegration.hasIntegratedDictionaryApp()) {
+			OtherAppIntegration.askToInstallDictionary(this);
+			return;
+		}
 
+		dictionaryMode = true;
+		lsSplit0.setDictionaryModeAris2(aris);
+		lsSplit1.setDictionaryModeAris2(aris);
+	}
 	void finishDictionaryMode() {
 		dictionaryMode = false;
 		lsSplit0.setDictionaryModeAris(null);

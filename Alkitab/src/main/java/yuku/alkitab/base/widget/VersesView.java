@@ -647,4 +647,7 @@ public class VersesView extends ListView implements AbsListView.OnScrollListener
 	public void setDictionaryModeAris(@Nullable final SparseBooleanArray aris) {
 		adapter.setDictionaryModeAris(aris);
 	}
+	public void setDictionaryModeAris2(@Nullable final SparseBooleanArray aris) {
+		adapter.setDictionaryModeAris2(aris);
+	}
 }

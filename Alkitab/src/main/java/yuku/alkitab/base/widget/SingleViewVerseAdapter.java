@@ -32,7 +32,7 @@ public class SingleViewVerseAdapter extends VerseAdapter {
 	public static final int TYPE_PERICOPE = 1;
 
 	private SparseBooleanArray dictionaryModeAris;
-
+	private String mystatus = "dictionary1";
 	public static class DictionaryLinkInfo {
 		public String orig_text;
 		public String key;
@@ -156,8 +156,17 @@ public class SingleViewVerseAdapter extends VerseAdapter {
 							final int offset = c.getInt(col_offset);
 							final int len = c.getInt(col_len);
 							final String key = c.getString(col_key);
+							if(mystatus.equals("dictionary1"))
+							{
+								if (!isInteger(key)) {
+									verseText.setSpan(new CallbackSpan<>(new DictionaryLinkInfo(analyzeString.substring(offset, offset + len), key), dictionaryListener_), startVerseTextPos + offset, startVerseTextPos + offset + len, 0);
+								}	}
+							else if(mystatus.equals("dictionary2")) {
+								if (isInteger(key)) {
+									verseText.setSpan(new CallbackSpan<>(new DictionaryLinkInfo(analyzeString.substring(offset, offset + len), key), dictionaryListener_), startVerseTextPos + offset, startVerseTextPos + offset + len, 0);
+								}
+							}
 
-							verseText.setSpan(new CallbackSpan<>(new DictionaryLinkInfo(analyzeString.substring(offset, offset + len), key), dictionaryListener_), startVerseTextPos + offset, startVerseTextPos + offset + len, 0);
 						}
 					} finally {
 						c.close();
@@ -247,7 +256,23 @@ public class SingleViewVerseAdapter extends VerseAdapter {
 			return res;
 		}
 	}
+	public static boolean isInteger(String s) {
+		boolean isValidInteger = false;
+		try
+		{
+			Integer.parseInt(s);
 
+			// s is a valid integer
+
+			isValidInteger = true;
+		}
+		catch (NumberFormatException ex)
+		{
+			// s is not an integer
+		}
+
+		return isValidInteger;
+	}
 	static float scaleForAttributeView(final float fontSizeDp) {
 		if (fontSizeDp >= 13 /* 72% */ && fontSizeDp < 24 /* 133% */) {
 			return 1.f;
@@ -291,10 +316,15 @@ public class SingleViewVerseAdapter extends VerseAdapter {
     }
 
 	public void setDictionaryModeAris(final SparseBooleanArray aris) {
+		mystatus = "dictionary1";
 		this.dictionaryModeAris = aris;
 		notifyDataSetChanged();
 	}
-
+	public void setDictionaryModeAris2(final SparseBooleanArray aris) {
+		mystatus = "dictionary2";
+		this.dictionaryModeAris = aris;
+		notifyDataSetChanged();
+	}
 	public void setDictionaryListener(final CallbackSpan.OnClickListener<DictionaryLinkInfo> listener) {
 		this.dictionaryListener_ = listener;
 		notifyDataSetChanged();

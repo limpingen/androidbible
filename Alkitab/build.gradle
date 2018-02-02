@@ -15,9 +15,10 @@ repositories {
 }
 
 
-apply plugin: 'me.tatarka.retrolambda'
+
 
 android {
+    flavorDimensions "default"
     signingConfigs {
         release {
             keyAlias System.getenv("SIGN_ALIAS")
@@ -75,6 +76,7 @@ android {
             applicationId 'org.sabda.alkitab'
         }
     }
+    buildToolsVersion '26.0.2'
 }
 
 dependencies {
