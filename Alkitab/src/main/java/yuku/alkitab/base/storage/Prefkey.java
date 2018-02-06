@@ -53,7 +53,7 @@ public enum Prefkey {
 	 * Default is {@link yuku.alkitab.base.model.MVersionInternal#DEFAULT_ORDERING}.
 	 */
 	internal_version_ordering,
-
+	internal_version2_ordering,
 	/**
 	 * Sync server prefix.
 	 * Example: http://10.0.3.2:9080

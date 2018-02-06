@@ -27,20 +27,27 @@ public class VersionImpl extends Version {
 	private Book[] cache_consecutiveBooks;
 
 	private static Version internalVersion;
-
+	private static Version internalVersion2;
 	public VersionImpl(BibleReader bibleReader) {
 		super();
 		this.bibleReader = bibleReader;
 	}
-
 	public static synchronized Version getInternalVersion() {
 		if (internalVersion == null) {
 			final AppConfig c = AppConfig.get();
 			internalVersion = new VersionImpl(new InternalReader(c.internalPrefix, c.internalLocale, c.internalShortName, c.internalLongName, new OldVerseTextDecoder.Utf8()));
+
 		}
 		return internalVersion;
 	}
+	public static synchronized Version getInternalVersion2() {
+		if (internalVersion2 == null) {
+			final AppConfig c = AppConfig.get();
+			internalVersion2 = new VersionImpl(new InternalReader(c.internalPrefix2, c.internalLocale2, c.internalShortName2, c.internalLongName2, new OldVerseTextDecoder.Utf8()));
 
+		}
+		return internalVersion2;
+	}
 	/**
 	 * Get the short name (abbreviation) of this version.
 	 */

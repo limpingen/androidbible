@@ -20,12 +20,16 @@ public class MVersionPreset extends MVersion {
 	public String getVersionId() {
 		return "preset/" + preset_name;
 	}
-
+	public String getVersionId2() {
+		return "preset/" + preset_name;
+	}
 	@Override
 	public Version getVersion() {
 		throw new RuntimeException("THIS SHOULD NOT HAPPEN: preset should not have any actual data file to read from.");
 	}
-
+	public Version getVersion2() {
+		throw new RuntimeException("THIS SHOULD NOT HAPPEN: preset should not have any actual data file to read from.");
+	}
 	@Override public boolean hasDataFile() {
 		return AddonManager.getReadableVersionFile(preset_name + ".yes") != null;
 	}

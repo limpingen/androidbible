@@ -49,6 +49,13 @@ public class MVersionDb extends MVersion {
 		}
 		return "file/" + filename;
 	}
+	@Override
+	public String getVersionId2() {
+		if (preset_name != null) {
+			return "preset/" + preset_name;
+		}
+		return "file/" + filename;
+	}
 
 	/**
 	 * Return the preset_name of a version id, if possible. Null otherwise.
@@ -92,7 +99,37 @@ public class MVersionDb extends MVersion {
 			return null;
 		}
 	}
+	@Override
+	public Version getVersion2() {
+		if (hasDataFile()) {
+			// check cache first
+			final SoftReference<VersionImpl> ref = impl_cache.get(filename);
+			if (ref != null) {
+				final VersionImpl res = ref.get();
+				if (res != null) {
+					return res;
+				}
+			}
 
+			final BibleReader reader = YesReaderFactory.createYesReader(filename);
+			if (reader == null) {
+				AppLog.e(VersionsActivity.TAG, "YesReaderFactory failed to open the yes file");
+				return null;
+			}
+
+			final VersionImpl res = new VersionImpl(reader);
+
+			// put to cache
+			impl_cache.put(filename, new SoftReference<>(res));
+
+			return res;
+		} else {
+			// clear from cache if any
+			impl_cache.remove(filename);
+
+			return null;
+		}
+	}
 	public void setActive(boolean active) {
 		this.cache_active = active;
 		S.getDb().setVersionActive(this, active);

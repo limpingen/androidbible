@@ -619,7 +619,14 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 
 		{ // load last split version. This must be after load book, chapter, and verse.
-			final String lastSplitVersionId = Preferences.getString(Prefkey.lastSplitVersionId, null);
+			String lastSplitVersionId = Preferences.getString(Prefkey.lastSplitVersionId, null);
+			if(lastSplitVersionId==null) {
+				lastSplitVersionId = MVersionInternal.getVersionInternalId2();
+				Preferences.hold();
+				Preferences.setString(Prefkey.lastSplitVersionId, lastSplitVersionId);
+				Preferences.unhold();
+				activeSplitVersionId = lastSplitVersionId;
+			}
 			if (lastSplitVersionId != null) {
 				final String splitOrientation = Preferences.getString(Prefkey.lastSplitOrientation);
 				if (LabeledSplitHandleButton.Orientation.horizontal.name().equals(splitOrientation)) {
@@ -628,8 +635,10 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 					splitHandleButton.setOrientation(LabeledSplitHandleButton.Orientation.vertical);
 				}
 
-				final MVersion splitMv = S.getVersionFromVersionId(lastSplitVersionId);
-				final MVersion splitMvActual = splitMv == null ? S.getMVersionInternal() : splitMv;
+				final MVersion splitMv = S.getVersionFromVersionId2(lastSplitVersionId);
+				//if(splitMv==null) Toast.makeText(IsiActivity.this, "This is my Toast message!",
+				//		Toast.LENGTH_LONG).show();
+				final MVersion splitMvActual = splitMv == null ? S.getMVersionInternal2() : splitMv;
 
 				if (loadSplitVersion(splitMvActual)) {
 					openSplitDisplay();
@@ -664,6 +673,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 			switch (item.getItemId()) {
 				case R.id.playplay:
+					if(mp.isPlaying()) mp.stop();
 
 					if( S.activeVersion().getShortName().equals("TB")||S.activeVersion().getShortName().equals("NKJV")) {
 
@@ -978,14 +988,14 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 	boolean loadSplitVersion(final MVersion mv) {
 		try {
-			final Version version = mv.getVersion();
+			final Version version = mv.getVersion2();
 
 			if (version == null) {
 				throw new RuntimeException(); // caught below
 			}
 
 			activeSplitVersion = version;
-			activeSplitVersionId = mv.getVersionId();
+			activeSplitVersionId = mv.getVersionId2();
 			splitHandleButton.setLabel2(version.getInitials() + " \u25bc");
 
 			configureTextAppearancePanelForSplitVersion();
@@ -1547,7 +1557,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 	}
 
 	void openSplitVersionsDialog() {
-		S.openVersionsDialog(this, true, activeSplitVersionId, mv -> {
+		S.openVersionsDialog2(this, true, activeSplitVersionId, mv -> {
 			if (mv == null) { // closing split version
 				disableSplitVersion();
 			} else {

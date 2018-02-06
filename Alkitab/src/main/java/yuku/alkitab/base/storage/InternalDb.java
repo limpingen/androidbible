@@ -1039,15 +1039,18 @@ public class InternalDb {
 		try {
 			{
 				final int internal_ordering = Preferences.getInt(Prefkey.internal_version_ordering, MVersionInternal.DEFAULT_ORDERING);
+
 				if (from.ordering > to.ordering) { // move up
 					db.execSQL("update " + Db.TABLE_Version + " set " + Db.Version.ordering + "=(" + Db.Version.ordering + "+1) where ?<=" + Db.Version.ordering + " and " + Db.Version.ordering + "<?", new Object[]{to.ordering, from.ordering});
 					if (to.ordering <= internal_ordering && internal_ordering < from.ordering) {
 						Preferences.setInt(Prefkey.internal_version_ordering, internal_ordering + 1);
+						Preferences.setInt(Prefkey.internal_version2_ordering, internal_ordering + 2);
 					}
 				} else if (from.ordering < to.ordering) { // move down
 					db.execSQL("update " + Db.TABLE_Version + " set " + Db.Version.ordering + "=(" + Db.Version.ordering + "-1) where ?<" + Db.Version.ordering + " and " + Db.Version.ordering + "<=?", new Object[]{from.ordering, to.ordering});
 					if (from.ordering < internal_ordering && internal_ordering <= to.ordering) {
 						Preferences.setInt(Prefkey.internal_version_ordering, internal_ordering - 1);
+						Preferences.setInt(Prefkey.internal_version2_ordering, internal_ordering - 2);
 					}
 				}
 			}
@@ -1057,6 +1060,7 @@ public class InternalDb {
 				db.execSQL("update " + Db.TABLE_Version + " set " + Db.Version.ordering + "=? where " + Db.Version.filename + "=?", new Object[]{to.ordering, ((MVersionDb) from).filename});
 			} else if (from instanceof MVersionInternal) {
 				Preferences.setInt(Prefkey.internal_version_ordering, to.ordering);
+				Preferences.setInt(Prefkey.internal_version2_ordering, to.ordering);
 			}
 
 			db.setTransactionSuccessful();

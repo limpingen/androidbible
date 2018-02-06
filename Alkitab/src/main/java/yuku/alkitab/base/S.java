@@ -1,11 +1,14 @@
 package yuku.alkitab.base;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.widget.Toast;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import yuku.afw.storage.Preferences;
 import yuku.alkitab.base.ac.VersionsActivity;
@@ -142,6 +145,27 @@ public class S {
 		return null; // not known
 	}
 
+	@Nullable
+	public static MVersion getVersionFromVersionId2(String versionId) {
+		if (versionId == null || MVersionInternal.getVersionInternalId2().equals(versionId)) {
+			return null; // internal is made the same as null
+		}
+
+		// let's look at yes versions
+		for (MVersionDb mvDb : getDb().listAllVersions()) {
+			if (mvDb.getVersionId().equals(versionId)) {
+				if (mvDb.hasDataFile()) {
+					return mvDb;
+				} else {
+					// the data file is not available
+					return null;
+				}
+			}
+		}
+
+		return null; // not known
+	}
+
 	public static void recalculateAppliedValuesBasedOnPreferences() {
 		CalculatedDimensionsHolder.applied = calculateDimensionsFromPreferences();
 	}
@@ -227,7 +251,7 @@ public class S {
 
 		// 1. Internal version
 		res.add(getMVersionInternal());
-
+		res.add(getMVersionInternal2());
 		// 2. Database versions
 		for (MVersionDb mvDb: getDb().listAllVersions()) {
 			if (mvDb.hasDataFile() && mvDb.getActive()) {
@@ -251,7 +275,19 @@ public class S {
 		res.shortName = ac.internalShortName;
 		res.longName = ac.internalLongName;
 		res.description = null;
-		res.ordering = Preferences.getInt(Prefkey.internal_version_ordering, MVersionInternal.DEFAULT_ORDERING);
+		//res.ordering = Preferences.getInt(Prefkey.internal_version_ordering, MVersionInternal.DEFAULT_ORDERING);
+		res.ordering = 0;
+		return res;
+	}
+	public static MVersionInternal getMVersionInternal2() {
+		final AppConfig ac = AppConfig.get();
+		final MVersionInternal res = new MVersionInternal();
+		res.locale = ac.internalLocale2;
+		res.shortName = ac.internalShortName2;
+		res.longName = ac.internalLongName2;
+		res.description = null;
+		res.ordering=2;
+		//res.ordering = Preferences.getInt(Prefkey.internal_version2_ordering, MVersionInternal.DEFAULT_ORDERING);
 		return res;
 	}
 
@@ -273,6 +309,8 @@ public class S {
 		} else {
 			for (int i = (withNone? 1: 0) /* because 0 is None */; i < versions.size(); i++) {
 				final MVersion mv = versions.get(i);
+				//Toast.makeText(activity, mv.getVersionId(),
+				//		Toast.LENGTH_LONG).show();
 				if (mv.getVersionId().equals(selectedVersionId)) {
 					selected = i;
 					break;
@@ -307,5 +345,58 @@ public class S {
 			.positiveText(R.string.versi_lainnya)
 			.onPositive((dialog, which) -> activity.startActivity(VersionsActivity.createIntent()))
 			.show();
+	}
+
+	public static void openVersionsDialog2(final Activity activity, final boolean withNone, final String selectedVersionId, final VersionDialogListener listener) {
+		final List<MVersion> versions = getAvailableVersions();
+
+		if (withNone) {
+			versions.add(0, null);
+		}
+//Toast.makeText(activity, selectedVersionId,
+	//			Toast.LENGTH_LONG).show();
+		// determine the currently selected one
+		int selected = -1;
+		if (withNone && selectedVersionId == null) {
+			selected = 0; // "none"
+		} else {
+			for (int i = (withNone? 1: 0) /* because 0 is None */; i < versions.size(); i++) {
+				final MVersion mv = versions.get(i);
+
+				if (mv.getVersionId2().equals(selectedVersionId)) {
+
+					selected = i+1;
+					break;
+				}
+			}
+		}
+if(selected>2)selected= selected - 1;
+		final CharSequence[] options = new CharSequence[versions.size()];
+		for (int i = 0; i < versions.size(); i++) {
+			final MVersion version = versions.get(i);
+			options[i] = version == null ? activity.getString(R.string.split_version_none) : version.longName;
+		}
+
+		new MaterialDialog.Builder(activity)
+				.items(options)
+				.itemsCallbackSingleChoice(selected, (dialog, view, which, text) -> {
+					if (which == -1) {
+						// it is possible that 'which' is -1 in the case that
+						// a version is already deleted, but the current displayed version is that version
+						// (hence the initial selected item position is -1) and then the user
+						// presses the "other version" button. This callback will still be triggered
+						// before the positive button callback.
+					} else {
+						final MVersion mv = versions.get(which);
+						listener.onVersionSelected(mv);
+
+						dialog.dismiss();
+					}
+					return true;
+				})
+				.alwaysCallSingleChoiceCallback()
+				.positiveText(R.string.versi_lainnya)
+				.onPositive((dialog, which) -> activity.startActivity(VersionsActivity.createIntent()))
+				.show();
 	}
 }

@@ -23,6 +23,13 @@ public class AppConfig {
 	public String internalLongName;
 	public String internalPresetName;
 
+	public String internalPrefix2;
+	public String internalLocale2;
+	public String internalShortName2;
+	public String internalLongName2;
+	public String internalPresetName2;
+
+
 	public List<String> devotionNames = new ArrayList<>();
 
 	private static AppConfig lastAppConfig;
@@ -58,6 +65,13 @@ public class AppConfig {
 						res.internalLongName = parser.getAttributeValue(null, "longName");
 						res.internalPrefix = parser.getAttributeValue(null, "prefix");
 						res.internalPresetName = parser.getAttributeValue(null, "preset_name");
+						break;
+					case "internal2":
+						res.internalLocale2 = parser.getAttributeValue(null, "locale");
+						res.internalShortName2 = parser.getAttributeValue(null, "shortName");
+						res.internalLongName2 = parser.getAttributeValue(null, "longName");
+						res.internalPrefix2 = parser.getAttributeValue(null, "prefix");
+						res.internalPresetName2 = parser.getAttributeValue(null, "preset_name");
 						break;
 					case "menu":
 						res.menuDevotion = parser.getAttributeBooleanValue(null, "devotion", false);
