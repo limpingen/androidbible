@@ -309,12 +309,22 @@ public class S {
 		} else {
 			for (int i = (withNone? 1: 0) /* because 0 is None */; i < versions.size(); i++) {
 				final MVersion mv = versions.get(i);
-				//Toast.makeText(activity, mv.getVersionId(),
-				//		Toast.LENGTH_LONG).show();
-				if (mv.getVersionId().equals(selectedVersionId)) {
-					selected = i;
-					break;
+				if(mv.locale.equals("hi"))
+				{
+					if (mv.getVersionId().equals(selectedVersionId)) {
+						selected = i;
+						break;
+					}
 				}
+				else
+				{
+					if (mv.getVersionId2().equals(selectedVersionId)) {
+						selected = i;
+						break;
+					}
+				}
+
+
 			}
 		}
 
@@ -334,6 +344,7 @@ public class S {
 					// presses the "other version" button. This callback will still be triggered
 					// before the positive button callback.
 				} else {
+
 					final MVersion mv = versions.get(which);
 					listener.onVersionSelected(mv);
 
@@ -362,11 +373,20 @@ public class S {
 		} else {
 			for (int i = (withNone? 1: 0) /* because 0 is None */; i < versions.size(); i++) {
 				final MVersion mv = versions.get(i);
+				if(mv.locale.equals("hi")) {
+					if (mv.getVersionId().equals(selectedVersionId)) {
 
-				if (mv.getVersionId2().equals(selectedVersionId)) {
+						selected = i;
+						break;
+					}
+				}
+				else
+				{
+					if (mv.getVersionId2().equals(selectedVersionId)) {
 
-					selected = i+1;
-					break;
+						selected = i+1;
+						break;
+					}
 				}
 			}
 		}
@@ -387,6 +407,8 @@ if(selected>2)selected= selected - 1;
 						// presses the "other version" button. This callback will still be triggered
 						// before the positive button callback.
 					} else {
+
+
 						final MVersion mv = versions.get(which);
 						listener.onVersionSelected(mv);
 

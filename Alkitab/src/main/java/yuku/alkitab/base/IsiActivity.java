@@ -620,6 +620,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 		{ // load last split version. This must be after load book, chapter, and verse.
 			String lastSplitVersionId = Preferences.getString(Prefkey.lastSplitVersionId, null);
+			/*
 			if(lastSplitVersionId==null) {
 				lastSplitVersionId = MVersionInternal.getVersionInternalId2();
 				Preferences.hold();
@@ -627,6 +628,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 				Preferences.unhold();
 				activeSplitVersionId = lastSplitVersionId;
 			}
+			*/
 			if (lastSplitVersionId != null) {
 				final String splitOrientation = Preferences.getString(Prefkey.lastSplitOrientation);
 				if (LabeledSplitHandleButton.Orientation.horizontal.name().equals(splitOrientation)) {
@@ -942,7 +944,10 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 	boolean loadVersion(final MVersion mv, boolean display) {
 		try {
-			final Version version = mv.getVersion();
+
+			 Version version = mv.getVersion();
+			if(!mv.locale.equals("hi"))
+				version = mv.getVersion2();
 
 			if (version == null) {
 				throw new RuntimeException(); // caught below
@@ -957,8 +962,11 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 					this.activeBook = version.getFirstBook();
 				}
 			}
+			if(mv.locale.equals("hi"))
+				S.setActiveVersion(version, mv.getVersionId());
+			else
+				S.setActiveVersion(version, mv.getVersionId2());
 
-			S.setActiveVersion(version, mv.getVersionId());
 			displayActiveVersion();
 
 			if (display) {
@@ -988,7 +996,10 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 	boolean loadSplitVersion(final MVersion mv) {
 		try {
-			final Version version = mv.getVersion2();
+			Version version = mv.getVersion2();
+
+			if(mv.locale.equals("hi"))
+				version = mv.getVersion();
 
 			if (version == null) {
 				throw new RuntimeException(); // caught below
@@ -996,6 +1007,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 			activeSplitVersion = version;
 			activeSplitVersionId = mv.getVersionId2();
+
+			if(mv.locale.equals("hi"))
+				activeSplitVersionId = mv.getVersionId();
 			splitHandleButton.setLabel2(version.getInitials() + " \u25bc");
 
 			configureTextAppearancePanelForSplitVersion();
