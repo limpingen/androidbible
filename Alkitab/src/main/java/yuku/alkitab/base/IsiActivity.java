@@ -21,6 +21,7 @@ import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Parcelable;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
@@ -56,9 +57,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.AbsListView;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -143,9 +149,15 @@ import android.content.res.Configuration;
 
 import static yuku.alkitab.base.util.Literals.Array;
 
+/**
+ * the most important Activity in Bible for Android Apps and this is the Core Activity.  <br/>
+ * So we must start from this Activity to understand the Core of Bible for Android Apps
+ */
 public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.XrefDialogListener, LeftDrawer.Text.Listener, ProgressMarkListDialog.Listener {
+	/**
+	 * to get the name of the IsiActivity.
+	 */
 	public static final String TAG = IsiActivity.class.getSimpleName();
-
 	public static final String ACTION_ATTRIBUTE_MAP_CHANGED = "yuku.alkitab.action.ATTRIBUTE_MAP_CHANGED";
 	public static final String ACTION_ACTIVE_VERSION_CHANGED = IsiActivity.class.getName() + ".action.ACTIVE_VERSION_CHANGED";
 	public static final String ACTION_NIGHT_MODE_CHANGED = IsiActivity.class.getName() + ".action.NIGHT_MODE_CHANGED";
@@ -163,21 +175,37 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 	private boolean needsRestart; // whether this activity needs to be restarted
 
+
+	/**
+	 * This is Listener for GotoButton. <br/>
+	 * What is GotoButton ? GotoButton is the Button in the middle of Left Navigation and Right Navigation  <br/>
+	 * bGoto_floaterDrag will be set as listener to GotoButton bGoto  <br/>
+	 * See also android:id="@+id/bGoto" in activity_isi_content.xml  <br/>
+	 */
 	private GotoButton.FloaterDragListener bGoto_floaterDrag = new GotoButton.FloaterDragListener() {
 		final int[] floaterLocationOnScreen = {0, 0};
 
+
+		/**
+		 * If it is just a click
+		 */
 		@Override
 		public void onFloaterDragStart(final float screenX, final float screenY) {
 			floater.show(activeBook.bookId, chapter_1);
 			floater.onDragStart(S.activeVersion());
 		}
-
+		/**
+		 * If it is dragging the button
+		 */
 		@Override
 		public void onFloaterDragMove(final float screenX, final float screenY) {
 			floater.getLocationOnScreen(floaterLocationOnScreen);
 			floater.onDragMove(screenX - floaterLocationOnScreen[0], screenY - floaterLocationOnScreen[1]);
 		}
 
+		/**
+		 * If release the Goto Button from press the Button
+		 */
 		@Override
 		public void onFloaterDragComplete(final float screenX, final float screenY) {
 			floater.hide();
@@ -186,6 +214,12 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	};
 
+	/**
+	 * The Floater listener  <br/>
+	 * The Floater class is used to show the list of Book in the Bible when user drag the Goto Button <br/>
+	 * if user finish select the Book then will jumpToAri ( specific verse ) and add this position to history <br/>
+	 * See floater.java Class for more detail
+	 */
 	final Floater.Listener floater_listener = new Floater.Listener() {
 		@Override
 		public void onSelectComplete(final int ari) {
@@ -194,23 +228,41 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	};
 
+	/**
+	 * The Splitrootlistener is the implementation of TwoFingerLinearLayout.Listener interface in TwofingerLinearLayout class  <br/>
+	 * This Listener will be used in splitRoot @ activity_isi_content.xml  <br/>
+	 * TwofingerLinearLayout : the widget for Scaling the FontSize using two finger  <br/>
+	 * See TwoFingerLinearLayout.java widget for more detail
+	 */
 	TwofingerLinearLayout.Listener splitRoot_listener = new TwofingerLinearLayout.Listener() {
 		float startFontSize;
 		float startDx = Float.MIN_VALUE;
 		float chapterSwipeCellWidth; // initted later
 		boolean moreSwipeYAllowed = true; // to prevent setting and unsetting fullscreen many times within one gesture
 
+		/**
+		 * This event occur when User touch use one finger from right to left in the Screen  <br/>
+		 * This will navigate bookchapter of ActiveBook to the previous bookchapter
+		 */
 		@Override
 		public void onOnefingerLeft() {
 			App.trackEvent("text_onefinger_left");
 			bRight_click();
 		}
-
+		/**
+		 * This event occur User touch use one finger from left to right in the Screen  <br/>
+		 * This will navigate bookchapter of ActiveBook tto the next bookchapter
+		 */
 		@Override
 		public void onOnefingerRight() {
 			App.trackEvent("text_onefinger_right");
 			bLeft_click();
 		}
+
+		/**
+		 * This event occur User start to touch Screen using 2 finger
+		 *
+		 */
 
 		@Override
 		public void onTwofingerStart() {
@@ -218,6 +270,12 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			startFontSize = Preferences.getFloat(Prefkey.ukuranHuruf2, (float) App.context.getResources().getInteger(R.integer.pref_ukuranHuruf2_default));
 		}
 
+		/**
+		 * this event will occur when there is a touch event in TwofingerLinearLayout Class and the Mode is scale <br/>
+		 * this event will occur when calling the listener im TwofingerLinearLayout Class : listener.onTwofingerScale(nowDist / startScaleDist);  <br/>
+		 * the FontSize will be smaller or greater according the the Scale  <br/>
+		 *
+		 */
 		@Override
 		public void onTwofingerScale(final float scale) {
 			float nowFontSize = startFontSize * scale;
@@ -234,6 +292,11 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			}
 		}
 
+		/**
+		 * this event will occur when user drag to X axis using two finger in the Screen.  <br/>
+		 * This will move the bookchapter of the Active Book ( previous or next ) rapidly until user release the two finger  <br/>
+		 *
+		 */
 		@Override
 		public void onTwofingerDragX(final float dx) {
 			if (startDx == Float.MIN_VALUE) { // just started
@@ -257,7 +320,11 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 				}
 			}
 		}
-
+		/**
+		 * this event will occur when user drag to Y axis using two finger in the Screen.  <br/>
+		 * This will set the Screen to Full Screen if two finger up and will set off the FullScreen if two finger down  <br/>
+		 *
+		 */
 		@Override
 		public void onTwofingerDragY(final float dy) {
 			if (!moreSwipeYAllowed) return;
@@ -275,6 +342,10 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			}
 		}
 
+		/**
+		 *  this event will occur when user stop and release the two finger in the screen.  <br/>
+		 *
+		 */
 		@Override
 		public void onTwofingerEnd(final TwofingerLinearLayout.Mode mode) {
 			startFontSize = 0;
@@ -282,43 +353,115 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			moreSwipeYAllowed = true;
 		}
 	};
-
+	/**
+	 * Drawer in the Left when user klik the top left menu
+	 */
 	DrawerLayout drawerLayout;
 	LeftDrawer.Text leftDrawer;
-
 	FrameLayout overlayContainer;
 	ViewGroup root;
 	Toolbar toolbar;
+	/**
+	 * The Lssplit0 is the View for showing the Verses in ListView ( the main screen )
+	 */
 	VersesView lsSplit0;
+	/**
+	 * The Lssplit1 is the View for showing the Verses in ListView ( the split screen )
+	 */
 	VersesView lsSplit1;
 	TextView tSplitEmpty;
+	/**
+	 * The Splitroot is Widget of TwofingerLinearLayout that have a functionality in scaling the FontSize with the use of two finger  <br/>
+	 * See TwofingerLinearLayout.java for more detail
+	 */
 	TwofingerLinearLayout splitRoot;
+	/**
+	 * The Split handle button.
+	 */
 	LabeledSplitHandleButton splitHandleButton;
+
+	/**
+	 *  The Button for Navigation the Book and Chapter <br/> It is in the top center of the Screen
+	 */
 	GotoButton bGoto;
+	/**
+	 * The ImageButtonleft for navigation to the previous bookchapter in the CurrentActiveBook
+	 */
 	ImageButton bLeft;
+	/**
+	 * The ImageButtonRight for navigation to the next bookchapter in the CurrentActiveBook
+	 */
 	ImageButton bRight;
+
 	TextView bVersion;
 	Floater floater;
 
+	/**
+	 * The Active book of the Bible. See Book.java in AlkitabModel Module for more detail
+	 */
 	Book activeBook;
+	/**
+	 * The Chapter of the Bible. 0 means Genesis
+	 */
 	int chapter_1 = 0;
+	/**
+	 *  State FullScreen mode true or false
+	 */
 	boolean fullScreen;
 	Toast fullScreenToast;
 
+	/**
+	 * For tracking user history in navigate the Verse
+	 */
 	History history;
 	NfcAdapter nfcAdapter;
 	ActionMode actionMode;
 	boolean dictionaryMode;
 	TextAppearancePanel textAppearancePanel;
-
-	// temporary states
 	Boolean hasEsvsbAsal;
+	/**
+	 * The Active split version is the Current Active Version of the Bible for the SplitScreen
+	 */
 	Version activeSplitVersion;
+	/**
+	 * The Active split version id is the Current Active Version ID of the Bible for the SplitScreen
+	 */
 	String activeSplitVersionId;
+	/**
+	 * The Alkitab audio url is the URL for Playing Audio Bible mp3
+	 */
 	String alkitab_audio_url;
-	MediaPlayer mp;
+	/**
+	 * The Mp is MediaPlayer for Playing Audio Bible
+	 */
+	static MediaPlayer mp;
+	/**
+	 * The Speakingbibleurl is the shorten URL for Playing Audio Bible mp3
+	 */
 	String speakingbibleurl = "";
-	String Perjanjian = "";
+	/**
+	 * The Testament. The Old Testament or New Testament -> for Playing Audio Bible
+	 */
+	String Testament = "";
+
+
+	private double startTime = 0;
+	private double finalTime = 0;
+
+	private Handler myHandler = new Handler();;
+	private int forwardTime = 5000;
+	private int backwardTime = 5000;
+	private SeekBar seekbar;
+	public static int oneTimeOnly = 0;
+	FloatingActionButton fab;
+	Button pauseButton;
+	Button playButton;
+	boolean isStrongNumber = true;
+	boolean isFab = true;
+	/**
+	 * The Parallel listener.
+	 *  For Adding the user history of navigating the book chapter and verse
+	 */
 	final CallbackSpan.OnClickListener<Object> parallelListener = (widget, data) -> {
 		if (data instanceof String) {
 			final int ari = jumpTo((String) data);
@@ -332,6 +475,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	};
 
+	/** For Open the Dictionary Apps
+	 * The Dictionary listener for showing Dictionary when user click the selected verse, click Dictionary Menu and click the selected word
+	 */
 	final CallbackSpan.OnClickListener<SingleViewVerseAdapter.DictionaryLinkInfo> dictionaryListener = (widget, data) -> {
 		final ContentResolver cr = getContentResolver();
 		final Uri uri = Uri.parse("content://org.sabda.kamus.provider/define").buildUpon()
@@ -349,7 +495,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 				.show();
 			return;
 		}
-
+		/*
+		 * If there is Dictionary Apps, then Ask User to Install Dictionary Apps
+		 */
 		if (c == null) {
 			OtherAppIntegration.askToInstallDictionary(this);
 			return;
@@ -370,11 +518,12 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 				for (final URLSpan span : sb.getSpans(0, sb.length(), URLSpan.class)) {
 					sb.removeSpan(span);
 				}
-
+				// Open the Dictionary  in Dialog
 				new MaterialDialog.Builder(this)
 					.title(data.orig_text)
 					.content(sb)
 					.positiveText(R.string.dict_open_full)
+						// If Click Open Dictionary then will open the Dictionary Apps
 					.onPositive((dialog, which) -> {
 						final Intent intent = new Intent("org.sabda.kamus.action.VIEW");
 						intent.putExtra("key", data.key);
@@ -394,6 +543,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	};
 
+	/**
+	 * The Split root global layout.
+	 */
 	final ViewTreeObserver.OnGlobalLayoutListener splitRoot_globalLayout = new ViewTreeObserver.OnGlobalLayoutListener() {
 		Point lastSize;
 
@@ -418,20 +570,48 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 	};
 
+	/**
+	 * The type Intent result.
+	 */
 	static class IntentResult {
+		/**
+		 * The Ari. For More Information about ARI -> Check Ari.java Class in AlkitabModel Module
+		 */
 		public int ari;
+		/**
+		 * The Select verse.
+		 */
 		public boolean selectVerse;
+		/**
+		 * The Select verse count.
+		 */
 		public int selectVerseCount;
 
+		/**
+		 * Instantiates a new Intent result.
+		 *
+		 * @param ari the ari
+		 */
 		public IntentResult(final int ari) {
 			this.ari = ari;
 		}
 	}
 
+	/**
+	 * Create intent intent.
+	 *
+	 * @return the intent
+	 */
 	public static Intent createIntent() {
 		return new Intent(App.context, IsiActivity.class);
 	}
 
+	/**
+	 * Create intent intent.
+	 *
+	 * @param ari the ari
+	 * @return the intent
+	 */
 	public static Intent createIntent(int ari) {
 		Intent res = new Intent(App.context, IsiActivity.class);
 		res.setAction("yuku.alkitab.action.VIEW");
@@ -439,12 +619,21 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		return res;
 	}
 
+	/**
+	 * The Reload attribute map receiver.
+	 */
 	final BroadcastReceiver reloadAttributeMapReceiver = new BroadcastReceiver() {
 		@Override
 		public void onReceive(final Context context, final Intent intent) {
 			reloadBothAttributeMaps();
 		}
 	};
+
+	/**
+	 * Change lang.
+	 *
+	 * @param langpos the langpos
+	 */
 	void changeLang(int langpos){
 		switch (langpos) {
 			case 0: // Arabic
@@ -462,6 +651,11 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	}
 
+	/**
+	 * Sets lang recreate.
+	 *
+	 * @param langval the langval
+	 */
 	public void setLangRecreate(String langval) {
 		Configuration config = getBaseContext().getResources().getConfiguration();
 		Locale locale = new Locale(langval);
@@ -471,6 +665,12 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		recreate();
 
 	}
+
+	/**
+	 * In the Beginning when IsiActivity is created
+	 * @param savedInstanceState
+	 */
+
 	@Override protected void onCreate(Bundle savedInstanceState) {
 		AppLog.d(TAG, "@@onCreate start");
 		super.onCreate(savedInstanceState);
@@ -500,6 +700,10 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		lsSplit0 = V.get(this, R.id.lsSplit0);
 		lsSplit1 = V.get(this, R.id.lsSplit1);
 		tSplitEmpty = V.get(this, R.id.tSplitEmpty);
+
+		/**
+		 * splitRoot -> TwofingerLayout. See : activity_isi_content.xml for R.id.splitRoot
+		 */
 		splitRoot = V.get(this, R.id.splitRoot);
 		splitRoot.getViewTreeObserver().addOnGlobalLayoutListener(splitRoot_globalLayout);
 
@@ -598,7 +802,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			final Book book = S.activeVersion().getBook(Ari.toBook(openingAri));
 			if (book != null) {
 				this.activeBook = book;
-			} else { // can't load last book or bookId 0
+			} else { // can't load last book or bookId 0 = Genesis
 				this.activeBook = S.activeVersion().getFirstBook();
 			}
 
@@ -620,15 +824,22 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 		{ // load last split version. This must be after load book, chapter, and verse.
 			String lastSplitVersionId = Preferences.getString(Prefkey.lastSplitVersionId, null);
-			/*
-			if(lastSplitVersionId==null) {
+			String isthefirstime = Preferences.getString(Prefkey.thefirsttime, null);
+/*
+ If this is the first time running the Apps
+ */
+			if(isthefirstime == null)
+			{
 				lastSplitVersionId = MVersionInternal.getVersionInternalId2();
 				Preferences.hold();
 				Preferences.setString(Prefkey.lastSplitVersionId, lastSplitVersionId);
+				Preferences.setString(Prefkey.thefirsttime, "no");
 				Preferences.unhold();
 				activeSplitVersionId = lastSplitVersionId;
 			}
-			*/
+
+
+
 			if (lastSplitVersionId != null) {
 				final String splitOrientation = Preferences.getString(Prefkey.lastSplitOrientation);
 				if (LabeledSplitHandleButton.Orientation.horizontal.name().equals(splitOrientation)) {
@@ -659,116 +870,284 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		App.getLbm().registerReceiver(reloadAttributeMapReceiver, new IntentFilter(ACTION_ATTRIBUTE_MAP_CHANGED));
 
 		Announce.checkAnnouncements();
-		mp = new MediaPlayer();
-		BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-		navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
 		App.getLbm().registerReceiver(needsRestartReceiver, new IntentFilter(ACTION_NEEDS_RESTART));
 		AppLog.d(TAG, "@@onCreate end");
+		mp = new MediaPlayer();
+		seekbar = (SeekBar)findViewById(R.id.progressBar);
+		seekbar.setClickable(false);
+
+		fab = (FloatingActionButton) findViewById(R.id.fab_play_audio);
+		FrameLayout fl = (FrameLayout) findViewById(R.id.linearLayoutMusicList);
+		fab.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				if(mp.isPlaying()){
+					pauseButton.setVisibility(View.GONE);
+					playButton.setVisibility(View.VISIBLE);
+					mp.pause();
+
+				}
+				if(isFab==true) {
+					PrepareMediaPlayer();
+					fl.setVisibility(View.VISIBLE);
+					fab.setVisibility(View.GONE);
+					isFab = false;
+				}
+			}
+		});
+		lsSplit0.setOnScrollListener(new AbsListView.OnScrollListener() {
+			@Override
+			public void onScrollStateChanged(AbsListView absListView, int i) {
+				if(isFab==true)
+				fab.show();
+			}
+
+			@Override
+			public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+				if(isFab==true)
+					fab.hide();
+			}
+		});
+		Button stopButton = (Button) findViewById(R.id.btnStop);
+		stopButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if(mp.isPlaying()){
+					pauseButton.setVisibility(View.GONE);
+					playButton.setVisibility(View.VISIBLE);
+					mp.pause();
+
+				}
+				fl.setVisibility(View.GONE);
+				fab.setVisibility(View.VISIBLE);
+				isFab = true;
+			}
+		});
+
+
+		Button prevButton = (Button) findViewById(R.id.btnPrevious);
+		prevButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				int temp = (int)startTime;
+
+				if((temp-backwardTime)>0){
+					startTime = startTime - backwardTime;
+					mp.seekTo((int) startTime);
+
+				}else{
+
+				}
+			}
+		});
+
+		Button nextButton = (Button) findViewById(R.id.btnNext);
+		nextButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				int temp = (int)startTime;
+
+				if((temp+forwardTime)<=finalTime){
+					startTime = startTime + forwardTime;
+					mp.seekTo((int) startTime);
+
+				}else{
+
+				}
+			}
+		});
+
+
+		pauseButton = (Button) findViewById(R.id.btnPause);
+		playButton = (Button) findViewById(R.id.btnPlay);
+		pauseButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				pauseButton.setVisibility(View.GONE);
+				playButton.setVisibility(View.VISIBLE);
+				mp.pause();
+			}
+		});
+
+
+		playButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				pauseButton.setVisibility(View.VISIBLE);
+				playButton.setVisibility(View.GONE);
+				mp.start();
+				finalTime = mp.getDuration();
+				startTime = mp.getCurrentPosition();
+				if (oneTimeOnly == 0) {
+					seekbar.setMax((int) finalTime);
+					oneTimeOnly = 1;
+				}
+				myHandler.postDelayed(UpdateSongTime,100);
+
+			}
+		});
+
+
+		Button repeatButton = (Button) findViewById(R.id.btnSongRepeat);
+		repeatButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+					mp.seekTo(0);
+
+
+			}
+		});
+		Animation makeInAnimation = AnimationUtils.makeInAnimation(getBaseContext(), false);
+		makeInAnimation.setAnimationListener(new Animation.AnimationListener() {
+			@Override
+			public void onAnimationEnd(Animation animation) { }
+
+			@Override
+			public void onAnimationRepeat(Animation animation) { }
+
+			@Override
+			public void onAnimationStart(Animation animation) {
+				if(isFab==true)
+				fab.setVisibility(View.VISIBLE);
+			}
+		});
+
+		Animation makeOutAnimation = AnimationUtils.makeOutAnimation(getBaseContext(), true);
+		makeOutAnimation.setAnimationListener(new Animation.AnimationListener() {
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				if(isFab==true)
+				fab.setVisibility(View.INVISIBLE);
+			}
+
+			@Override
+			public void onAnimationRepeat(Animation animation) { }
+
+			@Override
+			public void onAnimationStart(Animation animation) { }
+		});
+		if (fab.isShown()) {
+			fab.startAnimation(makeOutAnimation);
+		}
+		else if (!fab.isShown()) {
+			fab.startAnimation(makeInAnimation);
+		}
+
+		final Handler thehandler = new Handler();
+		thehandler.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				fab.setVisibility(View.VISIBLE);
+			}
+		}, 2000);
 
 	}
-	private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-			= new BottomNavigationView.OnNavigationItemSelectedListener() {
+	private Runnable UpdateSongTime = new Runnable() {
+		public void run() {
+			startTime = mp.getCurrentPosition();
+			seekbar.setProgress((int)startTime);
+			myHandler.postDelayed(this, 100);
+		}
+	};
 
-		@Override
-		public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+	private void PrepareMediaPlayer()
+	{
+		if(mp!=null&&mp.isPlaying()) mp.pause();
+		mp = new MediaPlayer();
 
-			switch (item.getItemId()) {
-				case R.id.playplay:
-					if(mp.isPlaying()) mp.stop();
+		if( S.activeVersion().getShortName().equals("TB")||S.activeVersion().getShortName().equals("NKJV")) {
 
-					if( S.activeVersion().getShortName().equals("TB")||S.activeVersion().getShortName().equals("NKJV")) {
 
-						mp = new MediaPlayer();
-						String jsontext = "";
-						BufferedReader readerkonseling = null;
-						try {
-							URL url = new URL("http://limpingen.org/biblechapter.php?kitab=" + Integer.toString(activeBook.bookId + 1) + "&pasal=" + Integer.toString(chapter_1) + "&versi=" + S.activeVersion().getShortName() + "");
-							HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-							conn.setRequestMethod("GET");
-							conn.setDoOutput(true);
-							conn.setConnectTimeout(15000);
-							conn.setReadTimeout(15000);
+			String jsontext = "";
+			BufferedReader readerkonseling = null;
+			try {
+				URL url = new URL("http://limpingen.org/biblechapter.php?kitab=" + Integer.toString(activeBook.bookId + 1) + "&pasal=" + Integer.toString(chapter_1) + "&versi=" + S.activeVersion().getShortName() + "");
+				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+				conn.setRequestMethod("GET");
+				conn.setDoOutput(true);
+				conn.setConnectTimeout(15000);
+				conn.setReadTimeout(15000);
 
-							readerkonseling = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-							StringBuilder sb = new StringBuilder();
-							String line = null;
+				readerkonseling = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+				StringBuilder sb = new StringBuilder();
+				String line = null;
 
-							while ((line = readerkonseling.readLine()) != null) {
-								sb.append(line + "\n");
-							}
-							jsontext = sb.toString();
-						} catch (Exception ex) {
-							ex.printStackTrace();
+				while ((line = readerkonseling.readLine()) != null) {
+					sb.append(line + "\n");
+				}
+				jsontext = sb.toString();
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+
+			try {
+
+				JSONArray data_array = new JSONArray(jsontext);
+				boolean found = false;
+
+
+				for (int i = 0; i < data_array.length(); i++) {
+
+					JSONObject obj = new JSONObject(data_array.get(i).toString());
+					speakingbibleurl = obj.getString("audio_url");
+					Testament = obj.getString("testament");
+					found = true;
+
+				}
+				if (found == true) {
+
+					if (S.activeVersion().getShortName().equals("TB")) {
+						if (Testament.equals("old")) {
+							alkitab_audio_url = "http://media.sabda.org/alkitab_audio/tb_alkitabsuara/" + "pl/mp3/cd/" + speakingbibleurl + ".mp3";
+						} else {
+							alkitab_audio_url = "http://media.sabda.org/alkitab_audio/tb_alkitabsuara/" + "pb/mp3/cd/" + speakingbibleurl + ".mp3";
 						}
 
-						try {
 
-							JSONArray data_array = new JSONArray(jsontext);
-							boolean found = false;
-
-
-							for (int i = 0; i < data_array.length(); i++) {
-
-								JSONObject obj = new JSONObject(data_array.get(i).toString());
-								speakingbibleurl = obj.getString("audio_url");
-								Perjanjian = obj.getString("testament");
-								found = true;
-
-							}
-							if (found == true) {
-
-								if (S.activeVersion().getShortName().equals("TB")) {
-									if (Perjanjian.equals("old")) {
-										alkitab_audio_url = "http://media.sabda.org/alkitab_audio/tb_alkitabsuara/" + "pl/mp3/cd/" + speakingbibleurl + ".mp3";
-									} else {
-										alkitab_audio_url = "http://media.sabda.org/alkitab_audio/tb_alkitabsuara/" + "pb/mp3/cd/" + speakingbibleurl + ".mp3";
-									}
-									Toast.makeText(getApplicationContext(), "Playing TB : " + S.activeVersion().getShortName(),
-											Toast.LENGTH_LONG).show();
-
-								} else if (S.activeVersion().getShortName().equals("NKJV")) {
-									if (Perjanjian.equals("old")) {
-										alkitab_audio_url = "http://media.sabda.org/alkitab_audio/kjv/" + "pl/mp3/cd/" + speakingbibleurl + ".mp3";
-									} else {
-										alkitab_audio_url = "http://media.sabda.org/alkitab_audio/kjv/" + "pb/mp3/cd/" + speakingbibleurl + ".mp3";
-									}
-									Toast.makeText(getApplicationContext(), "Playing NKJV : " + S.activeVersion().getShortName(),
-											Toast.LENGTH_LONG).show();
-								}
-								if (mp != null) {
-									if (mp.isPlaying()) {
-									} else {
-										try {
-											mp.setDataSource((alkitab_audio_url));
-										} catch (Exception e) {
-										}
-										try {
-											mp.prepare();
-											mp.start();
-										} catch (Exception e) {
-										}
-
-
-									}
-								}
-
-							}
-						} catch (JSONException e) {
-							e.printStackTrace();
+					} else if (S.activeVersion().getShortName().equals("NKJV")) {
+						if (Testament.equals("old")) {
+							alkitab_audio_url = "http://media.sabda.org/alkitab_audio/kjv/" + "pl/mp3/cd/" + speakingbibleurl + ".mp3";
+						} else {
+							alkitab_audio_url = "http://media.sabda.org/alkitab_audio/kjv/" + "pb/mp3/cd/" + speakingbibleurl + ".mp3";
 						}
 
 					}
-					return true;
-				case R.id.stopstop:
+					if (mp != null) {
+						if (mp.isPlaying()) {
 
-					mp.stop();
-					return true;
 
+						} else {
+							try {
+								mp = new MediaPlayer();
+								mp.setDataSource((alkitab_audio_url));
+							} catch (Exception e) {
+							}
+							try {
+								mp.prepare();
+
+							} catch (Exception e) {
+							}
+
+
+						}
+					}
+
+				}
+			} catch (JSONException e) {
+				e.printStackTrace();
 			}
-			return false;
+
 		}
-	};
+	}
+
+
+	/**
+	 * Call attention for verse to both splits is for setting the position of the verses
+	 *
+	 * @param verse_1 the verse 1
+	 */
 	void callAttentionForVerseToBothSplits(final int verse_1) {
 		lsSplit0.callAttentionForVerse(verse_1);
 		if (activeSplitVersion != null) {
@@ -776,6 +1155,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	}
 
+	/**
+	 * The Needs restart receiver.
+	 */
 	final BroadcastReceiver needsRestartReceiver = new BroadcastReceiver() {
 		@Override
 		public void onReceive(final Context context, final Intent intent) {
@@ -789,6 +1171,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		processIntent(intent, "onNewIntent");
 	}
 
+	/**
+	 * In the end when the Activity is destroyed
+	 */
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -860,6 +1245,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	}
 
+	/**
+	 * Initialize NFC if available ... NFC - Near Field Communication
+	 */
 	private void initNfcIfAvailable() {
 		nfcAdapter = NfcAdapter.getDefaultAdapter(getApplicationContext());
 		if (nfcAdapter != null) {
@@ -896,6 +1284,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	}
 
+	/**
+	 * When the IsiActivity resume again
+	 */
 	@Override protected void onResume() {
 		super.onResume();
 		enableNfcForegroundDispatchIfAvailable();
@@ -942,11 +1333,18 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	}
 
+	/**
+	 * Load version of the Book
+	 *
+	 * @param mv      the mv
+	 * @param display the display
+	 * @return the boolean
+	 */
 	boolean loadVersion(final MVersion mv, boolean display) {
 		try {
 
 			 Version version = mv.getVersion();
-			if(!mv.locale.equals("hi"))
+			if(!mv.locale.equals("id"))
 				version = mv.getVersion2();
 
 			if (version == null) {
@@ -962,7 +1360,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 					this.activeBook = version.getFirstBook();
 				}
 			}
-			if(mv.locale.equals("hi"))
+			if(mv.locale.equals("id"))
 				S.setActiveVersion(version, mv.getVersionId());
 			else
 				S.setActiveVersion(version, mv.getVersionId2());
@@ -988,17 +1386,26 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	}
 
+	/**
+	 * For displaying the active Version
+	 */
 	private void displayActiveVersion() {
 		bVersion.setText(S.activeVersion().getInitials());
 
 		splitHandleButton.setLabel1("\u25b2 " + S.activeVersion().getInitials());
 	}
 
+	/**
+	 * Load split version of the Book from mv
+	 *
+	 * @param mv the mv
+	 * @return the boolean
+	 */
 	boolean loadSplitVersion(final MVersion mv) {
 		try {
 			Version version = mv.getVersion2();
 
-			if(mv.locale.equals("hi"))
+			if(mv.locale.equals("id"))
 				version = mv.getVersion();
 
 			if (version == null) {
@@ -1008,7 +1415,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			activeSplitVersion = version;
 			activeSplitVersionId = mv.getVersionId2();
 
-			if(mv.locale.equals("hi"))
+			if(mv.locale.equals("id"))
 				activeSplitVersionId = mv.getVersionId();
 			splitHandleButton.setLabel2(version.getInitials() + " \u25bc");
 
@@ -1037,6 +1444,12 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	}
 
+	/**
+	 *
+	 * If occcur event keydown with specific keycode to navigate the next or previous bookchapter in the screen <br/>
+	 * @param keyCode the key code
+	 * @return the boolean
+	 */
 	boolean press(int keyCode) {
 		if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT) {
 			bLeft_click();
@@ -1066,6 +1479,8 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 	/**
 	 * Jump to a given verse reference in string format.
+	 *
+	 * @param reference the reference
 	 * @return ari of the parsed reference
 	 */
 	int jumpTo(String reference) {
@@ -1115,6 +1530,8 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 	/**
 	 * Jump to a given ari
+	 *
+	 * @param ari the ari
 	 */
 	void jumpToAri(final int ari) {
 		if (ari == 0) return;
@@ -1149,7 +1566,10 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 	/**
 	 * Construct text for copying or sharing (in plain text).
-	 * @param isSplitVersion whether take the verse text from the main or from the split version.
+	 *
+	 * @param selectedVerses_1 the selected verses 1
+	 * @param reference        the reference
+	 * @param isSplitVersion   whether take the verse text from the main or from the split version.
 	 * @return [0] text for copy/share, [1] text to be submitted to the share url service
 	 */
 	String[] prepareTextForCopyShare(IntArrayList selectedVerses_1, CharSequence reference, boolean isSplitVersion) {
@@ -1215,6 +1635,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		return Array(res0.toString(), res1.toString());
 	}
 
+
 	private void applyPreferences() {
 		// make sure S applied variables are set first
 		S.recalculateAppliedValuesBasedOnPreferences();
@@ -1247,11 +1668,17 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		SettingsActivity.setPaddingBasedOnPreferences(lsSplit1);
 	}
 
+	/**
+	 * Occur when IsiActivity Stop
+	 */
 	@Override protected void onStop() {
 		super.onStop();
 
 		Preferences.hold();
 		try {
+			/**
+			 * Save the last settings in the Preferences
+			 */
 			Preferences.setInt(Prefkey.lastBookId, this.activeBook.bookId);
 			Preferences.setInt(Prefkey.lastChapter, chapter_1);
 			Preferences.setInt(Prefkey.lastVerse, lsSplit0.getVerseBasedOnScroll());
@@ -1269,13 +1696,16 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		history.save();
 	}
 
+	/**
+	 * Occur when IsiActivity start again
+	 */
 	@Override protected void onStart() {
 		super.onStart();
 
 		applyPreferences();
 
 		getWindow().getDecorView().setKeepScreenOn(Preferences.getBoolean(getString(R.string.pref_keepScreenOn_key), getResources().getBoolean(R.bool.pref_keepScreenOn_default)));
-
+			// if needrestart then will restart
 		if (needsRestart) {
 			needsRestart = false;
 
@@ -1284,6 +1714,10 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			startActivity(originalIntent);
 		}
 	}
+
+	/**
+	 * this method occur then Back Button of your Mobile is clicked
+	 */
 
 	@Override public void onBackPressed() {
 		final boolean debug = Preferences.getBoolean("secret_debug_back_button", false);
@@ -1304,6 +1738,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	}
 
+	/**
+	 * Function called when bGoto Button is clicked
+	 */
 	void bGoto_click() {
 		App.trackEvent("nav_goto_button_click");
 
@@ -1323,6 +1760,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	}
 
+	/**
+	 * The press the Goto Button in long click and will show the history of navigating the verse
+	 */
 	void bGoto_longClick() {
 		App.trackEvent("nav_goto_button_long_click");
 		if (history.getSize() > 0) {
@@ -1333,9 +1773,20 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	}
 
+	/**
+	 * The type History entry holder.
+	 */
 	static class HistoryEntryHolder extends RecyclerView.ViewHolder {
+		/**
+		 * The Text 1.
+		 */
 		final TextView text1;
 
+		/**
+		 * Instantiates a new History entry holder.
+		 *
+		 * @param itemView the item view
+		 */
 		public HistoryEntryHolder(final View itemView) {
 			super(itemView);
 
@@ -1343,11 +1794,20 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	}
 
+	/**
+	 * The type History adapter.
+	 */
 	class HistoryAdapter extends MaterialDialogAdapterHelper.Adapter {
 		private final java.text.DateFormat timeFormat = DateFormat.getTimeFormat(App.context);
 		private final java.text.DateFormat mediumDateFormat = DateFormat.getMediumDateFormat(App.context);
 
+		/**
+		 * The This creator id.
+		 */
 		final String thisCreatorId = U.getInstallationId();
+		/**
+		 * The Default text color.
+		 */
 		int defaultTextColor;
 
 		@Override
@@ -1425,6 +1885,11 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	}
 
+	/**
+	 * Build menu.
+	 *
+	 * @param menu the menu
+	 */
 	public void buildMenu(Menu menu) {
 		menu.clear();
 		getMenuInflater().inflate(R.menu.activity_isi, menu);
@@ -1457,6 +1922,11 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		return super.onOptionsItemSelected(item);
 	}
 
+	/**
+	 * Sets full screen mode
+	 *
+	 * @param yes the yes
+	 */
 	@TargetApi(19)
 	void setFullScreen(boolean yes) {
 		if (fullScreen == yes) return; // no change
@@ -1487,6 +1957,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		updateToolbarLocation();
 	}
 
+	/**
+	 * Update toolbar location.
+	 */
 	void updateToolbarLocation() {
 		// 3 kinds of possible layout:
 		// - fullscreen
@@ -1525,6 +1998,11 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	}
 
+	/**
+	 * Sets show text appearance panel.
+	 *
+	 * @param yes the yes
+	 */
 	void setShowTextAppearancePanel(boolean yes) {
 		if (yes) {
 			if (textAppearancePanel == null) { // not showing yet
@@ -1550,6 +2028,11 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	}
 
+	/**
+	 * Sets night mode.
+	 *
+	 * @param yes then set to night mode
+	 */
 	void setNightMode(boolean yes) {
 		final boolean previousValue = Preferences.getBoolean(Prefkey.is_night_mode, false);
 		if (previousValue == yes) return;
@@ -1566,10 +2049,16 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		App.getLbm().sendBroadcast(new Intent(ACTION_NIGHT_MODE_CHANGED));
 	}
 
+	/**
+	 * Open versions dialog for main Screen
+	 */
 	void openVersionsDialog() {
 		S.openVersionsDialog(this, false, S.activeVersionId(), mv -> loadVersion(mv, true));
 	}
 
+	/**
+	 * Open split versions dialog for secondary Screen
+	 */
 	void openSplitVersionsDialog() {
 		S.openVersionsDialog2(this, true, activeSplitVersionId, mv -> {
 			if (mv == null) { // closing split version
@@ -1586,6 +2075,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		});
 	}
 
+	/**
+	 * Disable split version.
+	 */
 	void disableSplitVersion() {
 		activeSplitVersion = null;
 		activeSplitVersionId = null;
@@ -1594,6 +2086,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		configureTextAppearancePanelForSplitVersion();
 	}
 
+	/**
+	 * For Opening split screen display.
+	 */
 	void openSplitDisplay() {
 		if (splitHandleButton.getVisibility() == View.VISIBLE) {
 			return; // it's already split, no need to do anything
@@ -1611,6 +2106,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		leftDrawer.getHandle().setSplitVersion(true);
 	}
 
+	/**
+	 * Configure the sizes of the Split Screen
+	 */
 	void configureSplitSizes() {
 		splitHandleButton.setVisibility(View.VISIBLE);
 
@@ -1667,6 +2165,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	}
 
+	/**
+	 * Close split display.
+	 */
 	void closeSplitDisplay() {
 		if (splitHandleButton.getVisibility() == View.GONE) {
 			return; // it's already not split, no need to do anything
@@ -1684,7 +2185,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 					LinearLayout.LayoutParams.WRAP_CONTENT,
 					Toolbar.LayoutParams.WRAP_CONTENT
 			);
-			params.setMargins(0,0, 0, 80);
+			//params.setMargins(0,0, 0, 80);
 			lsSplit0.setLayoutParams(params);
 		}
 
@@ -1693,6 +2194,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		leftDrawer.getHandle().setSplitVersion(false);
 	}
 
+	/**
+	 * When user click the Search Button in menu top right action button menu
+	 */
 	private void menuSearch_click() {
 		startActivity(SearchActivity.createIntent(this.activeBook.bookId));
 	}
@@ -1767,6 +2271,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 	/**
 	 * Display specified chapter and verse of the active book. By default all checked verses will be unchecked.
+	 *
+	 * @param chapter_1 the chapter 1
+	 * @param verse_1   the verse 1
 	 * @return Ari that contains only chapter and verse. Book always set to 0.
 	 */
 	int display(int chapter_1, int verse_1) {
@@ -1775,6 +2282,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 	/**
 	 * Display specified chapter and verse of the active book.
+	 *
+	 * @param chapter_1        the chapter 1
+	 * @param verse_1          the verse 1
 	 * @param uncheckAllVerses whether we want to always make all verses unchecked after this operation.
 	 * @return Ari that contains only chapter and verse. Book always set to 0.
 	 */
@@ -1825,6 +2335,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		return Ari.encode(0, chapter_1, verse_1);
 	}
 
+	/**
+	 * Display split following master.
+	 */
 	void displaySplitFollowingMaster() {
 		displaySplitFollowingMaster(lsSplit0.getVerseBasedOnScroll());
 	}
@@ -1848,6 +2361,18 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	}
 
+	/**
+	 * Load the Screen to show the current version of the Book, book, chapter and verse
+	 *
+	 * @param versesView        the verses view
+	 * @param version           the version
+	 * @param versionId         the version id
+	 * @param book              the book
+	 * @param chapter_1         the chapter 1
+	 * @param current_chapter_1 the current chapter 1
+	 * @param uncheckAllVerses  the uncheck all verses
+	 * @return the boolean
+	 */
 	static boolean loadChapterToVersesView(VersesView versesView, Version version, String versionId, Book book, int chapter_1, int current_chapter_1, boolean uncheckAllVerses) {
 		final SingleChapterVerses verses = version.loadChapterText(book, chapter_1);
 		if (verses == null) {
@@ -1866,11 +2391,24 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		return true;
 	}
 
+	/**
+	 * When use keyboard and press the Key, this function will check the KeyCode
+	 * @param keyCode
+	 * @param event
+	 * @return
+	 */
 	@Override public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (press(keyCode)) return true;
 		return super.onKeyDown(keyCode, event);
 	}
 
+	/**
+	 * When use keyboard and press the Key, this function will check the KeyCode <br/> For multiple key press
+	 * @param keyCode
+	 * @param repeatCount
+	 * @param event
+	 * @return
+	 */
 	@Override public boolean onKeyMultiple(int keyCode, int repeatCount, KeyEvent event) {
 		if (press(keyCode)) return true;
 		return super.onKeyMultiple(keyCode, repeatCount, event);
@@ -1890,6 +2428,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		return leftDrawer;
 	}
 
+	/**
+	 * For function is for navigate the ActiveBook to previous bookchapter
+	 */
 	void bLeft_click() {
 		App.trackEvent("nav_left_click");
 		final Book currentBook = this.activeBook;
@@ -1911,8 +2452,20 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			int newChapter = chapter_1 - 1;
 			display(newChapter, 1);
 		}
+		if(mp.isPlaying()){
+			pauseButton.setVisibility(View.GONE);
+			playButton.setVisibility(View.VISIBLE);
+			mp.pause();
+
+		}
+		if(fab.getVisibility()==View.GONE) PrepareMediaPlayer();
+
+
 	}
 
+	/**
+	 * For function is for navigate the ActiveBook to next bookchapter
+	 */
 	void bRight_click() {
 		App.trackEvent("nav_right_click");
 		final Book currentBook = this.activeBook;
@@ -1933,8 +2486,19 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			int newChapter = chapter_1 + 1;
 			display(newChapter, 1);
 		}
+		if(mp.isPlaying()){
+			pauseButton.setVisibility(View.GONE);
+			playButton.setVisibility(View.VISIBLE);
+			mp.pause();
+
+		}
+		if(fab.getVisibility()==View.GONE) PrepareMediaPlayer();
+
 	}
 
+	/**
+	 * Occur when Button of changing the Version is clicked
+	 */
 	void bVersion_click() {
 		App.trackEvent("nav_version_click");
 		openVersionsDialog();
@@ -1957,7 +2521,15 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		history.add(ari_target);
 	}
 
+	/**
+	 * The type Attribute listener.
+	 */
 	class AttributeListener implements VersesView.AttributeListener {
+		/**
+		 * Open bookmark dialog.
+		 *
+		 * @param _id the id
+		 */
 		void openBookmarkDialog(final long _id) {
 			final TypeBookmarkDialog dialog = TypeBookmarkDialog.EditExisting(IsiActivity.this, _id);
 			dialog.setListener(() -> {
@@ -1970,6 +2542,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			dialog.show();
 		}
 
+
 		@Override
 		public void onBookmarkAttributeClick(final Version version, final String versionId, final int ari) {
 			final List<Marker> markers = S.getDb().listMarkersForAriKind(ari, Marker.Kind.bookmark);
@@ -1980,6 +2553,11 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			}
 		}
 
+		/**
+		 * Open note dialog.
+		 *
+		 * @param _id the id
+		 */
 		void openNoteDialog(final long _id) {
 			startActivityForResult(NoteActivity.createEditExistingIntent(_id), REQCODE_edit_note_1);
 		}
@@ -1994,12 +2572,21 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			}
         }
 
+		/**
+		 * The type Marker holder.
+		 */
 		class MarkerHolder extends RecyclerView.ViewHolder {
+
 			final TextView lDate;
 			final TextView lCaption;
 			final TextView lSnippet;
 			final FlowLayout panelLabels;
 
+			/**
+			 * Instantiates a new Marker holder.
+			 *
+			 * @param itemView the item view
+			 */
 			public MarkerHolder(final View itemView) {
 				super(itemView);
 
@@ -2010,12 +2597,24 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			}
 		}
 
+		/**
+		 * The type Multiple marker select adapter.
+		 */
 		class MultipleMarkerSelectAdapter extends MaterialDialogAdapterHelper.Adapter {
+
 			final Version version;
 			final float textSizeMult;
 			final List<Marker> markers;
 			final Marker.Kind kind;
 
+			/**
+			 * Instantiates a new Multiple marker select adapter.
+			 *
+			 * @param version   the version
+			 * @param versionId the version id
+			 * @param markers   the markers
+			 * @param kind      the kind
+			 */
 			public MultipleMarkerSelectAdapter(final Version version, final String versionId, final List<Marker> markers, final Marker.Kind kind) {
 				this.version = version;
 				this.textSizeMult = S.getDb().getPerVersionSettings(versionId).fontSizeMultiplier;
@@ -2051,7 +2650,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 					final int ari = marker.ari;
 					final String reference = version.reference(ari);
 					final String caption = marker.caption;
-
+					/**
+					 * For Bookmarking or make note
+					 */
 					if (kind == Marker.Kind.bookmark) {
 						holder.lCaption.setText(caption);
 						Appearances.applyMarkerTitleTextAppearance(holder.lCaption, textSizeMult);
@@ -2069,7 +2670,8 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 							holder.panelLabels.setVisibility(View.GONE);
 						}
 
-					} else if (kind == Marker.Kind.note) {
+					}
+					else if (kind == Marker.Kind.note) {
 						holder.lCaption.setText(reference);
 						Appearances.applyMarkerTitleTextAppearance(holder.lCaption, textSizeMult);
 						holder.lSnippet.setText(caption);
@@ -2115,6 +2717,12 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			});
 		}
 
+		/**
+		 * If in the specific Ari have a Maps Attribute
+		 * @param version
+		 * @param versionId
+		 * @param ari
+		 */
 		@Override
 		public void onHasMapsAttributeClick(final Version version, final String versionId, final int ari) {
 			String locale = null;
@@ -2143,9 +2751,17 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	}
 
+	/**
+	 * The type Verse inline link span factory.
+	 */
 	class VerseInlineLinkSpanFactory implements VerseInlineLinkSpan.Factory {
 		private final Object source;
 
+		/**
+		 * Instantiates a new Verse inline link span factory.
+		 *
+		 * @param source the source
+		 */
 		VerseInlineLinkSpanFactory(final Object source) {
 			this.source = source;
 		}
@@ -2153,16 +2769,22 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		@Override
 		public VerseInlineLinkSpan create(final VerseInlineLinkSpan.Type type, final int arif) {
 			return new VerseInlineLinkSpan(type, arif, source) {
+				/**
+				 * For Create Cross Reference Dialog
+				 * @param type
+				 * @param arif
+				 * @param source
+				 */
 				@Override
 				public void onClick(final Type type, final int arif, final Object source) {
 					if (type == Type.xref) {
 						int myari = arif >> 8;
  						int arif_source = ( Ari.encode(39,1,11) << 8 ) | 1;
 
-
+						// Create Cross Reference Dialog
  						final XrefDialog dialog = XrefDialog.newInstance(arif);
 
-						Toast.makeText(IsiActivity.this,  Integer.toString(Ari.toBook(myari+1)) + " " + Integer.toString(Ari.toChapter(myari)) + " " + Integer.toString(Ari.toVerse(myari)) + " " + Integer.toString(Ari.toBookChapter(myari))+ " " + Integer.toString((arif)), Toast.LENGTH_LONG).show();
+						//Toast.makeText(IsiActivity.this,  Integer.toString(Ari.toBook(myari+1)) + " " + Integer.toString(Ari.toChapter(myari)) + " " + Integer.toString(Ari.toVerse(myari)) + " " + Integer.toString(Ari.toBookChapter(myari))+ " " + Integer.toString((arif)), Toast.LENGTH_LONG).show();
 						//Toast.makeText(IsiActivity.this,  Integer.toString(Ari.encodeWithBc(Ari.toBookChapter(arif),0)), Toast.LENGTH_LONG).show();
 
 						// TODO setSourceVersion here is not restored when dialog is restored
@@ -2208,6 +2830,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	}
 
+	/**
+	 * Listener when selected Verse is selected in VersesView
+	 */
 	VersesView.SelectedVersesListener lsSplit0_selectedVerses = new VersesView.DefaultSelectedVersesListener() {
 		@Override public void onSomeVersesSelected(VersesView v) {
 			if (activeSplitVersion != null) {
@@ -2238,6 +2863,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	};
 
+	/**
+	 * Listener when selected Verse is selected in VersesView for Split Screen
+	 */
 	VersesView.SelectedVersesListener lsSplit1_selectedVerses = new VersesView.DefaultSelectedVersesListener() {
 		@Override public void onSomeVersesSelected(VersesView v) {
 			// synchronize the selection with the main view
@@ -2250,6 +2878,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	};
 
+	/**
+	 * .Listener for scrolling the Verse in VersesView
+	 */
 	VersesView.OnVerseScrollListener lsSplit0_verseScroll = new VersesView.OnVerseScrollListener() {
 		@Override public void onVerseScroll(VersesView v, boolean isPericope, int verse_1, float prop) {
 
@@ -2265,6 +2896,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	};
 
+	/**
+	 * Listener for scrolling the Verse in VersesView for Split Screen
+	 */
 	VersesView.OnVerseScrollListener lsSplit1_verseScroll = new VersesView.OnVerseScrollListener() {
 		@Override public void onVerseScroll(VersesView v, boolean isPericope, int verse_1, float prop) {
 			if (!isPericope) {
@@ -2277,6 +2911,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	};
 
+	/**
+	 * The constant actionMode_callback.
+	 */
 	ActionMode.Callback actionMode_callback = new ActionMode.Callback() {
 		private static final int MENU_GROUP_EXTENSIONS = Menu.FIRST + 1;
 		private static final int MENU_EXTENSIONS_FIRST_ID = 0x1000;
@@ -2408,6 +3045,14 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			return true;
 		}
 
+		/**
+		 *
+		 * When Action Button is selected in the top menu<br/>
+		 * Action Button is near to the Top Right Screen ( slightly to the left from top right )
+ 		 * @param mode
+		 * @param item
+		 * @return
+		 */
 		@Override public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
 			final IntArrayList selected = lsSplit0.getSelectedVerses_1();
 
@@ -2421,6 +3066,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			case R.id.menuCopy:
 			case R.id.menuCopySplit0:
 			case R.id.menuCopySplit1:
+				//Menu For Copy Both Splite
 			case R.id.menuCopyBothSplits: { // copy, can be multiple verses
 				final String[] t;
 
@@ -2465,6 +3111,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			case R.id.menuShare:
 			case R.id.menuShareSplit0:
 			case R.id.menuShareSplit1:
+				// Menu for share
 			case R.id.menuShareBothSplits: { // share, can be multiple verses
 				final String[] t;
 
@@ -2512,6 +3159,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 					}
 				});
 			} return true;
+			// Menu to compare verse
 			case R.id.menuCompare: {
 				final int ari = Ari.encode(IsiActivity.this.activeBook.bookId, IsiActivity.this.chapter_1, selected.get(0));
 				final VersesDialog dialog = VersesDialog.newCompareInstance(ari);
@@ -2524,6 +3172,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 					}
 				});
 			} return true;
+			// Menu to Add bookMark
 			case R.id.menuAddBookmark: {
 				// contract: this menu only appears when contiguous verses are selected
 				if (selected.get(selected.size() - 1) - selected.get(0) != selected.size() - 1) {
@@ -2543,6 +3192,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 				mode.finish();
 			} return true;
+			// Menu to Add Notes
 			case R.id.menuAddNote: {
 				// contract: this menu only appears when contiguous verses are selected
 				if (selected.get(selected.size() - 1) - selected.get(0) != selected.size() - 1) {
@@ -2640,8 +3290,15 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 						final int ari = Ari.encodeWithBc(ariBc, verse_1);
 						aris.put(ari, true);
 					}
-
+					if(isStrongNumber){
 					startDictionaryMode2(aris);
+					isStrongNumber = false;
+					}
+					else
+					{
+						finishDictionaryMode();
+						isStrongNumber = true;
+					}
 				} return true;
 			default: if (itemId >= MENU_EXTENSIONS_FIRST_ID && itemId < MENU_EXTENSIONS_FIRST_ID + extensions.size()) {
 				final ExtensionManager.Info extension = extensions.get(itemId - MENU_EXTENSIONS_FIRST_ID);
@@ -2717,6 +3374,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	};
 
+	/**
+	 * Reload both attribute maps.
+	 */
 	void reloadBothAttributeMaps() {
 		lsSplit0.reloadAttributeMap();
 
@@ -2725,6 +3385,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	}
 
+	/**
+	 * The Split handle button listener is the Listener for change the size of the Split Screen by dragging
+	 */
 	final SplitHandleButton.SplitHandleButtonListener splitHandleButton_listener = new SplitHandleButton.SplitHandleButtonListener() {
 		int first;
 		int handle;
@@ -2777,6 +3440,10 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	};
 
+	/**
+	 * This is the listener for capture the event from the Labeled Split Handle Button <br/>
+	 * This button is in the middle and only appears when it is split Screen mode
+	 */
 	LabeledSplitHandleButton.ButtonPressListener splitHandleButton_labelPressed = which -> {
 		switch (which) {
 			case rotate:
@@ -2792,6 +3459,11 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	};
 
+	/**
+	 * Start dictionary mode.
+	 *
+	 * @param aris the aris
+	 */
 	void startDictionaryMode(final SparseBooleanArray aris) {
 		if (!OtherAppIntegration.hasIntegratedDictionaryApp()) {
 			OtherAppIntegration.askToInstallDictionary(this);
@@ -2802,6 +3474,12 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		lsSplit0.setDictionaryModeAris(aris);
 		lsSplit1.setDictionaryModeAris(aris);
 	}
+
+	/**
+	 * Start dictionary mode 2. <br/>
+	 * For Strong Numbers
+	 * @param aris the aris
+	 */
 	void startDictionaryMode2(final SparseBooleanArray aris) {
 		if (!OtherAppIntegration.hasIntegratedDictionaryApp()) {
 			OtherAppIntegration.askToInstallDictionary(this);
@@ -2812,6 +3490,10 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		lsSplit0.setDictionaryModeAris2(aris);
 		lsSplit1.setDictionaryModeAris2(aris);
 	}
+
+	/**
+	 * Finish dictionary mode.
+	 */
 	void finishDictionaryMode() {
 		dictionaryMode = false;
 		lsSplit0.setDictionaryModeAris(null);
@@ -2829,18 +3511,28 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		setShowTextAppearancePanel(textAppearancePanel == null);
 	}
 
+	/**
+	 * When Settings of full screen is changed  .. when user click full screen mode in Left Drawer
+	 * @param isChecked
+	 */
 	@Override
 	public void cFullScreen_checkedChange(final boolean isChecked) {
 		App.trackEvent("left_drawer_full_screen_click");
 		setFullScreen(isChecked);
 	}
-
+	/**
+	 * When Settings of night mode is changed .. when user click night mode in Left Drawer
+	 * @param isChecked
+	 */
 	@Override
 	public void cNightMode_checkedChange(final boolean isChecked) {
 		App.trackEvent("left_drawer_night_mode_click");
 		setNightMode(isChecked);
 	}
-
+	/**
+	 * When Settings of Split Mode is changed .. when user click Split Mode in Left Drawer
+	 * @param isChecked
+	 */
 	@Override
 	public void cSplitVersion_checkedChange(final SwitchCompat cSplitVersion, final boolean isChecked) {
 		App.trackEvent("left_drawer_split_click");

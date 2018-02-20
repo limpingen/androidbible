@@ -5,7 +5,14 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
-
+	<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+		<yuku.alkitab.base.widget.Floater
+			android:id="@+id/floater"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:padding="8dp"
+			android:visibility="gone" />
+	<RelativeLayout android:id="@id/all_cont" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/view_media_player">
 	<LinearLayout
 		android:id="@+id/root"
 		android:layout_width="fill_parent"
@@ -86,7 +93,6 @@
 				android:clipToPadding="false"
 				android:paddingLeft="@dimen/text_side_padding"
 				android:paddingRight="@dimen/text_side_padding"
-				android:layout_marginBottom="50dp"
 				android:scrollbarStyle="outsideOverlay" />
 
 			<yuku.alkitab.base.widget.LabeledSplitHandleButton
@@ -97,8 +103,8 @@
 				android:visibility="gone" />
 
 			<FrameLayout
-				android:layout_width="match_parent"
-				android:layout_height="match_parent">
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent">
 
 				<yuku.alkitab.base.widget.VersesView
 					android:id="@+id/lsSplit1"
@@ -107,7 +113,7 @@
 					android:clipToPadding="false"
 					android:paddingLeft="@dimen/text_side_padding"
 					android:paddingRight="@dimen/text_side_padding"
-					android:layout_marginBottom="50dp"
+
 					android:scrollbarStyle="outsideOverlay" />
 
 				<TextView
@@ -123,21 +129,21 @@
 		</yuku.alkitab.base.widget.TwofingerLinearLayout>
 
 	</LinearLayout>
-	<android.support.design.widget.BottomNavigationView
-		android:id="@+id/navigation"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_gravity="bottom"
-		android:background="?android:attr/windowBackground"
-		android:foreground="?attr/selectableItemBackground"
-		app:itemIconTint="@android:color/white"
-		app:itemTextColor="@android:color/white"
-		app:menu="@menu/navigation" />
-	<yuku.alkitab.base.widget.Floater
-		android:id="@+id/floater"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:padding="8dp"
-		android:visibility="gone" />
+
+	</RelativeLayout>
+		<include android:id="@+id/view_media_player" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/media_payer_view" android:layout_alignParentBottom="true" />
+
+		<android.support.design.widget.FloatingActionButton
+			android:layout_gravity="right"
+			android:id="@+id/fab_play_audio"
+			android:visibility="visible"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="10.0dip"
+			android:src="@drawable/ic_fab_audio"
+			android:layout_alignParentRight="true"
+			android:layout_alignBottom="@+id/all_cont"
+			/>
+	</RelativeLayout>
 
 </FrameLayout>

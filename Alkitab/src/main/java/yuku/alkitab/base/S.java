@@ -309,7 +309,7 @@ public class S {
 		} else {
 			for (int i = (withNone? 1: 0) /* because 0 is None */; i < versions.size(); i++) {
 				final MVersion mv = versions.get(i);
-				if(mv.locale.equals("hi"))
+				if(mv.locale.equals("id"))
 				{
 					if (mv.getVersionId().equals(selectedVersionId)) {
 						selected = i;
@@ -373,7 +373,7 @@ public class S {
 		} else {
 			for (int i = (withNone? 1: 0) /* because 0 is None */; i < versions.size(); i++) {
 				final MVersion mv = versions.get(i);
-				if(mv.locale.equals("hi")) {
+				if(mv.locale.equals("id")) {
 					if (mv.getVersionId().equals(selectedVersionId)) {
 
 						selected = i;

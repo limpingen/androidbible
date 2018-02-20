@@ -3,7 +3,7 @@ package yuku.alkitab.base.model;
 import yuku.alkitab.model.Version;
 
 /**
- * Internal version, only one
+ * Internal version, only one ( before ) ... now can be extended into 2 internal
  */
 public class MVersionInternal extends MVersion {
 	public static final int DEFAULT_ORDERING = 1;

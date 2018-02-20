@@ -194,7 +194,9 @@ public abstract class VerseAdapter extends BaseAdapter {
 		int id = itemPointer_[position];
 
 		if (id >= 0) {
+
 			return verses_.getVerse(position);
+
 		} else {
 			return pericopeBlocks_[-id - 1].toString();
 		}

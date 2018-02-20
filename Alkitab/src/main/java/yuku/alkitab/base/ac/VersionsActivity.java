@@ -1121,6 +1121,7 @@ public class VersionsActivity extends BaseActivity {
 
 				{ // internal
 					items.add(new Item(S.getMVersionInternal()));
+					items.add(new Item(S.getMVersionInternal2()));
 				}
 
 				final Set<String> presetNamesInDb = new HashSet<>();

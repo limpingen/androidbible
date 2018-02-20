@@ -13,6 +13,9 @@ import yuku.alkitab.model.Book;
 import yuku.alkitab.model.Version;
 import yuku.alkitab.util.Ari;
 
+/**
+ * This class is used to show the list of Book in the Bible when user drag the Goto Button
+ */
 public class Floater extends View {
 	public static final String TAG = Floater.class.getSimpleName();
 	public static final int LONG_PRESS_DELAY_MILLIS = 650;

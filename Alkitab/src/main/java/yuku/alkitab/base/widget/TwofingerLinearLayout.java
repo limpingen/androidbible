@@ -10,46 +10,87 @@ import yuku.alkitab.debug.BuildConfig;
 
 import java.util.Locale;
 
+/**
+ * TwofingerLinearLayout : the widget for Scaling the FontSize using two finger
+ */
 public class TwofingerLinearLayout extends LinearLayout {
+
 	public static final String TAG = TwofingerLinearLayout.class.getSimpleName();
 
+	/**
+	 * The State.
+	 */
 	State state = State.none;
+	/**
+	 * The Mode.
+	 */
 	Mode mode = null;
+	/**
+	 * The Listener.
+	 */
 	Listener listener;
 
-	// position of one finger (for swiping left and right)
+	/**
+	 * The Onefinger start.
+	 */
+// position of one finger (for swiping left and right)
 	PointF onefingerStart = new PointF();
 
-	// distance when twofinger starts
+	/**
+	 * The Start dist : distance when twofinger starts
+	 */
 	float startDist;
-	// distance when twofinger enters scale mode
+	/**
+	 * The Start scale dist : distance when twofinger enters scale mode
+	 */
 	float startScaleDist;
-
-	// average position when twofinger starts
+	/**
+	 * The Start avg : average position when twofinger starts
+	 */
 	PointF startAvg = new PointF();
-
-	// minimum distance to be considered swipe
+	/**
+	 * The Threshold swipe : minimum distance to be considered swipe
+	 */
 	float threshold_swipe;
-
-	// minimum distance to be considered drag
+	/**
+	 * The Threshold twofinger drag : minimum distance to be considered drag
+	 */
 	float threshold_twofinger_drag;
-
-	// minimum distance change to be considered scale
+	/**
+	 * The Threshold twofinger scale : minimum distance change to be considered scale
+	 */
 	float threshold_twofinger_scale;
-
-	// if not enabled, one finger gestures, i.e. swipe, will not be captured.
-	// by default it's true
+	/**
+	 * The Onefinger enabled.
+	 * if not enabled, one finger gestures, i.e. swipe, will not be captured.
+	 * by default it's true
+	 */
 	boolean onefingerEnabled = true;
 
-	// if not enabled, two finger gestures will not be captured.
-	// by default it's true
+	/**
+	 * The Twofinger enabled.
+	 *  if not enabled, two finger gestures will not be captured.
+	 *  by default it's true
+	 */
+
 	boolean twofingerEnabled = true;
 
+	/**
+	 * Instantiates a new Twofinger linear layout.
+	 *
+	 * @param context the context
+	 */
 	public TwofingerLinearLayout(Context context) {
 		super(context);
 		init();
 	}
 
+	/**
+	 * Instantiates a new Twofinger linear layout.
+	 *
+	 * @param context the context
+	 * @param attrs   the attrs
+	 */
 	public TwofingerLinearLayout(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		init();
@@ -62,18 +103,39 @@ public class TwofingerLinearLayout extends LinearLayout {
 		threshold_twofinger_scale = 72.f * density;
 	}
 
+	/**
+	 * Sets onefinger enabled.
+	 *
+	 * @param onefingerEnabled the onefinger enabled
+	 */
 	public void setOnefingerEnabled(final boolean onefingerEnabled) {
 		this.onefingerEnabled = onefingerEnabled;
 	}
 
+	/**
+	 * Sets twofinger enabled.
+	 *
+	 * @param twofingerEnabled the twofinger enabled
+	 */
 	public void setTwofingerEnabled(final boolean twofingerEnabled) {
 		this.twofingerEnabled = twofingerEnabled;
 	}
 
+	/**
+	 * Sets listener.
+	 *
+	 * @param listener the listener
+	 */
 	public void setListener(final Listener listener) {
 		this.listener = listener;
 	}
 
+
+	/**
+	 * Implement this method to handle touch screen motion events
+	 * @param event
+	 * @return
+	 */
 	@Override
 	public boolean onTouchEvent(final MotionEvent event) {
 		final int action = event.getActionMasked();
@@ -182,10 +244,27 @@ public class TwofingerLinearLayout extends LinearLayout {
 		}
 	}
 
+	/**
+	 * Dist float.
+	 *
+	 * @param dx the dx
+	 * @param dy the dy
+	 * @return the float
+	 */
 	float dist(float dx, float dy) {
 		return (float) Math.sqrt(dx * dx + dy * dy);
 	}
 
+
+
+
+
+
+	/**
+	 * Implement this method to intercept all touch screen motion events.
+	 * @param event
+	 * @return
+	 */
 	@Override
 	public boolean onInterceptTouchEvent(MotionEvent event) {
 		final int action = event.getActionMasked();
@@ -230,30 +309,101 @@ public class TwofingerLinearLayout extends LinearLayout {
 		return false;
 	}
 
+	/**
+	 * The enum State.
+	 */
 	enum State {
+		/**
+		 * None state.
+		 */
 		none,
+		/**
+		 * Onefinger left state.
+		 */
 		onefinger_left,
+		/**
+		 * Onefinger right state.
+		 */
 		onefinger_right,
+		/**
+		 * Twofinger start state.
+		 */
 		twofinger_start,
+		/**
+		 * Twofinger performing state.
+		 */
 		twofinger_performing,
 	}
 
+	/**
+	 * The enum Mode.
+	 */
 	public enum Mode {
+		/**
+		 * Scale mode.
+		 */
 		scale,
+		/**
+		 * Drag x mode.
+		 */
 		drag_x,
+		/**
+		 * Drag y mode.
+		 */
 		drag_y,
 	}
 
+	/**
+	 * The interface Listener.
+	 */
 	public interface Listener {
+		/**
+		 * On onefinger left.
+		 */
 		void onOnefingerLeft();
+
+		/**
+		 * On onefinger right.
+		 */
 		void onOnefingerRight();
+
+		/**
+		 * On twofinger start.
+		 */
 		void onTwofingerStart();
+
+		/**
+		 * On twofinger scale.
+		 *
+		 * @param scale the scale
+		 */
 		void onTwofingerScale(float scale);
+
+		/**
+		 * On twofinger drag x.
+		 *
+		 * @param dx the dx
+		 */
 		void onTwofingerDragX(float dx);
+
+		/**
+		 * On twofinger drag y.
+		 *
+		 * @param dy the dy
+		 */
 		void onTwofingerDragY(float dy);
+
+		/**
+		 * On twofinger end.
+		 *
+		 * @param mode the mode
+		 */
 		void onTwofingerEnd(Mode mode);
 	}
 
+	/**
+	 * The type Onefinger listener.
+	 */
 	public abstract static class OnefingerListener implements Listener {
 		@Override
 		public void onTwofingerStart() {}
@@ -272,6 +422,7 @@ public class TwofingerLinearLayout extends LinearLayout {
 	}
 
 	// From API 19
+
 	/**
 	 * Returns a string that represents the symbolic name of the specified unmasked action
 	 * such as "ACTION_DOWN", "ACTION_POINTER_DOWN(3)" or an equivalent numeric constant
@@ -279,7 +430,7 @@ public class TwofingerLinearLayout extends LinearLayout {
 	 *
 	 * @param action The unmasked action.
 	 * @return The symbolic name of the specified action.
-	 * @see android.view.MotionEvent#getAction()
+	 * @see android.view.MotionEvent#getAction() android.view.MotionEvent#getAction()
 	 */
 	public static String actionToString(int action) {
 		switch (action) {

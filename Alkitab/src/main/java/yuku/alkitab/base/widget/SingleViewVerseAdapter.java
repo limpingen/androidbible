@@ -85,12 +85,22 @@ public class SingleViewVerseAdapter extends VerseAdapter {
 			}
 
 			final int ari = Ari.encodeWithBc(ari_bc_, verse_1);
-			final String text = verses_.getVerse(id);
+			String text = verses_.getVerse(id);
 			final String verseNumberText = verses_.getVerseNumberText(id);
 			final Highlights.Info highlightInfo = highlightInfoMap_ == null ? null : highlightInfoMap_[id];
 
 			final VerseTextView lText = res.lText;
 			final TextView lVerseNumber = res.lVerseNumber;
+			if ((dictionaryModeAris != null && dictionaryModeAris.get(ari))
+					|| (checked && Preferences.getBoolean(res.getContext().getString(R.string.pref_autoDictionaryAnalyze_key), res.getContext().getResources().getBoolean(R.bool.pref_autoDictionaryAnalyze_default)))
+					){
+
+			}
+			else
+			{
+				text = text.replace("<","").replace(">","").replace("[","").replace("]","");
+				text = text.replaceAll("[0-9]","");
+			}
 
 			final int startVerseTextPos = VerseRenderer.render(lText, lVerseNumber, ari, text, verseNumberText, highlightInfo, checked, inlineLinkSpanFactory_, null);
 

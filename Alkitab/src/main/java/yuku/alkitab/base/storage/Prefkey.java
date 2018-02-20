@@ -122,6 +122,9 @@ public enum Prefkey {
 
 	/** Option to ask for verse number in goto screen */
 	gotoAskForVerse,
+	/** boolean is the first time Running the Apps ? */
+
+	thefirsttime
 	;
 
 	public static final boolean GOTO_ASK_FOR_VERSE_DEFAULT = true;
