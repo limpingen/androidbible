@@ -1,10 +1,13 @@
 package yuku.alkitab.base.br;
 
 import android.app.DownloadManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.ParcelFileDescriptor;
 import android.support.v4.util.AtomicFile;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
 import yuku.alkitab.base.App;
 import yuku.alkitab.base.S;
@@ -27,11 +30,18 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Map;
 
-public class VersionDownloadCompleteReceiver {
+public class VersionDownloadCompleteReceiver extends BroadcastReceiver {
 	private static final String TAG = VersionDownloadCompleteReceiver.class.getSimpleName();
 
-	public static void onReceive(final int id) {
-		final Context context = App.context;
+	public VersionDownloadCompleteReceiver() {
+	}
+
+	@Override
+	public void onReceive(Context context, Intent intent) {
+		if (!DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(intent.getAction())) return;
+
+		final long id = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
+		if (id == -1) return;
 
 		final int status = DownloadMapper.instance.getStatus(id);
 		if (status != DownloadManager.STATUS_SUCCESSFUL) {
@@ -89,9 +99,11 @@ public class VersionDownloadCompleteReceiver {
 
 		// transfer from dm to the actual file in the background
 		Background.run(() -> {
+			final DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+
 			try {
-				final String downloadedFilePath = DownloadMapper.instance.getDownloadedFilePath(id);
-				final FileInputStream fis = new FileInputStream(downloadedFilePath);
+				final ParcelFileDescriptor pfd = dm.openDownloadedFile(id);
+				final FileInputStream fis = new FileInputStream(pfd.getFileDescriptor());
 				final OptionalGzipInputStream ogis = new OptionalGzipInputStream(fis);
 				final AtomicFile af = new AtomicFile(destFile);
 				final FileOutputStream fos = af.startWrite();
@@ -102,8 +114,7 @@ public class VersionDownloadCompleteReceiver {
 					fos.write(buf, 0, read);
 				}
 				af.finishWrite(fos);
-				ogis.close();
-
+				pfd.close();
 			} catch (IOException e) {
 				AppLog.e(TAG, "I/O error when saving downloaded version", e);
 				Foreground.run(() -> context.startActivity(
@@ -118,7 +129,6 @@ public class VersionDownloadCompleteReceiver {
 
 			final BibleReader reader = YesReaderFactory.createYesReader(destFile.getAbsolutePath());
 			if (reader == null) {
-				//noinspection ResultOfMethodCallIgnored
 				destFile.delete();
 
 				Foreground.run(() -> context.startActivity(

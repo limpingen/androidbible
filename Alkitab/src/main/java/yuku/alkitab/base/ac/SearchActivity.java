@@ -35,6 +35,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import yuku.afw.V;
 import yuku.afw.storage.Preferences;
@@ -269,6 +271,12 @@ public class SearchActivity extends BaseActivity {
 		res.putExtra(EXTRA_openedBookId, openedBookId);
 		return res;
 	}
+	public static Intent createIntent2(int openedBookId, String text) {
+		Intent res = new Intent(App.context, SearchActivity.class);
+		res.putExtra(EXTRA_openedBookId, openedBookId);
+
+		return res;
+	}
 
 	@Override protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -417,6 +425,12 @@ public class SearchActivity extends BaseActivity {
 		}
 
 		displaySearchInVersion();
+		if(getIntent().getStringExtra("Query") != null)
+		{
+			Toast.makeText(getBaseContext(), getIntent().getStringExtra("Query").trim(), Toast.LENGTH_LONG).show();
+			searchView.setQuery(getIntent().getStringExtra("Query").trim(),true);
+			search(getIntent().getStringExtra("Query").trim());
+		}
 	}
 
 	static AutoCompleteTextView findAutoCompleteTextViewRecursive(final ViewGroup group) {
@@ -662,7 +676,7 @@ public class SearchActivity extends BaseActivity {
 		super.onActivityResult(requestCode, resultCode, data);
 	}
 
-	protected void search(final String query_string) {
+	public void search(final String query_string) {
 		if (query_string.trim().length() == 0) {
 			return;
 		}
@@ -764,7 +778,7 @@ public class SearchActivity extends BaseActivity {
 						tSearchTips.setOnClickListener(null);
 					}
 				}
-
+/*
 				if (BuildConfig.DEBUG) {
 					new MaterialDialog.Builder(SearchActivity.this)
 						.content("This msg is shown only on DEBUG build\n\n" +
@@ -775,7 +789,8 @@ public class SearchActivity extends BaseActivity {
 						.positiveText(R.string.ok)
 						.show();
 				}
-				
+
+				*/
 				pd.setOnDismissListener(null);
 				pd.dismiss();
 			}

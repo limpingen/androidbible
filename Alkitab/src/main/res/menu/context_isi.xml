@@ -104,4 +104,6 @@
 		android:id="@+id/menuDictionary2"
 		android:icon="@drawable/ic_menu_dictionary"
 		android:title="@string/menuDictionary2" />
+
+
 </menu>

@@ -419,6 +419,15 @@
 			android:name="yuku.alkitab.base.br.DailyVerseAppWidgetReceiver$UpdateService"
 			android:exported="false" />
 
+		<receiver
+			android:name="yuku.alkitab.base.br.VersionDownloadCompleteReceiver"
+			android:enabled="true"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
+			</intent-filter>
+		</receiver>
+
 		<service
 			android:name="yuku.alkitab.base.sv.DailyVerseAppWidgetService"
 			android:permission="android.permission.BIND_REMOTEVIEWS" />
@@ -469,20 +478,6 @@
 				android:resource="@xml/syncadapter" />
 		</service>
 
-		<!--
-			File provider, for sharing app files.
-			Authority MUST NOT be changed without changing sharing code.
-		 -->
-		<provider
-			android:name="android.support.v4.content.FileProvider"
-			android:authorities="${applicationId}.file_provider"
-			android:exported="false"
-			android:grantUriPermissions="true">
-			<meta-data
-				android:name="android.support.FILE_PROVIDER_PATHS"
-				android:resource="@xml/file_provider" />
-		</provider>
-
 		<!-- gcm -->
 		<receiver
 			android:name="yuku.alkitab.base.sync.GcmBroadcastReceiver"
@@ -498,7 +493,7 @@
 			android:name="com.google.android.gms.version"
 			android:value="@integer/google_play_services_version" />
 
-		<!-- devotion reminder -->
+		<!-- from a separate app: devotion reminder -->
 		<activity
 			android:name="yuku.alkitab.reminder.ac.DevotionReminderActivity"
 			android:configChanges="keyboardHidden|orientation|screenSize|locale|layoutDirection|fontScale"

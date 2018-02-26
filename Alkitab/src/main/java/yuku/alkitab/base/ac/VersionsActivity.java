@@ -2,11 +2,12 @@ package yuku.alkitab.base.ac;
 
 import android.annotation.TargetApi;
 import android.app.DownloadManager;
+import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -15,13 +16,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.ShareCompat;
-import android.support.v4.content.FileProvider;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
@@ -360,7 +361,7 @@ public class VersionsActivity extends BaseActivity {
 		}
 	};
 
-	void startSearch() {
+	private void startSearch() {
 		// broadcast to all fragments that we have a new query_text
 		for (final String tag : new String[]{makeFragmentName(R.id.viewPager, 0), makeFragmentName(R.id.viewPager, 1)}) {
 			final Fragment f = getSupportFragmentManager().findFragmentByTag(tag);
@@ -459,7 +460,7 @@ public class VersionsActivity extends BaseActivity {
 					.show();
 			}
 
-			void showResult(final File yesFile, Throwable exception, List<String> wronglyConvertedBookNames) {
+			private void showResult(final File yesFile, Throwable exception, List<String> wronglyConvertedBookNames) {
 				if (exception != null) {
 					App.trackEvent("versions_convert_pdb_error");
 					showPdbReadErrorDialog(exception);
@@ -630,11 +631,16 @@ public class VersionsActivity extends BaseActivity {
 					return;
 				}
 
+				final DownloadManager.Request req = new DownloadManager.Request(Uri.parse(url))
+					.setTitle(last)
+					.setVisibleInDownloadsUi(false)
+					.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+
 				final Map<String, String> attrs = new LinkedHashMap<>();
 				attrs.put("download_type", "url");
 				attrs.put("filename_last_segment", last);
 
-				DownloadMapper.instance.enqueue(downloadKey, url, last, attrs);
+				DownloadMapper.instance.enqueue(downloadKey, req, attrs);
 
 				Toast.makeText(this, R.string.mulai_mengunduh, Toast.LENGTH_SHORT).show();
 			})
@@ -744,16 +750,13 @@ public class VersionsActivity extends BaseActivity {
 		public static final String EXTRA_refreshing = "refreshing";
 
 		private static final int REQCODE_share = 2;
-		LayoutInflater inflater;
+		private LayoutInflater inflater;
 
 		SwipeRefreshLayout swiper;
 		DragSortListView lsVersions;
 		VersionAdapter adapter;
-		boolean downloadedOnly;
-		String query_text;
-
-		// in-ram list of URIs whose permission to be revoked when this activity is destroyed
-		final List<Uri> grantedPermissionUris = new ArrayList<>();
+		private boolean downloadedOnly;
+		private String query_text;
 
 		/**
 		 * Returns a new instance of this fragment for the given section
@@ -800,10 +803,6 @@ public class VersionsActivity extends BaseActivity {
 		@Override
 		public void onDestroy() {
 			super.onDestroy();
-
-			for (final Uri uri : grantedPermissionUris) {
-				getActivity().revokeUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
-			}
 
 			App.getLbm().unregisterReceiver(br);
 		}
@@ -952,27 +951,12 @@ public class VersionsActivity extends BaseActivity {
 				b.onNegative((dialog, which) -> {
 					final MVersionDb mvDb = (MVersionDb) mv;
 
-					final File file = new File(mvDb.filename);
-					try {
-						final Uri uri = FileProvider.getUriForFile(getActivity(), App.context.getPackageName() + ".file_provider", file);
+					final Intent intent = ShareCompat.IntentBuilder.from(getActivity())
+						.setType("application/octet-stream")
+						.addStream(Uri.fromFile(new File(mvDb.filename)))
+						.getIntent();
 
-						if (BuildConfig.DEBUG) {
-							Toast.makeText(getActivity(), "Uri: " + uri, Toast.LENGTH_LONG).show();
-						}
-
-						final Intent intent = ShareCompat.IntentBuilder.from(getActivity())
-							.setType("application/octet-stream")
-							.addStream(uri)
-							.getIntent();
-
-						startActivityForResult(ShareActivity.createIntent(intent, getString(R.string.version_share_title)), REQCODE_share);
-
-					} catch (Exception e) {
-						new MaterialDialog.Builder(getActivity())
-							.content("Can't share " + file.getAbsolutePath() + ": [" + e.getClass() + "] " + e.getMessage())
-							.positiveText(R.string.ok)
-							.show();
-					}
+					startActivityForResult(ShareActivity.createIntent(intent, getString(R.string.version_share_title)), REQCODE_share);
 				});
 			}
 
@@ -1036,6 +1020,33 @@ public class VersionsActivity extends BaseActivity {
 		}
 
 		void startDownload(final MVersionPreset mv) {
+			{
+				int enabled = -1;
+				try {
+					enabled = App.context.getPackageManager().getApplicationEnabledSetting("com.android.providers.downloads");
+				} catch (Exception e) {
+					AppLog.d(TAG, "getting app enabled setting", e);
+				}
+
+				if (enabled == -1
+					|| enabled == PackageManager.COMPONENT_ENABLED_STATE_DISABLED
+					|| enabled == PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER) {
+					new MaterialDialog.Builder(getActivity())
+						.content(R.string.ed_download_manager_not_enabled_prompt)
+						.positiveText(R.string.ok)
+						.onPositive((dialog, which) -> {
+							try {
+								startActivity(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:com.android.providers.downloads")));
+							} catch (ActivityNotFoundException e) {
+								AppLog.e(TAG, "opening apps setting", e);
+							}
+						})
+						.negativeText(R.string.cancel)
+						.show();
+					return;
+				}
+			}
+
 			final String downloadKey = "version:preset_name:" + mv.preset_name;
 
 			final int status = DownloadMapper.instance.getStatus(downloadKey);
@@ -1044,12 +1055,17 @@ public class VersionsActivity extends BaseActivity {
 				return;
 			}
 
+			final DownloadManager.Request req = new DownloadManager.Request(Uri.parse(mv.download_url))
+				.setTitle(mv.longName)
+				.setVisibleInDownloadsUi(false)
+				.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+
 			final Map<String, String> attrs = new LinkedHashMap<>();
 			attrs.put("download_type", "preset");
 			attrs.put("preset_name", mv.preset_name);
 			attrs.put("modifyTime", "" + mv.modifyTime);
 
-			DownloadMapper.instance.enqueue(downloadKey, mv.download_url, mv.longName, attrs);
+			DownloadMapper.instance.enqueue(downloadKey, req, attrs);
 
 			App.getLbm().sendBroadcast(new Intent(ACTION_RELOAD));
 		}
@@ -1077,23 +1093,12 @@ public class VersionsActivity extends BaseActivity {
 		@Override
 		public void onActivityResult(int requestCode, int resultCode, Intent data) {
 			if (requestCode == REQCODE_share) {
-				final ShareActivity.Result result = ShareActivity.obtainResult(data);
+				ShareActivity.Result result = ShareActivity.obtainResult(data);
 				if (result != null && result.chosenIntent != null) {
-					final Intent intent = new Intent(result.chosenIntent);
-					U.dumpIntent(intent, "share");
-
-					// grant permission for the chosen package and uri
-					final ComponentName component = intent.getComponent();
-					if (component != null) {
-						final String packageName = component.getPackageName();
-						final Uri uri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
-						if (uri != null) {
-							grantedPermissionUris.add(uri);
-							getActivity().grantUriPermission(packageName, uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
-							startActivity(intent);
-						}
-					}
+					startActivity(result.chosenIntent);
 				}
+
+				return;
 			}
 
 			super.onActivityResult(requestCode, resultCode, data);
@@ -1318,7 +1323,7 @@ public class VersionsActivity extends BaseActivity {
 			}
 		}
 
-		boolean hasUpdateAvailable(final MVersionDb mvDb) {
+		private boolean hasUpdateAvailable(final MVersionDb mvDb) {
 			if (mvDb.preset_name == null || mvDb.modifyTime == 0) {
 				return false;
 			}
