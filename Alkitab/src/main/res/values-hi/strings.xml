@@ -572,7 +572,6 @@
   <!-- Dictionary -->
   <string name="menuDictionary">शब्दकोश</string>
   <string name="menuDictionary2">Strong Numbers</string>
-  <string name="corcondance">Corcondance</string>
   <string name="dict_open_full">ओपन डिक्शनरी</string>
   <string name="dict_no_results">चयनित शब्द के लिए कोई परिभाषा नहीं मिली।</string>
   <string name="dict_query_error">शब्दकोश से परिभाषा प्राप्त करने में त्रुटि</string>

@@ -537,7 +537,6 @@
   <!-- Dictionary -->
   <string name="menuDictionary">Dictionnaire</string>
   <string name="menuDictionary2">Strong Numbers</string>
-  <string name="corcondance">Corcondance</string>
   <string name="dict_open_full">Ouvrir le dictionnaire</string>
   <string name="dict_no_results">Aucune définition trouvé pour le mot sélectionné.</string>
   <string name="dict_download_prompt">Télécharger le \'Dictionnaire de la Bible» pour en savoir plus sur les termes de la Bible !</string>

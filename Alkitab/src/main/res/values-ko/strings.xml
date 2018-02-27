@@ -505,6 +505,7 @@
   <string name="dr_pref_notification_message">알람 메시지</string>
   <string name="dr_default_sound">기본 소리</string>
   <!-- about -->
+  <string name="about_text_desc" tools:ignore="AndroidLintStringFormatInvalid">100% 무료 성경 앱, Apache License 2.0 라이선스</string>
   <string name="about_translators">번역자</string>
   <string name="about_user_guide">사용자 가이드</string>
   <string name="about_beta_feedback">Beta 버전 의견</string>
@@ -536,7 +537,6 @@
   <!-- Dictionary -->
   <string name="menuDictionary">사전</string>
   <string name="menuDictionary2">Strong Numbers</string>
-  <string name="corcondance">Corcondance</string>
   <string name="dict_open_full">사전 열기</string>
   <string name="dict_no_results">선택한 단어에 대한 정의 없음</string>
   <string name="dict_download_prompt">성경 사전 다운로드</string>

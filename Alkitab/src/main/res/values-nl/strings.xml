@@ -505,6 +505,7 @@
   <string name="dr_pref_notification_message">Herinnering bericht</string>
   <string name="dr_default_sound">Standaardgeluid</string>
   <!-- about -->
+  <string name="about_text_desc" tools:ignore="AndroidLintStringFormatInvalid">100% gratis Bijbel app, gelicentieerd onder Apache License 2.0</string>
   <string name="about_translators">Vertalers</string>
   <string name="about_user_guide">Handleiding</string>
   <string name="about_beta_feedback">Bètaversie feedback</string>
@@ -536,7 +537,6 @@
   <!-- Dictionary -->
   <string name="menuDictionary">Woordenboek</string>
   <string name="menuDictionary2">Strong Numbers</string>
-  <string name="corcondance">Corcondance</string>
   <string name="dict_open_full">Open woordenboek</string>
   <string name="dict_no_results">Geen defenitie gevonden voor het geselecteerde woord.</string>
   <string name="dict_download_prompt">Download \"Bijbel Woordenboek\" om meer te leren over de woorden in de Bijbel!</string>

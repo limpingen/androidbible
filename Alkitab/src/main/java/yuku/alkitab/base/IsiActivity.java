@@ -1,7 +1,6 @@
 package yuku.alkitab.base;
 
 import android.annotation.TargetApi;
-import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
@@ -37,16 +36,13 @@ import android.support.v4.graphics.ColorUtils;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 
-import android.support.v7.app.AlertDialog;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SwitchCompat;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
-import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
@@ -55,7 +51,6 @@ import android.util.DisplayMetrics;
 import android.util.SparseBooleanArray;
 import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -65,14 +60,10 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AbsListView;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -149,11 +140,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import android.content.res.Configuration;
@@ -469,14 +458,6 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 	Button playButton;
 	boolean isStrongNumber = true;
 	boolean isFab = true;
-
-
-
-
-
-
-
-
 	/**
 	 * The Parallel listener.
 	 *  For Adding the user history of navigating the book chapter and verse
@@ -1061,10 +1042,6 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 				fab.setVisibility(View.VISIBLE);
 			}
 		}, 2000);
-
-
-
-
 
 	}
 	private Runnable UpdateSongTime = new Runnable() {
@@ -1933,68 +1910,15 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 	@Override public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-			case android.R.id.home:
-				leftDrawer.toggleDrawer();
-				return true;
-			case R.id.menuSearch:
-				App.trackEvent("nav_search_click");
-				menuSearch_click();
-				return true;
-
-			case R.id.corcondance: {
-				Dialog corcondancedialog;
-				AlertDialog.Builder alertDialog = new AlertDialog.Builder(IsiActivity.this);
-				LayoutInflater inflater = getLayoutInflater();
-				View convertView = (View) inflater.inflate(R.layout.corcondance_dialog, null);
-				alertDialog.setView(convertView);
-				alertDialog.setTitle("Daftar Konkordansi");
-				String corcondance_words[] = {"Abba", "Allah", "Abraham", "Benyamin", "Berhala", "Bethel", "Edom", "Habel", "Kain", "Israel","Maria", "Mesir", "Yesus", "Zion"};
-				ListView lvcorcondance = (ListView) convertView.findViewById(R.id.corcondance_list);
-				EditText inputSearchCorcondance = (EditText) convertView.findViewById(R.id.inputSearchCorcondance);
-				ArrayAdapter<String> corcondance_adapter = new ArrayAdapter<String>(IsiActivity.this, android.R.layout.simple_list_item_1, corcondance_words);
-				lvcorcondance.setAdapter(corcondance_adapter);
-
-				inputSearchCorcondance.addTextChangedListener(new TextWatcher() {
-
-					@Override
-					public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
-						// When user changed the Text// .this.
-						corcondance_adapter.getFilter().filter(cs);
-					}
-
-					@Override
-					public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
-												  int arg3) {
-						// TODO Auto-generated method stub
-
-					}
-
-					@Override
-					public void afterTextChanged(Editable arg0) {
-						// TODO Auto-generated method stub
-					}
-				});
-				corcondancedialog = alertDialog.show();
-				lvcorcondance.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-					@Override
-					public void onItemClick(AdapterView<?> parent, View view, int position,
-											long id) {
-
-						String item = ((TextView) view).getText().toString();
-
-						//Toast.makeText(getBaseContext(), item, Toast.LENGTH_LONG).show();
-						corcondancedialog.dismiss();
-						//startActivity(SearchActivity.createIntent2(IsiActivity.this.activeBook.bookId,item));
-						Intent SearchActivity = new Intent(IsiActivity.this, yuku.alkitab.base.ac.SearchActivity.class);
-						SearchActivity.putExtra("Query", item );
-						startActivity(SearchActivity);
-
-					}
-				});
-
-			}
+		case android.R.id.home:
+			leftDrawer.toggleDrawer();
+			return true;
+		case R.id.menuSearch:
+			App.trackEvent("nav_search_click");
+			menuSearch_click();
 			return true;
 		}
+
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -3376,7 +3300,6 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 						isStrongNumber = true;
 					}
 				} return true;
-
 			default: if (itemId >= MENU_EXTENSIONS_FIRST_ID && itemId < MENU_EXTENSIONS_FIRST_ID + extensions.size()) {
 				final ExtensionManager.Info extension = extensions.get(itemId - MENU_EXTENSIONS_FIRST_ID);
 

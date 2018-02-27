@@ -5,10 +5,6 @@
     <item
         android:id="@+id/menuSearch"
         android:icon="@drawable/ic_menu_search"
-
+        app:showAsAction="always"
         android:title="@string/search"/>
-    <item
-        android:id="@+id/corcondance"
-        android:icon="@drawable/ic_menu_dictionary"
-        android:title="@string/corcondance" />
 </menu>
