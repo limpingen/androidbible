@@ -538,6 +538,7 @@
   <!-- Dictionary -->
   <string name="menuDictionary">字典</string>
   <string name="menuDictionary2">Strong Numbers</string>
+  <string name="corcondance">Corcondance</string>
   <string name="dict_open_full">開啟字典</string>
   <string name="dict_no_results">找不到所選字詞的解釋。</string>
   <string name="dict_download_prompt">下載「聖經字典」以學習聖經中更多的字詞！</string>

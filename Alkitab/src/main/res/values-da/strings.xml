@@ -537,6 +537,7 @@
   <!-- Dictionary -->
   <string name="menuDictionary">Ordbog</string>
   <string name="menuDictionary2">Strong Numbers</string>
+  <string name="corcondance">Corcondance</string>
   <string name="dict_open_full">Åben ordbog</string>
   <string name="dict_no_results">Ingen definition fundet for det valgte ord.</string>
   <string name="dict_download_prompt">Nedtag \"Bibel Ordbogen\" for at lære mere om ordene i Bibelen!</string>

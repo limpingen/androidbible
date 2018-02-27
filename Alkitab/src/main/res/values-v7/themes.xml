@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<style name="Theme.Alkitab" parent="Theme.Alkitab.Base" />
+	<style name="Theme.Alkitab" parent="Theme.Alkitab.Base">
+
+	</style>
 
 	<style name="Theme.Alkitab.DialogWhenLarge" parent="Theme.Alkitab.DialogWhenLarge.Base" />
 

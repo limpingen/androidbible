@@ -1,6 +1,7 @@
 package yuku.alkitab.base;
 
 import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
@@ -9,6 +10,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -36,13 +38,16 @@ import android.support.v4.graphics.ColorUtils;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SwitchCompat;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
@@ -51,6 +56,7 @@ import android.util.DisplayMetrics;
 import android.util.SparseBooleanArray;
 import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -60,10 +66,14 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -458,6 +468,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 	Button playButton;
 	boolean isStrongNumber = true;
 	boolean isFab = true;
+
 	/**
 	 * The Parallel listener.
 	 *  For Adding the user history of navigating the book chapter and verse
@@ -1042,6 +1053,8 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 				fab.setVisibility(View.VISIBLE);
 			}
 		}, 2000);
+		setTheme(R.style.Theme_Alkitab2);
+
 
 	}
 	private Runnable UpdateSongTime = new Runnable() {
@@ -1917,6 +1930,59 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			App.trackEvent("nav_search_click");
 			menuSearch_click();
 			return true;
+			case R.id.corcondance: {
+				Dialog corcondancedialog;
+				AlertDialog.Builder alertDialog = new AlertDialog.Builder(IsiActivity.this);
+				LayoutInflater inflater = getLayoutInflater();
+				View convertView = (View) inflater.inflate(R.layout.corcondance_dialog, null);
+				alertDialog.setView(convertView);
+				alertDialog.setTitle("Daftar Konkordansi");
+				String corcondance_words[] = {"Abba", "Allah", "Abraham", "Benyamin", "Berhala", "Bethel", "Edom", "Habel", "Kain", "Israel","Maria", "Mesir", "Yesus", "Zion"};
+				ListView lvcorcondance = (ListView) convertView.findViewById(R.id.corcondance_list);
+				EditText inputSearchCorcondance = (EditText) convertView.findViewById(R.id.inputSearchCorcondance);
+				ArrayAdapter<String> corcondance_adapter = new ArrayAdapter<String>(IsiActivity.this, android.R.layout.simple_list_item_1, corcondance_words);
+				lvcorcondance.setAdapter(corcondance_adapter);
+
+				inputSearchCorcondance.addTextChangedListener(new TextWatcher() {
+
+					@Override
+					public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
+						// When user changed the Text// .this.
+						corcondance_adapter.getFilter().filter(cs);
+					}
+
+					@Override
+					public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
+												  int arg3) {
+						// TODO Auto-generated method stub
+
+					}
+
+					@Override
+					public void afterTextChanged(Editable arg0) {
+						// TODO Auto-generated method stub
+					}
+				});
+				corcondancedialog = alertDialog.show();
+				lvcorcondance.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+					@Override
+					public void onItemClick(AdapterView<?> parent, View view, int position,
+											long id) {
+
+						String item = ((TextView) view).getText().toString();
+
+						//Toast.makeText(getBaseContext(), item, Toast.LENGTH_LONG).show();
+						corcondancedialog.dismiss();
+						//startActivity(SearchActivity.createIntent2(IsiActivity.this.activeBook.bookId,item));
+						Intent SearchActivity = new Intent(IsiActivity.this, yuku.alkitab.base.ac.SearchActivity.class);
+						SearchActivity.putExtra("Query", item );
+						startActivity(SearchActivity);
+
+					}
+				});
+
+			}
+			return true;
 		}
 
 		return super.onOptionsItemSelected(item);
@@ -2263,6 +2329,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			reloadBothAttributeMaps();
 		} else if (requestCode == REQCODE_edit_note_2 && resultCode == RESULT_OK) {
 			lsSplit0.uncheckAllVerses(true);
+			setTheme(R.style.Theme_Alkitab2);
 			reloadBothAttributeMaps();
 		}
 
@@ -2835,10 +2902,12 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 	 */
 	VersesView.SelectedVersesListener lsSplit0_selectedVerses = new VersesView.DefaultSelectedVersesListener() {
 		@Override public void onSomeVersesSelected(VersesView v) {
+			setTheme(R.style.Theme_Alkitab);
 			if (activeSplitVersion != null) {
 				// synchronize the selection with the split view
 				IntArrayList selectedVerses = v.getSelectedVerses_1();
 				lsSplit1.checkVerses(selectedVerses, false);
+
 			}
 
 			if (actionMode == null) {
@@ -2848,6 +2917,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			if (actionMode != null) {
 				actionMode.invalidate();
 			}
+
 		}
 
 		@Override public void onNoVersesSelected(VersesView v) {
@@ -2869,8 +2939,10 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 	VersesView.SelectedVersesListener lsSplit1_selectedVerses = new VersesView.DefaultSelectedVersesListener() {
 		@Override public void onSomeVersesSelected(VersesView v) {
 			// synchronize the selection with the main view
+			setTheme(R.style.Theme_Alkitab);
 			IntArrayList selectedVerses = v.getSelectedVerses_1();
 			lsSplit0.checkVerses(selectedVerses, true);
+
 		}
 
 		@Override public void onNoVersesSelected(VersesView v) {
@@ -2949,6 +3021,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 
 		@Override public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+
 			final MenuItem menuAddBookmark = menu.findItem(R.id.menuAddBookmark);
 			final MenuItem menuAddNote = menu.findItem(R.id.menuAddNote);
 			final MenuItem menuCompare = menu.findItem(R.id.menuCompare);
@@ -3041,7 +3114,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 					}
 				}
 			}
-
+			setTheme(R.style.Theme_Alkitab);
 			return true;
 		}
 
@@ -3102,7 +3175,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 					@Override
 					public void onFinally() {
 						lsSplit0.uncheckAllVerses(true);
-
+						setTheme(R.style.Theme_Alkitab2);
 						Snackbar.make(root, getString(R.string.alamat_sudah_disalin, reference), Snackbar.LENGTH_SHORT).show();
 						mode.finish();
 					}
@@ -3155,6 +3228,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 						startActivityForResult(ShareActivity.createIntent(intent, getString(R.string.bagikan_alamat, reference)), REQCODE_share);
 
 						lsSplit0.uncheckAllVerses(true);
+						setTheme(R.style.Theme_Alkitab2);
 						mode.finish();
 					}
 				});
@@ -3186,6 +3260,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 				TypeBookmarkDialog dialog = TypeBookmarkDialog.NewBookmark(IsiActivity.this, ari, verseCount);
 				dialog.setListener(() -> {
 					lsSplit0.uncheckAllVerses(true);
+					setTheme(R.style.Theme_Alkitab2);
 					reloadBothAttributeMaps();
 				});
 				dialog.show();
@@ -3212,6 +3287,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 				final TypeHighlightDialog.Listener listener = colorRgb1 -> {
 					lsSplit0.uncheckAllVerses(true);
+					setTheme(R.style.Theme_Alkitab2);
 					reloadBothAttributeMaps();
 				};
 
@@ -3370,6 +3446,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			// This guard only fixes unchecking of verses when in fullscreen mode.
 			if (uncheckVersesWhenActionModeDestroyed) {
 				lsSplit0.uncheckAllVerses(true);
+				setTheme(R.style.Theme_Alkitab2);
 			}
 		}
 	};

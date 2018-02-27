@@ -477,6 +477,7 @@
   <!-- Announcements -->
   <!-- Dictionary -->
   <string name="dict_download_button">Завантажити</string>
+  <string name="corcondance">Corcondance</string>
   <!-- Guide -->
   <string name="menuGuide">Довідка</string>
   <!-- Commentary -->

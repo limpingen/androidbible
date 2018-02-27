@@ -532,6 +532,7 @@
   <!-- Dictionary -->
   <string name="menuDictionary">Словарь</string>
   <string name="menuDictionary2">Strong Numbers</string>
+  <string name="corcondance">Corcondance</string>
   <string name="dict_open_full">Открыть словарь</string>
   <string name="dict_no_results">Не найдена статья для выбранного слова.</string>
   <string name="dict_download_prompt">Загрузить \"Библейский словарь\", чтобы узнать больше о словах, использованных в Библии!</string>
