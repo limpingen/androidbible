@@ -33,6 +33,8 @@ public class SingleViewVerseAdapter extends VerseAdapter {
 
 	private SparseBooleanArray dictionaryModeAris;
 	private String mystatus = "dictionary1";
+	boolean [] XRef;
+
 	public static class DictionaryLinkInfo {
 		public String orig_text;
 		public String key;
@@ -45,10 +47,18 @@ public class SingleViewVerseAdapter extends VerseAdapter {
 
 	CallbackSpan.OnClickListener<DictionaryLinkInfo> dictionaryListener_;
 
+	public SingleViewVerseAdapter(Context context, boolean [] XRefnew) {
+		super(context);
+		XRef = XRefnew;
+	}
 	public SingleViewVerseAdapter(Context context) {
 		super(context);
-	}
 
+	}
+	public void setXref(boolean [] XRefnew)
+	{
+		XRef = XRefnew;
+	}
 	@Override
 	public int getViewTypeCount() {
 		return 2;
@@ -98,11 +108,11 @@ public class SingleViewVerseAdapter extends VerseAdapter {
 			}
 			else
 			{
-				text = text.replace("<","").replace(">","").replace("[","").replace("]","");
-				text = text.replaceAll("[0-9]","");
+				text = text.replace("[","").replace("]","");
+				text = text.replaceAll("<\\d+>","");
 			}
 
-			final int startVerseTextPos = VerseRenderer.render(lText, lVerseNumber, ari, text, verseNumberText, highlightInfo, checked, inlineLinkSpanFactory_, null);
+			final int startVerseTextPos = VerseRenderer.render(lText, lVerseNumber, ari, text, verseNumberText, highlightInfo, checked, inlineLinkSpanFactory_, null, XRef);
 
 			final float textSizeMult;
 			if (verses_ instanceof SingleChapterVerses.WithTextSizeMult) {

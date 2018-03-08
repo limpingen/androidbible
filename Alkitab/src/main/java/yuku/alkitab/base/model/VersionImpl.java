@@ -336,7 +336,14 @@ public class VersionImpl extends Version {
 	public synchronized XrefEntry getXrefEntry(final int arif) {
 		return bibleReader.getXrefEntry(arif);
 	}
-
+	@Override
+	public synchronized XrefEntry getXrefEntry2(final int arif) {
+		return bibleReader.getXrefEntry2(arif);
+	}
+	@Override
+	public synchronized XrefEntry getXrefEntry3(final int arif) {
+		return bibleReader.getXrefEntry3(arif);
+	}
 	/**
 	 * @param arif 24bit ari at the MSB + which xref field at the 8bit LSB (starts from 1)
 	 */

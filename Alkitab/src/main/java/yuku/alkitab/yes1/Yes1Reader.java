@@ -467,7 +467,14 @@ public class Yes1Reader implements BibleReader {
 		// YES1 file cannot contain xref entries.
 		return null;
 	}
-
+	@Override public XrefEntry getXrefEntry2(int arif) {
+		// YES1 file cannot contain xref entries.
+		return null;
+	}
+	@Override public XrefEntry getXrefEntry3(int arif) {
+		// YES1 file cannot contain xref entries.
+		return null;
+	}
 	@Override
 	public FootnoteEntry getFootnoteEntry(final int arif) {
 		// YES1 file cannot contain footnote entries.

@@ -301,6 +301,42 @@ public class Yes2Reader implements BibleReader {
 
 		return xrefsSection_.getXrefEntry(arif);
 	}
+	@Override
+	public XrefEntry getXrefEntry2(int arif) {
+		if (xrefsSection_ == null) { // not yet loaded!
+			try {
+				final RandomInputStream sectionInput = prepareLoadSection(XrefsSection.SECTION_NAME);
+				if (sectionInput == null) {
+					return null;
+				}
+
+				xrefsSection_ = new XrefsSection.Reader().read(sectionInput);
+			} catch (Exception e) {
+				Log.e(TAG, "General exception in loading xref section", e);
+				return null;
+			}
+		}
+
+		return xrefsSection_.getXrefEntry(arif);
+	}
+	@Override
+	public XrefEntry getXrefEntry3(int arif) {
+		if (xrefsSection_ == null) { // not yet loaded!
+			try {
+				final RandomInputStream sectionInput = prepareLoadSection(XrefsSection.SECTION_NAME);
+				if (sectionInput == null) {
+					return null;
+				}
+
+				xrefsSection_ = new XrefsSection.Reader().read(sectionInput);
+			} catch (Exception e) {
+				Log.e(TAG, "General exception in loading xref section", e);
+				return null;
+			}
+		}
+
+		return xrefsSection_.getXrefEntry(arif);
+	}
 
 	@Override
 	public FootnoteEntry getFootnoteEntry(final int arif) {

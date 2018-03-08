@@ -44,7 +44,9 @@ public class XrefDialog extends BaseDialog {
 	public static final String TAG = XrefDialog.class.getSimpleName();
 
 	private static final String EXTRA_arif = "arif";
-
+	private static final String theA = "A";
+	private static final String theB = "B";
+	private static final String theC = "C";
 	public interface XrefDialogListener {
 		void onVerseSelected(XrefDialog dialog, int arif_source, int ari_target);
 	}
@@ -65,8 +67,10 @@ public class XrefDialog extends BaseDialog {
 	String myversionid = MVersionInternal.getVersionInternalId();
 	Version sourceVersion = S.activeVersion();
 	String sourceVersionId = S.activeVersionId();
-
-
+	boolean theXRefA = false;
+	boolean  theXRefB = false;
+	boolean theXRefC = false;
+	boolean [] XRef;
 
 
 	float textSizeMult = S.getDb().getPerVersionSettings(sourceVersionId).fontSizeMultiplier;  // BY Jeffrey :)
@@ -76,11 +80,14 @@ public class XrefDialog extends BaseDialog {
 	public XrefDialog() {
 	}
 	
-	public static XrefDialog newInstance(int arif) {
+	public static XrefDialog newInstance(int arif, boolean [] theXRef) {
 		XrefDialog res = new XrefDialog();
 		
         Bundle args = new Bundle();
         args.putInt(EXTRA_arif, arif);
+        args.putBoolean(theA, theXRef[0]);
+		args.putBoolean(theB, theXRef[1]);
+		args.putBoolean(theC, theXRef[2]);
         res.setArguments(args);
 
 		return res;
@@ -101,11 +108,38 @@ public class XrefDialog extends BaseDialog {
 		super.onCreate(savedInstanceState);
 		setStyle(DialogFragment.STYLE_NO_TITLE, 0);
 
+		theXRefA =  getArguments().getBoolean(theA);
+		theXRefB =  getArguments().getBoolean(theB);
+		theXRefC =  getArguments().getBoolean(theC);
 		arif_source = getArguments().getInt(EXTRA_arif);
 		//arif_source = ( Ari.encode(39,1,11) << 8 ) | 1;
+		XRef = new boolean[3];
+		XRef[0] = theXRefA;
+		XRef[1] = theXRefB;
+		XRef[2] = theXRefC;
 
-		xrefEntry = myversion.getXrefEntry(arif_source);
-		//xrefEntry = myversion.getXrefEntry(arif_source);
+		int field = arif_source & 0xff;
+
+
+		if(field == 1)
+		{
+			xrefEntry = myversion.getXrefEntry(arif_source);
+			Toast.makeText(getActivity(), Integer.toString(field), Toast.LENGTH_LONG).show();
+		}
+		else if(field==2)
+		{
+			xrefEntry = myversion.getXrefEntry2(arif_source);
+			Toast.makeText(getActivity(), Integer.toString(field), Toast.LENGTH_LONG).show();
+		}
+		else if(field==3)
+		{
+			xrefEntry = myversion.getXrefEntry3(arif_source);
+			Toast.makeText(getActivity(), Integer.toString(field), Toast.LENGTH_LONG).show();
+		}
+		//xrefEntry = sourceVersion.getXrefEntry(arif_source);
+
+
+
 	}
 	
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -113,7 +147,7 @@ public class XrefDialog extends BaseDialog {
 
 		tXrefText = V.get(res, R.id.tXrefText);
 		versesView = V.get(res, R.id.versesView);
-		
+		versesView.init2(XRef);
 		res.setBackgroundColor(S.applied().backgroundColor);
 		versesView.setCacheColorHint(S.applied().backgroundColor);
 		versesView.setVerseSelectionMode(VerseSelectionMode.singleClick);
@@ -256,8 +290,33 @@ public class XrefDialog extends BaseDialog {
 		void onTaggedText(String tag, int start, int end);
 	}
 	
-	// look for "<@" "@>" "@/" tags
+	// look for "<@" "@>" "@/"
 	void findTags(String s, FindTagsListener listener) {
+
+		if(theXRefA == true)
+		{
+			s = s.replace("#A##", "").replace("##A#","");
+		}
+		else
+		{
+			s = s.replaceAll("#A##.+##A#", "");
+		}
+		if(theXRefB == true)
+		{
+			s = s.replace("#B##", "").replace("##B#","");
+		}
+		else
+		{
+			s = s.replaceAll("#B##.+##B#", "");
+		}
+		if(theXRefC == true)
+		{
+			s = s.replace("#C##", "").replace("##C#","");
+		}
+		else
+		{
+			s = s.replaceAll("#C##.+##C#", "");
+		}
 		int pos = 0;
 		while (true) {
 			int p = s.indexOf("@<", pos);

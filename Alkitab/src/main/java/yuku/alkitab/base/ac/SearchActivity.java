@@ -86,7 +86,7 @@ public class SearchActivity extends BaseActivity {
 	CheckBox cFilterSingleBook;
 	TextView tFilterAdvanced;
 	View bEditFilter;
-
+	Toolbar toolbar;
 	int hiliteColor;
 	SparseBooleanArray selectedBookIds = new SparseBooleanArray();
 	int openedBookId;
@@ -97,7 +97,11 @@ public class SearchActivity extends BaseActivity {
 	float textSizeMult;
 	SearchHistoryAdapter searchHistoryAdapter;
 	ActionMode actionMode;
-
+	String concordance_word=  "";
+	int awal = 0;
+	int akhir = 0;
+	int pertama = 0;
+	int terakhir = 0;
 	final AdapterView.OnItemLongClickListener lsSearchResults_itemLongClick = (parent, view, position, id) -> {
 		if (actionMode == null) {
 			actionMode = startSupportActionMode(new ActionMode.Callback() {
@@ -287,7 +291,7 @@ public class SearchActivity extends BaseActivity {
 		tFilterAdvanced = V.get(this, R.id.tFilterAdvanced);
 		bEditFilter = V.get(this, R.id.bEditFilter);
 
-		final Toolbar toolbar = V.get(this, R.id.toolbar);
+		toolbar = V.get(this, R.id.toolbar);
 		setSupportActionBar(toolbar);
 		final ActionBar ab = getSupportActionBar();
 		assert ab != null;
@@ -297,6 +301,7 @@ public class SearchActivity extends BaseActivity {
 
 		searchInVersion = S.activeVersion();
 		searchInVersionId = S.activeVersionId();
+
 		textSizeMult = S.getDb().getPerVersionSettings(searchInVersionId).fontSizeMultiplier;
 		bVersion.setOnClickListener(bVersion_click);
 
@@ -421,9 +426,13 @@ public class SearchActivity extends BaseActivity {
 		displaySearchInVersion();
 		if(getIntent().getStringExtra("Query") != null)
 		{
+			concordance_word = getIntent().getStringExtra("Query").trim();
+			searchView.setVisibility(View.GONE);
+			panelFilter.setVisibility(View.GONE);
 			Toast.makeText(getBaseContext(), getIntent().getStringExtra("Query").trim(), Toast.LENGTH_LONG).show();
-			searchView.setQuery(getIntent().getStringExtra("Query").trim(),true);
+			searchView.setQuery("\"" + getIntent().getStringExtra("Query").trim() + "\"",true);
 			search(getIntent().getStringExtra("Query").trim());
+
 		}
 	}
 
@@ -612,7 +621,16 @@ public class SearchActivity extends BaseActivity {
 	};
 
 	final View.OnClickListener bVersion_click = v -> S.openVersionsDialog(this, false, searchInVersionId, mv -> {
-		final Version selectedVersion = mv.getVersion();
+
+		Version selectedVersion = mv.getVersion();
+		if(mv.locale.equals("id"))
+		{
+			selectedVersion = mv.getVersion();
+		}
+		else
+		{
+			selectedVersion = mv.getVersion2();
+		}
 
 		if (selectedVersion == null) {
 			new MaterialDialog.Builder(SearchActivity.this)
@@ -623,7 +641,15 @@ public class SearchActivity extends BaseActivity {
 		}
 
 		searchInVersion = selectedVersion;
-		searchInVersionId = mv.getVersionId();
+		if(mv.locale.equals("id"))
+		{
+			searchInVersionId =  mv.getVersionId();
+		}
+		else
+		{
+			searchInVersionId =  mv.getVersionId2();
+		}
+		//searchInVersionId = mv.getVersionId();
 		textSizeMult = S.getDb().getPerVersionSettings(searchInVersionId).fontSizeMultiplier;
 		Appearances.applyTextAppearance(tSearchTips, textSizeMult);
 
@@ -909,7 +935,36 @@ public class SearchActivity extends BaseActivity {
 				lSnippet.setTextColor(checkedTextColor);
 			}
 
-			final String verseText = U.removeSpecialCodes(searchInVersion.loadVerseText(ari));
+			String verseText = U.removeSpecialCodes(searchInVersion.loadVerseText(ari));
+
+			if(concordance_word!="") {
+				String[] verseWord = verseText.split(" ");
+
+
+				awal = 0;
+				akhir = 0;
+				for (int i = 0; i < verseWord.length; i++) {
+
+					if(verseWord[i].toLowerCase().contains(concordance_word.toLowerCase())&&awal==0) awal = i;
+					else if(verseWord[i].toLowerCase().contains(concordance_word.toLowerCase())&&awal!=0&&akhir!=0) akhir = i;
+				}
+				pertama = awal -6;
+				if(pertama<0) pertama = 0;
+				terakhir = 0;
+
+				if(akhir==0) terakhir = awal + 6;
+				else if(akhir!=0) terakhir = akhir;
+				if(terakhir>verseWord.length) terakhir = verseWord.length;
+				verseText = "";
+				for(int x=pertama;x<terakhir;x++)
+				{
+					verseText += verseWord[x] + " ";
+				}
+				verseText=  "... " + verseText.trim() + " ...";
+				verseText = verseText.replace("[","").replace("]","");
+				verseText = verseText.replaceAll("<\\d+>","");
+			}
+
 			if (verseText != null) {
 				lSnippet.setText(SearchEngine.hilite(verseText, rt, checked? checkedTextColor: hiliteColor));
 			} else {

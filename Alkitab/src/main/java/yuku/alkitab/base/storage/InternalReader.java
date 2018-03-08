@@ -295,7 +295,7 @@ public class InternalReader implements BibleReader {
 	@Override public XrefEntry getXrefEntry(int arif) {
 		if (xrefsKnownNotAvailable) return null;
 
-		if (xrefsSection_ == null) {
+		//if (xrefsSection_ == null) {
 			final String assetName = "internal/" + AppConfig.get().internalPrefix + "_xrefs_bt.bt";
 
 			try {
@@ -311,11 +311,60 @@ public class InternalReader implements BibleReader {
 			} catch (IOException e) {
 				throw new RuntimeException("Error reading xrefs section from internal", e);
 			}
-		}
+		//}
 
 		return xrefsSection_.getXrefEntry(arif);
 	}
-	
+
+	@Override public XrefEntry getXrefEntry2(int arif) {
+		if (xrefsKnownNotAvailable) return null;
+
+		//if (xrefsSection_ == null) {
+			final String assetName = "internal/" + AppConfig.get().internalPrefix + "2_xrefs_bt.bt";
+
+			try {
+				App.context.getAssets().list(assetName);
+			} catch (IOException e) {
+				AppLog.d(TAG, "Can't load xrefs from internal, marking it as not available.");
+				xrefsKnownNotAvailable = true;
+				return null;
+			}
+
+			try {
+				xrefsSection_ = new XrefsSection.Reader().read(new AssetRandomInputStream(assetName));
+			} catch (IOException e) {
+				throw new RuntimeException("Error reading xrefs section from internal", e);
+			}
+		//}
+
+		return xrefsSection_.getXrefEntry2(arif);
+	}
+	@Override public XrefEntry getXrefEntry3(int arif) {
+		if (xrefsKnownNotAvailable) return null;
+
+		//if (xrefsSection_ == null) {
+			final String assetName = "internal/" + AppConfig.get().internalPrefix + "3_xrefs_bt.bt";
+
+			try {
+				App.context.getAssets().list(assetName);
+			} catch (IOException e) {
+				AppLog.d(TAG, "Can't load xrefs from internal, marking it as not available.");
+				xrefsKnownNotAvailable = true;
+				return null;
+			}
+
+			try {
+				xrefsSection_ = new XrefsSection.Reader().read(new AssetRandomInputStream(assetName));
+			} catch (IOException e) {
+				throw new RuntimeException("Error reading xrefs section from internal", e);
+			}
+		//}
+
+		return xrefsSection_.getXrefEntry3(arif);
+	}
+
+
+
 	@Override public FootnoteEntry getFootnoteEntry(int arif) {
 		if (footnotesKnownNotAvailable) return null;
 

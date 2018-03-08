@@ -40,8 +40,8 @@ public class XrefsSection extends SectionContent {
 			throw new RuntimeException("Xrefs section version not supported: " + version);
 		}
 
-		this.entry_count = br.readInt();
 
+		this.entry_count = br.readInt();
 		this.index_arifs = new int[entry_count];
 		for (int i = 0, len = entry_count; i < len; i++) {
 			this.index_arifs[i] = br.readInt();
@@ -75,7 +75,46 @@ public class XrefsSection extends SectionContent {
 			return null;
 		}
 	}
+	public XrefEntry getXrefEntry2(final int arif) {
+		final int pos = Arrays.binarySearch(index_arifs, arif);
+		if (pos < 0) {
+			return null;
+		}
 
+		final int offset = index_offset[pos];
+		final int abs_offset = content_start_offset + offset;
+		try {
+			final XrefEntry res = new XrefEntry();
+			input_.seek(abs_offset);
+			final BintexReader br = new BintexReader(input_);
+			res.content = br.readValueString();
+			// do not close br, input is still needed elsewhere
+			return res;
+		} catch (IOException e) {
+			Log.e(TAG, "load xref failed", e);
+			return null;
+		}
+	}
+	public XrefEntry getXrefEntry3(final int arif) {
+		final int pos = Arrays.binarySearch(index_arifs, arif);
+		if (pos < 0) {
+			return null;
+		}
+
+		final int offset = index_offset[pos];
+		final int abs_offset = content_start_offset + offset;
+		try {
+			final XrefEntry res = new XrefEntry();
+			input_.seek(abs_offset);
+			final BintexReader br = new BintexReader(input_);
+			res.content = br.readValueString();
+			// do not close br, input is still needed elsewhere
+			return res;
+		} catch (IOException e) {
+			Log.e(TAG, "load xref failed", e);
+			return null;
+		}
+	}
 	public static class Reader implements SectionContent.Reader<XrefsSection> {
 		@Override public XrefsSection read(RandomInputStream input) throws IOException {
 			return new XrefsSection(input);

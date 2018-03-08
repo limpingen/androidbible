@@ -25,7 +25,8 @@ public interface BibleReader {
 	 * @param arif 24bit ari at the MSB + which xref field at the 8bit LSB (starts from 1)
 	 */
 	XrefEntry getXrefEntry(int arif);
-
+	XrefEntry getXrefEntry2(int arif);
+	XrefEntry getXrefEntry3(int arif);
 	/**
 	 * @param arif 24bit ari at the MSB + which xref field at the 8bit LSB (starts from 1)
 	 */

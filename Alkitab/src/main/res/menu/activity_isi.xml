@@ -10,4 +10,15 @@
         android:id="@+id/corcondance"
         android:icon="@drawable/ic_menu_dictionary"
         android:title="@string/corcondance" />
+
+    <item
+        android:id="@+id/theA"
+        android:title="A" />
+    <item
+        android:id="@+id/theB"
+        android:title="B" />
+    <item
+        android:id="@+id/theC"
+        android:title="C" />
+
 </menu>

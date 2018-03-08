@@ -469,6 +469,8 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 	boolean isStrongNumber = true;
 	boolean isFab = true;
 
+	boolean [] theXRef;
+	boolean theA, theB, theC;
 	/**
 	 * The Parallel listener.
 	 *  For Adding the user history of navigating the book chapter and verse
@@ -734,7 +736,24 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 		lsSplit0.setName("lsSplit0");
 		lsSplit1.setName("lsSplit1");
+		theXRef = new boolean[3];
+		String isthefirstime = Preferences.getString(Prefkey.thefirsttime, null);
+		if(isthefirstime == null) {
+			Preferences.hold();
+			Preferences.setBoolean(Prefkey.XRefA, true);
+			Preferences.setBoolean(Prefkey.XRefB, true);
+			Preferences.setBoolean(Prefkey.XRefC, true);
+			Preferences.unhold();
+		}
+		theXRef[0] = Preferences.getBoolean(Prefkey.XRefA, true);
+		theXRef[1] = Preferences.getBoolean(Prefkey.XRefB, true);
+		theXRef[2] = Preferences.getBoolean(Prefkey.XRefC, true);
 
+		theA = Preferences.getBoolean(Prefkey.XRefA, true);
+		theB = Preferences.getBoolean(Prefkey.XRefB, true);
+		theC = Preferences.getBoolean(Prefkey.XRefC, true);
+		lsSplit0.setXRef(theXRef);
+		lsSplit1.setXRef(theXRef);
 		splitRoot.setListener(splitRoot_listener);
 
 		bGoto.setOnClickListener(v -> bGoto_click());
@@ -835,7 +854,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 		{ // load last split version. This must be after load book, chapter, and verse.
 			String lastSplitVersionId = Preferences.getString(Prefkey.lastSplitVersionId, null);
-			String isthefirstime = Preferences.getString(Prefkey.thefirsttime, null);
+
 /*
  If this is the first time running the Apps
  */
@@ -845,6 +864,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 				Preferences.hold();
 				Preferences.setString(Prefkey.lastSplitVersionId, lastSplitVersionId);
 				Preferences.setString(Prefkey.thefirsttime, "no");
+				Preferences.setBoolean(Prefkey.XRefA, true);
+				Preferences.setBoolean(Prefkey.XRefB, true);
+				Preferences.setBoolean(Prefkey.XRefC, true);
 				Preferences.unhold();
 				activeSplitVersionId = lastSplitVersionId;
 			}
@@ -1922,6 +1944,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 	}
 
 	@Override public boolean onOptionsItemSelected(MenuItem item) {
+		Intent originalIntent = getIntent();
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			leftDrawer.toggleDrawer();
@@ -1982,7 +2005,37 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 				});
 
 			}
+
 			return true;
+			case R.id.theA:
+				if(theA)theA = false;
+				else theA = true;
+				Preferences.hold();
+				Preferences.setBoolean(Prefkey.XRefA, theA);
+				Preferences.unhold();
+				finish();
+				startActivity(originalIntent);
+				return true;
+			case R.id.theB:
+				if(theB)theB = false;
+				else theB = true;
+				Preferences.hold();
+				Preferences.setBoolean(Prefkey.XRefB, theB);
+				Preferences.unhold();
+				finish();
+				startActivity(originalIntent);
+				return true;
+			case R.id.theC:
+				if(theC)theC = false;
+				else theC = true;
+				Preferences.hold();
+				Preferences.setBoolean(Prefkey.XRefC, theC);
+				Preferences.unhold();
+				finish();
+				startActivity(originalIntent);
+				return true;
+
+
 		}
 
 		return super.onOptionsItemSelected(item);
@@ -2848,8 +2901,10 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 						int myari = arif >> 8;
  						int arif_source = ( Ari.encode(39,1,11) << 8 ) | 1;
 
+
+
 						// Create Cross Reference Dialog
- 						final XrefDialog dialog = XrefDialog.newInstance(arif);
+ 						XrefDialog dialog = XrefDialog.newInstance(arif, theXRef);
 
 						//Toast.makeText(IsiActivity.this,  Integer.toString(Ari.toBook(myari+1)) + " " + Integer.toString(Ari.toChapter(myari)) + " " + Integer.toString(Ari.toVerse(myari)) + " " + Integer.toString(Ari.toBookChapter(myari))+ " " + Integer.toString((arif)), Toast.LENGTH_LONG).show();
 						//Toast.makeText(IsiActivity.this,  Integer.toString(Ari.encodeWithBc(Ari.toBookChapter(arif),0)), Toast.LENGTH_LONG).show();

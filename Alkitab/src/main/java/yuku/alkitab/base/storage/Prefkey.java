@@ -124,8 +124,15 @@ public enum Prefkey {
 	gotoAskForVerse,
 	/** boolean is the first time Running the Apps ? */
 
-	thefirsttime
+	thefirsttime,
+	XRefA,
+	XRefB,
+	XRefC;
+
 	;
 
 	public static final boolean GOTO_ASK_FOR_VERSE_DEFAULT = true;
+
+
+
 }

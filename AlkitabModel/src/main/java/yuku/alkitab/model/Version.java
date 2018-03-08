@@ -80,7 +80,8 @@ public abstract class Version {
 	 * @param arif 24bit ari at the MSB + which xref field at the 8bit LSB (starts from 1)
 	 */
 	public abstract XrefEntry getXrefEntry(final int arif);
-
+	public abstract XrefEntry getXrefEntry2(final int arif);
+	public abstract XrefEntry getXrefEntry3(final int arif);
 	/**
 	 * @param arif 24bit ari at the MSB + which xref field at the 8bit LSB (starts from 1)
 	 */

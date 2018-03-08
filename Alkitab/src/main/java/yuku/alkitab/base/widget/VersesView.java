@@ -128,6 +128,9 @@ public class VersesView extends ListView implements AbsListView.OnScrollListener
 	private View[] scrollToVerseConvertViews;
 	private String name;
 	private boolean firstTimeScroll = true;
+	boolean [] Xref;
+
+
 	/**
 	 * Updated every time {@link #setData(int, SingleChapterVerses, int[], PericopeBlock[], int, Version, String)}
 	 * or {@link #setDataEmpty()} is called. Used to track data changes, so delayed scroll, etc can be prevented from happening if the data has changed.
@@ -136,7 +139,7 @@ public class VersesView extends ListView implements AbsListView.OnScrollListener
 
 	public VersesView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		init();
+
 	}
 
 	/**
@@ -145,8 +148,13 @@ public class VersesView extends ListView implements AbsListView.OnScrollListener
 	public void setName(final String name) {
 		this.name = name;
 	}
+	public void setXRef(boolean [] XRefnew)
+	{
+		Xref = XRefnew;
+		init();
+	}
 
-	private void init() {
+	public void init() {
 		if (isInEditMode()) return;
 		
 		originalSelector = getSelector();
@@ -154,13 +162,26 @@ public class VersesView extends ListView implements AbsListView.OnScrollListener
 		setDivider(null);
 		setFocusable(false);
 
-		setAdapter(adapter = new SingleViewVerseAdapter(getContext()));
+		setAdapter(adapter = new SingleViewVerseAdapter(getContext(),Xref));
 		setOnItemClickListener(itemClick);
 		setVerseSelectionMode(VerseSelectionMode.multiple);
 		
 		super.setOnScrollListener(this);
 	}
-	
+	public void init2(boolean [] Xrefnew) {
+		if (isInEditMode()) return;
+
+		originalSelector = getSelector();
+
+		setDivider(null);
+		setFocusable(false);
+
+		setAdapter(adapter = new SingleViewVerseAdapter(getContext(),Xrefnew));
+		setOnItemClickListener(itemClick);
+		setVerseSelectionMode(VerseSelectionMode.multiple);
+
+		super.setOnScrollListener(this);
+	}
 	@Override public final void setOnScrollListener(AbsListView.OnScrollListener l) {
 		userOnScrollListener = l;
 	}
