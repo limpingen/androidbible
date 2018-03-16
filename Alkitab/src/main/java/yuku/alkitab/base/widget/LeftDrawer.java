@@ -36,6 +36,7 @@ import yuku.alkitab.base.ac.DevotionActivity;
 import yuku.alkitab.base.ac.ReadingPlanActivity;
 import yuku.alkitab.base.ac.SettingsActivity;
 import yuku.alkitab.base.ac.SongViewActivity;
+import yuku.alkitab.base.ac.XRefActivity;
 import yuku.alkitab.base.config.AppConfig;
 import yuku.alkitab.base.storage.Prefkey;
 import yuku.alkitab.base.util.CurrentReading;
@@ -53,6 +54,7 @@ public abstract class LeftDrawer extends NestedScrollView {
 	TextView bReadingPlan;
 	TextView bSongs;
 	View bSettings;
+	View XRefSettings;
 	View bHelp;
 
 	// for launching other activities
@@ -79,6 +81,7 @@ public abstract class LeftDrawer extends NestedScrollView {
 		bReadingPlan = V.get(this, R.id.bReadingPlan);
 		bSongs = V.get(this, R.id.bSongs);
 		bSettings = V.get(this, R.id.bSettings);
+		XRefSettings = V.get(this,R.id.XRefSettings);
 		bHelp = V.get(this, R.id.bHelp);
 
 		final int selectedTextColor = ResourcesCompat.getColor(getResources(), R.color.accent, getContext().getTheme());
@@ -117,7 +120,10 @@ public abstract class LeftDrawer extends NestedScrollView {
 			bSettings_click();
 			closeDrawer();
 		});
-
+		XRefSettings.setOnClickListener(v -> {
+			XRefSettings_click();
+			closeDrawer();
+		});
 		bHelp.setOnClickListener(v -> {
 			bHelp_click();
 			closeDrawer();
@@ -154,7 +160,11 @@ public abstract class LeftDrawer extends NestedScrollView {
 	void bSettings_click() {
 		activity.startActivity(SettingsActivity.createIntent());
 	}
+	void XRefSettings_click() {
 
+
+		activity.startActivity(XRefActivity.createIntent());
+	}
 	/**
 	 * When the current activity is not {@link yuku.alkitab.base.IsiActivity},
 	 * this clears all activity on this stack,

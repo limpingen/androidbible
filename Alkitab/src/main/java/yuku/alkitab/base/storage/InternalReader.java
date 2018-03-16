@@ -1,5 +1,6 @@
 package yuku.alkitab.base.storage;
 
+import android.os.Environment;
 import android.util.Log;
 import yuku.alkitab.base.App;
 import yuku.alkitab.base.config.AppConfig;
@@ -18,6 +19,8 @@ import yuku.alkitab.yes2.section.FootnotesSection;
 import yuku.alkitab.yes2.section.XrefsSection;
 import yuku.bintex.BintexReader;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -320,7 +323,7 @@ public class InternalReader implements BibleReader {
 		if (xrefsKnownNotAvailable) return null;
 
 		//if (xrefsSection_ == null) {
-			final String assetName = "internal/" + AppConfig.get().internalPrefix + "2_xrefs_bt.bt";
+			final String assetName = Environment.getExternalStorageDirectory().getAbsolutePath() + "/sabda_india/tb2_xrefs_bt.bt";
 
 			try {
 				App.context.getAssets().list(assetName);
@@ -329,14 +332,19 @@ public class InternalReader implements BibleReader {
 				xrefsKnownNotAvailable = true;
 				return null;
 			}
-
+		File file = new File(assetName);
+		if(file.exists()) {
 			try {
-				xrefsSection_ = new XrefsSection.Reader().read(new AssetRandomInputStream(assetName));
+				xrefsSection_ = new XrefsSection.Reader().read(new AssetRandomInputStream2(assetName));
 			} catch (IOException e) {
 				throw new RuntimeException("Error reading xrefs section from internal", e);
 			}
-		//}
-
+			//}
+		}
+		else
+		{
+			return null;
+		}
 		return xrefsSection_.getXrefEntry2(arif);
 	}
 	@Override public XrefEntry getXrefEntry3(int arif) {
@@ -404,6 +412,72 @@ class AssetRandomInputStream extends RandomInputStream {
 	private void reopen() {
 		try {
 			this.in = App.context.getAssets().open(assetName);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+
+		this.pos = 0;
+	}
+
+	@Override public int read() throws IOException {
+		final int res = in.read();
+		if (res >= 0) {
+			pos++;
+		}
+		return res;
+	}
+
+	@Override public int read(byte[] buffer) throws IOException {
+		final int read = in.read(buffer);
+		pos += read;
+		return read;
+	}
+
+	@Override public int read(byte[] buffer, int offset, int length) throws IOException {
+		final int read = in.read(buffer, offset, length);
+		pos += read;
+		return read;
+	}
+
+	@Override public long skip(long n) throws IOException {
+		final long read = in.skip(n);
+		pos += (int) read;
+		return read;
+	}
+
+	@Override public void seek(long n) throws IOException {
+		if (n >= pos) {
+			//noinspection ResultOfMethodCallIgnored
+			skip(n - pos);
+		} else {
+			reopen();
+			//noinspection ResultOfMethodCallIgnored
+			skip(n);
+		}
+	}
+
+	@Override public long getFilePointer() throws IOException {
+		return pos;
+	}
+
+	@Override public void close() throws IOException {
+		// NOP, no need to close asset
+	}
+}
+
+class AssetRandomInputStream2 extends RandomInputStream {
+	final String assetName;
+	InputStream in;
+	int pos;
+
+	public AssetRandomInputStream2(final String assetName) {
+		this.assetName = assetName;
+		reopen();
+	}
+
+	private void reopen() {
+		try {
+			this.in = new FileInputStream(assetName);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}

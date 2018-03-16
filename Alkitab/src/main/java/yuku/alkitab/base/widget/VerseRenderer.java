@@ -92,39 +92,23 @@ public class VerseRenderer {
 		// @^ = start-of-paragraph marker
 		// @< to @> = special tags (not visible for unsupported tags) [can be considered formatting]
 		// @/ = end of special tags (closing tag) (As of 2013-10-04, all special tags must be closed) [can be considered formatting]
-		boolean XRefA;
-		boolean XRefB;
-		boolean XRefC;
+		boolean theXRefA;
+		boolean theXRefB;
+		boolean theXRefC;
 
 
-		XRefA = XRef[0];
-		XRefB = XRef[1];
-		XRefC = XRef[2];
+		theXRefA = XRef[0];
+		theXRefB = XRef[1];
+		theXRefC = XRef[2];
 
-		if(XRefA == true)
-		{
-			text = text.replace("#A##", "").replace("##A#","");
-		}
-		else
-		{
-			text = text.replaceAll("#A##.+##A#", "");
-		}
-		if(XRefB == true)
-		{
-			text = text.replace("#B##", "").replace("##B#","");
-		}
-		else
-		{
-			text = text.replaceAll("#B##.+##B#", "");
-		}
-		if(XRefC == true)
-		{
-			text = text.replace("#C##", "").replace("##C#","");
-		}
-		else
-		{
-			text = text.replaceAll("#C##.+##C#", "");
-		}
+		if(!theXRefA)
+			text = text.replaceAll("@<x1@>@/", "");
+
+		if(!theXRefB)
+			text = text.replaceAll("@<x2@>@/", "");
+
+		if(!theXRefC)
+			text = text.replaceAll("@<x3@>@/", "");
 
 		int text_len = text.length();
 
@@ -341,35 +325,20 @@ public class VerseRenderer {
 		// @^ = start-of-paragraph marker
 		// @< to @> = special tags (not visible for unsupported tags) [can be considered formatting]
 		// @/ = end of special tags (closing tag) (As of 2013-10-04, all special tags must be closed) [can be considered formatting]
-		boolean XRefA = true;
-		boolean XRefB = true;
-		boolean XRefC = false;
+		boolean theXRefA =true;
+		boolean theXRefB=true;
+		boolean theXRefC=true;
+
+		if(!theXRefA)
+			text = text.replaceAll("@<x1@>@/", "");
+
+		if(!theXRefB)
+			text = text.replaceAll("@<x2@>@/", "");
+
+		if(!theXRefC)
+			text = text.replaceAll("@<x3@>@/", "");
 
 
-		if(XRefA == true)
-		{
-			text = text.replace("#A##", "").replace("##A#","");
-		}
-		else
-		{
-			text = text.replaceAll("#A##.+##A#", "");
-		}
-		if(XRefB == true)
-		{
-			text = text.replace("#B##", "").replace("##B#","");
-		}
-		else
-		{
-			text = text.replaceAll("#B##.+##B#", "");
-		}
-		if(XRefC == true)
-		{
-			text = text.replace("#C##", "").replace("##C#","");
-		}
-		else
-		{
-			text = text.replaceAll("#C##.+##C#", "");
-		}
 
 		int text_len = text.length();
 

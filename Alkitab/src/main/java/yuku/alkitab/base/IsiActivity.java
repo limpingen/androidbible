@@ -741,8 +741,8 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		if(isthefirstime == null) {
 			Preferences.hold();
 			Preferences.setBoolean(Prefkey.XRefA, true);
-			Preferences.setBoolean(Prefkey.XRefB, true);
-			Preferences.setBoolean(Prefkey.XRefC, true);
+			Preferences.setBoolean(Prefkey.XRefB, false);
+			Preferences.setBoolean(Prefkey.XRefC, false);
 			Preferences.unhold();
 		}
 		theXRef[0] = Preferences.getBoolean(Prefkey.XRefA, true);
@@ -864,9 +864,6 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 				Preferences.hold();
 				Preferences.setString(Prefkey.lastSplitVersionId, lastSplitVersionId);
 				Preferences.setString(Prefkey.thefirsttime, "no");
-				Preferences.setBoolean(Prefkey.XRefA, true);
-				Preferences.setBoolean(Prefkey.XRefB, true);
-				Preferences.setBoolean(Prefkey.XRefC, true);
 				Preferences.unhold();
 				activeSplitVersionId = lastSplitVersionId;
 			}
@@ -929,11 +926,15 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 				}
 			}
 		});
+		ShowHideFab();
+
 		lsSplit0.setOnScrollListener(new AbsListView.OnScrollListener() {
 			@Override
 			public void onScrollStateChanged(AbsListView absListView, int i) {
 				if(isFab==true)
 				fab.show();
+				else
+					fab.hide();
 			}
 
 			@Override
@@ -1044,6 +1045,8 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			public void onAnimationStart(Animation animation) {
 				if(isFab==true)
 				fab.setVisibility(View.VISIBLE);
+				else
+					fab.setVisibility(View.GONE);
 			}
 		});
 
@@ -1079,6 +1082,23 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 
 	}
+	void ShowHideFab()
+	{
+		if( S.activeVersion().getShortName().equals("TB")||S.activeVersion().getShortName().equals("NKJV")) {
+
+
+			isFab = true;
+			fab.setVisibility(View.VISIBLE);
+
+		}
+		else
+		{
+
+			isFab = false;
+			fab.setVisibility(View.GONE);
+		}
+	}
+
 	private Runnable UpdateSongTime = new Runnable() {
 		public void run() {
 			startTime = mp.getCurrentPosition();
@@ -1407,7 +1427,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			}
 
 			App.getLbm().sendBroadcast(new Intent(ACTION_ACTIVE_VERSION_CHANGED));
-
+			ShowHideFab();
 			return true;
 		} catch (Throwable e) { // so we don't crash on the beginning of the app
 			AppLog.e(TAG, "Error opening main version", e);
@@ -2007,33 +2027,6 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			}
 
 			return true;
-			case R.id.theA:
-				if(theA)theA = false;
-				else theA = true;
-				Preferences.hold();
-				Preferences.setBoolean(Prefkey.XRefA, theA);
-				Preferences.unhold();
-				finish();
-				startActivity(originalIntent);
-				return true;
-			case R.id.theB:
-				if(theB)theB = false;
-				else theB = true;
-				Preferences.hold();
-				Preferences.setBoolean(Prefkey.XRefB, theB);
-				Preferences.unhold();
-				finish();
-				startActivity(originalIntent);
-				return true;
-			case R.id.theC:
-				if(theC)theC = false;
-				else theC = true;
-				Preferences.hold();
-				Preferences.setBoolean(Prefkey.XRefC, theC);
-				Preferences.unhold();
-				finish();
-				startActivity(originalIntent);
-				return true;
 
 
 		}
@@ -2900,6 +2893,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 					if (type == Type.xref) {
 						int myari = arif >> 8;
  						int arif_source = ( Ari.encode(39,1,11) << 8 ) | 1;
+
 
 
 

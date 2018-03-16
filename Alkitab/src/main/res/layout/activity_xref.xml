@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarxref"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            />
+
+
+
+
+    <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Downloaded Module"
+            android:layout_marginLeft="10dp"/>
+
+    <android.support.v7.widget.SwitchCompat
+        android:id="@+id/myXRefA"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:fontFamily="sans-serif-regular"
+        android:gravity="left|center_vertical"
+        android:text="XRef type A"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
+    <android.support.v7.widget.SwitchCompat
+        android:id="@+id/myXRefB"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:fontFamily="sans-serif-regular"
+        android:gravity="left|center_vertical"
+        android:text="XRef type B"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:checked="false"/>
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Available Module"
+            android:layout_marginLeft="10dp"/>
+    <ListView
+        android:id="@+id/lvXRef"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fastScrollEnabled="true" />
+</LinearLayout>
+</LinearLayout>

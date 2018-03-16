@@ -119,22 +119,20 @@ public class XrefDialog extends BaseDialog {
 		XRef[2] = theXRefC;
 
 		int field = arif_source & 0xff;
-
+		Toast.makeText(getActivity(), Integer.toString(field), Toast.LENGTH_LONG).show();
 
 		if(field == 1)
 		{
 			xrefEntry = myversion.getXrefEntry(arif_source);
-			Toast.makeText(getActivity(), Integer.toString(field), Toast.LENGTH_LONG).show();
+
 		}
 		else if(field==2)
 		{
 			xrefEntry = myversion.getXrefEntry2(arif_source);
-			Toast.makeText(getActivity(), Integer.toString(field), Toast.LENGTH_LONG).show();
 		}
 		else if(field==3)
 		{
 			xrefEntry = myversion.getXrefEntry3(arif_source);
-			Toast.makeText(getActivity(), Integer.toString(field), Toast.LENGTH_LONG).show();
 		}
 		//xrefEntry = sourceVersion.getXrefEntry(arif_source);
 
@@ -157,8 +155,11 @@ public class XrefDialog extends BaseDialog {
 		if (xrefEntry != null) {
 			renderXrefText();
 		} else {
+			int field = arif_source & 0xff;
+			String xrefmodule = "";
+			if(field == 2) xrefmodule = "XRef Type B";
 			new MaterialDialog.Builder(getActivity())
-				.content(String.format(Locale.US, "Error: xref at arif 0x%08x couldn't be loaded", arif_source))
+				.content(String.format(Locale.US, "Error: xref at arif 0x%08x couldn't be loaded. ( Need download + " + xrefmodule + " )", arif_source))
 				.positiveText(R.string.ok)
 				.show();
 		}
@@ -293,30 +294,15 @@ public class XrefDialog extends BaseDialog {
 	// look for "<@" "@>" "@/"
 	void findTags(String s, FindTagsListener listener) {
 
-		if(theXRefA == true)
-		{
-			s = s.replace("#A##", "").replace("##A#","");
-		}
-		else
-		{
-			s = s.replaceAll("#A##.+##A#", "");
-		}
-		if(theXRefB == true)
-		{
-			s = s.replace("#B##", "").replace("##B#","");
-		}
-		else
-		{
-			s = s.replaceAll("#B##.+##B#", "");
-		}
-		if(theXRefC == true)
-		{
-			s = s.replace("#C##", "").replace("##C#","");
-		}
-		else
-		{
-			s = s.replaceAll("#C##.+##C#", "");
-		}
+		if(!theXRefA == true)
+			s = s.replaceAll("@<x1@>@/", "");
+
+		if(!theXRefB == true)
+			s = s.replaceAll("@<x2@>@/", "");
+
+		if(!theXRefC)
+			s = s.replaceAll("@<x3@>@/", "");
+
 		int pos = 0;
 		while (true) {
 			int p = s.indexOf("@<", pos);

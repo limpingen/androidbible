@@ -11,6 +11,22 @@
 	tools:ignore="Overdraw">
 
 	<Button
+		android:id="@+id/XRefSettings"
+		style="?buttonBarButtonStyle"
+		android:textColor="?android:textColorPrimary"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:drawableLeft="@drawable/ic_menu_preferences"
+		android:drawablePadding="16dp"
+		android:gravity="left|center_vertical"
+		android:text="Cross Reference"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:textSize="16sp"
+		android:clickable="true"
+		android:elegantTextHeight="true" />
+
+
+	<Button
 		android:id="@+id/bSettings"
 		style="?buttonBarButtonStyle"
 		android:textColor="?android:textColorPrimary"
@@ -24,6 +40,8 @@
 		android:textSize="16sp"
         android:clickable="true"
         android:elegantTextHeight="true" />
+
+
 
 	<Button
 		android:id="@+id/bHelp"
