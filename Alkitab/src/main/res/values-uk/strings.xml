@@ -478,6 +478,10 @@
   <!-- Dictionary -->
   <string name="dict_download_button">Завантажити</string>
   <string name="corcondance">Corcondance</string>
+  <string name="downloadedXref">Downloaded Module</string>
+  <string name="availableXref">Available Module</string>
+  <string name="XrefA">XRef Type A</string>
+  <string name="XrefB">XRef Type B</string>
   <!-- Guide -->
   <string name="menuGuide">Довідка</string>
   <!-- Commentary -->

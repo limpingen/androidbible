@@ -538,6 +538,10 @@
   <string name="menuDictionary">Речник</string>
   <string name="menuDictionary2">Strong Numbers</string>
   <string name="corcondance">Corcondance</string>
+  <string name="downloadedXref">Downloaded Module</string>
+  <string name="availableXref">Available Module</string>
+  <string name="XrefA">XRef Type A</string>
+  <string name="XrefB">XRef Type B</string>
   <string name="dict_open_full">Отвори речника</string>
   <string name="dict_no_results">Не е намерена статия за избраната дума.</string>
   <string name="dict_download_prompt">Инсталирай \"Библейски речник\", за да узнаете повече за думите използвани в Библията!</string>

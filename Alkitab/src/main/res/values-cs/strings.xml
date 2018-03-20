@@ -538,6 +538,10 @@
   <string name="menuDictionary">Slovník</string>
   <string name="menuDictionary2">Strong Numbers</string>
   <string name="corcondance">Corcondance</string>
+  <string name="downloadedXref">Downloaded Module</string>
+  <string name="availableXref">Available Module</string>
+  <string name="XrefA">XRef Type A</string>
+  <string name="XrefB">XRef Type B</string>
   <string name="dict_open_full">Otevřít slovník</string>
   <string name="dict_no_results">Pro vybrané slovo nebyly nalezeny žádné definice.</string>
   <string name="dict_download_prompt">Stáhnout \"Bible Dictionary\"!</string>

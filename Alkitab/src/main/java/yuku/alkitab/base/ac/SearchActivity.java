@@ -340,7 +340,16 @@ public class SearchActivity extends BaseActivity {
 		searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 			@Override
 			public boolean onQueryTextSubmit(String query1) {
-				search(query1);
+				String myquery = "";
+				if(isStringInt(query1))
+				{
+					myquery = "\"<" + query1 + ">\"";
+				}
+				else
+				{
+					myquery = query1;
+				}
+				search(myquery);
 				return true;
 			}
 
@@ -695,12 +704,22 @@ public class SearchActivity extends BaseActivity {
 
 		super.onActivityResult(requestCode, resultCode, data);
 	}
-
-	protected void search(final String query_string) {
+	public boolean isStringInt(String s)
+	{
+		try
+		{
+			Integer.parseInt(s);
+			return true;
+		} catch (NumberFormatException ex)
+		{
+			return false;
+		}
+	}
+	protected void search(String query_string) {
 		if (query_string.trim().length() == 0) {
 			return;
 		}
-		
+
 		{ // check if there is anything chosen
 			int firstSelected = selectedBookIds.indexOfValue(true);
 			if (firstSelected < 0) {

@@ -8,6 +8,7 @@ import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -69,6 +70,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -743,6 +745,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			Preferences.setBoolean(Prefkey.XRefA, true);
 			Preferences.setBoolean(Prefkey.XRefB, false);
 			Preferences.setBoolean(Prefkey.XRefC, false);
+			Preferences.setBoolean(Prefkey.StrongNumber,true);
 			Preferences.unhold();
 		}
 		theXRef[0] = Preferences.getBoolean(Prefkey.XRefA, true);
@@ -931,8 +934,26 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		lsSplit0.setOnScrollListener(new AbsListView.OnScrollListener() {
 			@Override
 			public void onScrollStateChanged(AbsListView absListView, int i) {
+
 				if(isFab==true)
 				fab.show();
+				else
+					fab.hide();
+			}
+
+			@Override
+			public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+				if(isFab==true)
+					fab.hide();
+			}
+		});
+
+		lsSplit1.setOnScrollListener(new AbsListView.OnScrollListener() {
+			@Override
+			public void onScrollStateChanged(AbsListView absListView, int i) {
+
+				if(isFab==true)
+					fab.show();
 				else
 					fab.hide();
 			}
@@ -1458,6 +1479,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 	 */
 	boolean loadSplitVersion(final MVersion mv) {
 		try {
+
 			Version version = mv.getVersion2();
 
 			if(mv.locale.equals("id"))
@@ -1966,13 +1988,71 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 	@Override public boolean onOptionsItemSelected(MenuItem item) {
 		Intent originalIntent = getIntent();
 		switch (item.getItemId()) {
-		case android.R.id.home:
-			leftDrawer.toggleDrawer();
-			return true;
-		case R.id.menuSearch:
-			App.trackEvent("nav_search_click");
-			menuSearch_click();
-			return true;
+			case android.R.id.home:
+				leftDrawer.toggleDrawer();
+				return true;
+
+			case R.id.strongnumber:
+
+
+				SwitchCompat strongnumberswitchcompat = new SwitchCompat(this);
+
+				strongnumberswitchcompat.setChecked(Preferences.getBoolean(Prefkey.StrongNumber, true));
+				strongnumberswitchcompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+					@Override
+					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+						Preferences.hold();
+
+						Preferences.setBoolean(Prefkey.StrongNumber,isChecked);
+						Preferences.unhold();
+					}
+				});
+
+				AlertDialog dialog = new AlertDialog.Builder(this)
+						.setView(strongnumberswitchcompat)
+						.setMessage(getResources().getString(R.string.ShowHideSN))
+						.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								lsSplit0.checkAllVerses(true);
+								lsSplit1.checkAllVerses(true);
+								final IntArrayList selected = lsSplit0.getSelectedVerses_1();
+
+
+
+								final CharSequence reference = referenceFromSelectedVerses(selected, activeBook);
+								final int ariBc = Ari.encode(IsiActivity.this.activeBook.bookId, IsiActivity.this.chapter_1, 0);
+								final SparseBooleanArray aris = new SparseBooleanArray();
+								for (int i = 0, len = selected.size(); i < len; i++) {
+									final int verse_1 = selected.get(i);
+									final int ari = Ari.encodeWithBc(ariBc, verse_1);
+									aris.put(ari, true);
+								}
+								if(Preferences.getBoolean(Prefkey.StrongNumber, true)){
+									startDictionaryMode2(aris);
+								}
+								else {
+									finishDictionaryMode();
+								}
+								lsSplit0.uncheckAllVerses(true);
+								lsSplit1.uncheckAllVerses(true);
+							}
+						})
+						.create();
+
+				dialog.show();
+
+
+
+
+
+
+				return true;
+			case R.id.menuSearch:
+				App.trackEvent("nav_search_click");
+				menuSearch_click();
+				return true;
 			case R.id.corcondance: {
 				Dialog corcondancedialog;
 				AlertDialog.Builder alertDialog = new AlertDialog.Builder(IsiActivity.this);
@@ -3127,13 +3207,13 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			final MenuItem menuGuide = menu.findItem(R.id.menuGuide);
 			final MenuItem menuCommentary = menu.findItem(R.id.menuCommentary);
 			final MenuItem menuDictionary = menu.findItem(R.id.menuDictionary);
-			final MenuItem menuDictionary2 = menu.findItem(R.id.menuDictionary2);
+
 			// force-show these items on sw600dp, otherwise never show
 			final int showAsAction = getResources().getConfiguration().smallestScreenWidthDp >= 600 ? MenuItem.SHOW_AS_ACTION_ALWAYS : MenuItem.SHOW_AS_ACTION_NEVER;
 			menuGuide.setShowAsActionFlags(showAsAction);
 			menuCommentary.setShowAsActionFlags(showAsAction);
 			menuDictionary.setShowAsActionFlags(showAsAction);
-			menuDictionary2.setShowAsActionFlags(showAsAction);
+
 
 			// set visibility according to appconfig
 			final AppConfig c = AppConfig.get();
@@ -3145,9 +3225,6 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 					&& !Preferences.getBoolean(getString(R.string.pref_autoDictionaryAnalyze_key), getResources().getBoolean(R.bool.pref_autoDictionaryAnalyze_default))
 			);
 
-			menuDictionary2.setVisible(c.menuDictionary
-					&& !Preferences.getBoolean(getString(R.string.pref_autoDictionaryAnalyze_key), getResources().getBoolean(R.bool.pref_autoDictionaryAnalyze_default))
-			);
 
 
 
@@ -3407,24 +3484,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 				startDictionaryMode(aris);
 			} return true;
 
-			case R.id.menuDictionary2: {
-					final int ariBc = Ari.encode(IsiActivity.this.activeBook.bookId, IsiActivity.this.chapter_1, 0);
-					final SparseBooleanArray aris = new SparseBooleanArray();
-					for (int i = 0, len = selected.size(); i < len; i++) {
-						final int verse_1 = selected.get(i);
-						final int ari = Ari.encodeWithBc(ariBc, verse_1);
-						aris.put(ari, true);
-					}
-					if(isStrongNumber){
-					startDictionaryMode2(aris);
-					isStrongNumber = false;
-					}
-					else
-					{
-						finishDictionaryMode();
-						isStrongNumber = true;
-					}
-				} return true;
+
 			default: if (itemId >= MENU_EXTENSIONS_FIRST_ID && itemId < MENU_EXTENSIONS_FIRST_ID + extensions.size()) {
 				final ExtensionManager.Info extension = extensions.get(itemId - MENU_EXTENSIONS_FIRST_ID);
 

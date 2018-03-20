@@ -518,6 +518,10 @@
   <string name="menuDictionary">Dicționar</string>
   <string name="menuDictionary2">Strong Numbers</string>
   <string name="corcondance">Corcondance</string>
+  <string name="downloadedXref">Downloaded Module</string>
+  <string name="availableXref">Available Module</string>
+  <string name="XrefA">XRef Type A</string>
+  <string name="XrefB">XRef Type B</string>
   <string name="dict_open_full">Deschide dicționarul</string>
   <string name="dict_no_results">Nu s-a găsit o definiție pentru cuvântul selectat.</string>
   <string name="dict_download_prompt">Descarcă \"Biblia Dicționar\" pentru a afla mai multe despre cuvintele din Biblie!</string>

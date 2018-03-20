@@ -538,6 +538,10 @@
   <string name="menuDictionary">Từ điển</string>
   <string name="menuDictionary2">Strong Numbers</string>
   <string name="corcondance">Corcondance</string>
+  <string name="downloadedXref">Downloaded Module</string>
+  <string name="availableXref">Available Module</string>
+  <string name="XrefA">XRef Type A</string>
+  <string name="XrefB">XRef Type B</string>
   <string name="dict_open_full">Mở từ điển</string>
   <string name="dict_no_results">Không tìm thấy từ cần định nghĩa.</string>
   <string name="dict_download_prompt">Tải \"Kinh Thánh điển\" để tìm hiểu thêm về những lời trong Kinh Thánh!</string>

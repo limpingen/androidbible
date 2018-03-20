@@ -539,6 +539,10 @@ Usted es completamente responsable al descargar y utilizar dichas versiones y yo
   <string name="menuDictionary">Diccionario</string>
   <string name="menuDictionary2">Strong Numbers</string>
   <string name="corcondance">Corcondance</string>
+  <string name="downloadedXref">Downloaded Module</string>
+  <string name="availableXref">Available Module</string>
+  <string name="XrefA">XRef Type A</string>
+  <string name="XrefB">XRef Type B</string>
   <string name="dict_open_full">Abrir diccionario</string>
   <string name="dict_no_results">Definición no encontrada de la palabra seleccionada.</string>
   <string name="dict_download_prompt">¡Descarga \"Diccionario Bíblico\" para aprender más acerca de las palabras en la Biblia!</string>

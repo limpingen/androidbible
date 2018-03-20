@@ -538,6 +538,10 @@
   <string name="menuDictionary">Kamus</string>
   <string name="menuDictionary2">Strong Numbers</string>
   <string name="corcondance">Corcondance</string>
+  <string name="downloadedXref">Downloaded Module</string>
+  <string name="availableXref">Available Module</string>
+  <string name="XrefA">XRef Type A</string>
+  <string name="XrefB">XRef Type B</string>
   <string name="dict_open_full">Buka kamus</string>
   <string name="dict_no_results">Tiada takrifan dijumpai untuk perkataan yang dipilih.</string>
   <string name="dict_download_prompt">Muat turun \"Kamus Bible\" untuk mempelajari perkataan dalam Bible!</string>

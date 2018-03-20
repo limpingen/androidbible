@@ -538,6 +538,10 @@
   <string name="menuDictionary">字典</string>
   <string name="menuDictionary2">Strong Numbers</string>
   <string name="corcondance">Corcondance</string>
+  <string name="downloadedXref">Downloaded Module</string>
+  <string name="availableXref">Available Module</string>
+  <string name="XrefA">XRef Type A</string>
+  <string name="XrefB">XRef Type B</string>
   <string name="dict_open_full">开启字典</string>
   <string name="dict_no_results">找不到所选字词的解释。</string>
   <string name="dict_download_prompt">下载「圣经字典」以学习圣经中更多的字词！</string>

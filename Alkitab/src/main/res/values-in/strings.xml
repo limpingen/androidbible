@@ -538,6 +538,12 @@
   <string name="menuDictionary">Kamus</string>
   <string name="menuDictionary2">Nomor Strongs</string>
   <string name="corcondance">Konkordansi</string>
+  <string name="crossreference">Referensi Silang</string>
+  <string name="downloadedXref">Modul yang sudah diunduh</string>
+  <string name="availableXref">Modul yang tersedia</string>
+  <string name="XrefA">XRef Tipe A</string>
+  <string name="XrefB">XRef Tipe B</string>
+  <string name="ShowHideSN">Tampilkan / Sembunyikan Nomor Strong </string>
   <string name="dict_open_full">Buka Kamus</string>
   <string name="dict_no_results">Tidak ada definisi dari kata yang dipilih.</string>
   <string name="dict_download_prompt">Unduh \"Kamus Alkitab\" untuk mempelajari kata-kata dalam Alkitab!</string>

@@ -26,7 +26,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Downloaded Module"
+            android:text="@string/downloadedXref"
             android:layout_marginLeft="10dp"/>
 
     <android.support.v7.widget.SwitchCompat
@@ -37,7 +37,7 @@
         android:layout_marginRight="16dp"
         android:fontFamily="sans-serif-regular"
         android:gravity="left|center_vertical"
-        android:text="XRef type A"
+        android:text="@string/XrefA"
         android:textColor="#ffffff"
         android:textSize="16sp" />
     <android.support.v7.widget.SwitchCompat
@@ -48,14 +48,14 @@
         android:layout_marginRight="16dp"
         android:fontFamily="sans-serif-regular"
         android:gravity="left|center_vertical"
-        android:text="XRef type B"
+        android:text="@string/XrefB"
         android:textColor="#ffffff"
         android:textSize="16sp"
         android:checked="false"/>
         <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Available Module"
+        android:text="@string/availableXref"
             android:layout_marginLeft="10dp"/>
     <ListView
         android:id="@+id/lvXRef"

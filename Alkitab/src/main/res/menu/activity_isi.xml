@@ -8,7 +8,8 @@
         android:title="@string/search"/>
     <item
         android:id="@+id/corcondance"
-        android:icon="@drawable/ic_menu_dictionary"
         android:title="@string/corcondance" />
-
+    <item
+        android:id="@+id/strongnumber"
+        android:title="@string/menuDictionary2" />
 </menu>

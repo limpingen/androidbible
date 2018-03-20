@@ -538,6 +538,10 @@
   <string name="menuDictionary">Słownik</string>
   <string name="menuDictionary2">Strong Numbers</string>
   <string name="corcondance">Corcondance</string>
+  <string name="downloadedXref">Downloaded Module</string>
+  <string name="availableXref">Available Module</string>
+  <string name="XrefA">XRef Type A</string>
+  <string name="XrefB">XRef Type B</string>
   <string name="dict_open_full">Otwórz słownik</string>
   <string name="dict_no_results">Nie znaleziono definicji dla wybranego słowa.</string>
   <string name="dict_download_prompt">Pobierz \"Słownik Biblijny\", aby dowiedzieć się więcej o słowach w Biblii!</string>

@@ -127,8 +127,9 @@ public enum Prefkey {
 	thefirsttime,
 	XRefA,
 	XRefB,
-	XRefC;
+	XRefC,
 
+	StrongNumber
 	;
 
 	public static final boolean GOTO_ASK_FOR_VERSE_DEFAULT = true;

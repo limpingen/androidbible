@@ -307,7 +307,19 @@ public class VersesView extends ListView implements AbsListView.OnScrollListener
 			if (listener != null) listener.onNoVersesSelected(this);
 		}
 	}
-	
+
+	public void checkAllVerses(boolean callListener) {
+
+		if(callListener)
+		for ( int i=0; i < getAdapter().getCount() ; i++) {
+			setItemChecked(i, true);
+		}
+
+
+	}
+
+
+
 	public void checkVerses(IntArrayList verses_1, boolean callListener) {
 		uncheckAllVerses(false);
 		

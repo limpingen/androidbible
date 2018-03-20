@@ -19,7 +19,7 @@
 		android:drawableLeft="@drawable/ic_menu_preferences"
 		android:drawablePadding="16dp"
 		android:gravity="left|center_vertical"
-		android:text="Cross Reference"
+		android:text="@string/crossreference"
 		android:textAppearance="?android:attr/textAppearanceMedium"
 		android:textSize="16sp"
 		android:clickable="true"

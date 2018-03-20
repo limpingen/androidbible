@@ -538,6 +538,10 @@
   <string name="menuDictionary">Woordenboek</string>
   <string name="menuDictionary2">Strong Numbers</string>
   <string name="corcondance">Corcondance</string>
+  <string name="downloadedXref">Downloaded Module</string>
+  <string name="availableXref">Available Module</string>
+  <string name="XrefA">XRef Type A</string>
+  <string name="XrefB">XRef Type B</string>
   <string name="dict_open_full">Open woordenboek</string>
   <string name="dict_no_results">Geen defenitie gevonden voor het geselecteerde woord.</string>
   <string name="dict_download_prompt">Download \"Bijbel Woordenboek\" om meer te leren over de woorden in de Bijbel!</string>

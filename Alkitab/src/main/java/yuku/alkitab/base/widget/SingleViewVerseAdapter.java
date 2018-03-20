@@ -3,8 +3,13 @@ package yuku.alkitab.base.widget;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
+import android.text.Spannable;
 import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.SuperscriptSpan;
 import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.View;
@@ -104,12 +109,14 @@ public class SingleViewVerseAdapter extends VerseAdapter {
 			if ((dictionaryModeAris != null && dictionaryModeAris.get(ari))
 					|| (checked && Preferences.getBoolean(res.getContext().getString(R.string.pref_autoDictionaryAnalyze_key), res.getContext().getResources().getBoolean(R.bool.pref_autoDictionaryAnalyze_default)))
 					){
-
+				text = text.replace("<0>","");
+				text = text.replace("@<s@>","");
+				text = text.replace("@<@/s@>","");
 			}
 			else
 			{
 				text = text.replace("[","").replace("]","");
-				text = text.replaceAll("<\\d+>","");
+				text = text.replaceAll("@<s@>\\d+@<@/s@>","");
 			}
 
 			final int startVerseTextPos = VerseRenderer.render(lText, lVerseNumber, ari, text, verseNumberText, highlightInfo, checked, inlineLinkSpanFactory_, null, XRef);
@@ -183,7 +190,11 @@ public class SingleViewVerseAdapter extends VerseAdapter {
 								}	}
 							else if(mystatus.equals("dictionary2")) {
 								if (isInteger(key)) {
+
 									verseText.setSpan(new CallbackSpan<>(new DictionaryLinkInfo(analyzeString.substring(offset, offset + len), key), dictionaryListener_), startVerseTextPos + offset, startVerseTextPos + offset + len, 0);
+									verseText.setSpan(new RelativeSizeSpan(0.7f), startVerseTextPos +offset,startVerseTextPos + offset + len, 0);
+									verseText.setSpan(new SuperscriptSpan(), startVerseTextPos +offset, startVerseTextPos + offset + len, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+									verseText.setSpan(new ForegroundColorSpan(Color.BLUE), startVerseTextPos +offset, startVerseTextPos + offset + len, 0);
 								}
 							}
 
