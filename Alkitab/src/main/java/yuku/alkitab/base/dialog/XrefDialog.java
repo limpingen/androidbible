@@ -113,18 +113,16 @@ public class XrefDialog extends BaseDialog {
 		theXRefC =  getArguments().getBoolean(theC);
 		arif_source = getArguments().getInt(EXTRA_arif);
 		//arif_source = ( Ari.encode(39,1,11) << 8 ) | 1;
-		XRef = new boolean[3];
+		XRef = new boolean[10];
 		XRef[0] = theXRefA;
 		XRef[1] = theXRefB;
 		XRef[2] = theXRefC;
 
 		int field = arif_source & 0xff;
-		Toast.makeText(getActivity(), Integer.toString(field), Toast.LENGTH_LONG).show();
 
 		if(field == 1)
 		{
 			xrefEntry = myversion.getXrefEntry(arif_source);
-
 		}
 		else if(field==2)
 		{

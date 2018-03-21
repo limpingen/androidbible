@@ -139,7 +139,18 @@ public class VersesView extends ListView implements AbsListView.OnScrollListener
 
 	public VersesView(Context context, AttributeSet attrs) {
 		super(context, attrs);
+		originalSelector = getSelector();
+		setDivider(null);
+		setFocusable(false);
+		Xref = new boolean[10];
+		Xref[0] = false;
+		Xref[1] = false;
+		Xref[2] = false;
+		setAdapter(adapter = new SingleViewVerseAdapter(getContext(),Xref));
+		setOnItemClickListener(itemClick);
+		setVerseSelectionMode(VerseSelectionMode.multiple);
 
+		super.setOnScrollListener(this);
 	}
 
 	/**

@@ -466,6 +466,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 	private SeekBar seekbar;
 	public static int oneTimeOnly = 0;
 	FloatingActionButton fab;
+	FloatingActionButton fab2;
 	Button pauseButton;
 	Button playButton;
 	boolean isStrongNumber = true;
@@ -473,6 +474,10 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 	boolean [] theXRef;
 	boolean theA, theB, theC;
+	Animation makeInAnimation;
+	Animation makeOutAnimation;
+	Animation makeInAnimationStrongNumber;
+	Animation makeOutAnimationStrongNumber;
 	/**
 	 * The Parallel listener.
 	 *  For Adding the user history of navigating the book chapter and verse
@@ -738,7 +743,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 		lsSplit0.setName("lsSplit0");
 		lsSplit1.setName("lsSplit1");
-		theXRef = new boolean[3];
+		theXRef = new boolean[10];
 		String isthefirstime = Preferences.getString(Prefkey.thefirsttime, null);
 		if(isthefirstime == null) {
 			Preferences.hold();
@@ -929,7 +934,44 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 				}
 			}
 		});
-		ShowHideFab();
+
+
+		fab2 = (FloatingActionButton) findViewById(R.id.fab_strong_number);
+		fab2.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				SwitchCompat strongnumberswitchcompat = new SwitchCompat(IsiActivity.this);
+
+				strongnumberswitchcompat.setChecked(Preferences.getBoolean(Prefkey.StrongNumber, true));
+				strongnumberswitchcompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+					@Override
+					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+						Preferences.hold();
+
+						Preferences.setBoolean(Prefkey.StrongNumber,isChecked);
+						Preferences.unhold();
+					}
+				});
+
+				AlertDialog dialog = new AlertDialog.Builder(IsiActivity.this)
+						.setView(strongnumberswitchcompat)
+						.setMessage(getResources().getString(R.string.ShowHideSN))
+						.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								ShowStrongNumber();
+							}
+						})
+						.create();
+
+				dialog.show();
+
+			}
+		});
+
+
+
 
 		lsSplit0.setOnScrollListener(new AbsListView.OnScrollListener() {
 			@Override
@@ -939,12 +981,25 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 				fab.show();
 				else
 					fab.hide();
+
+				if(S.activeVersion().getShortName().equals("AYT-E"))
+				{
+
+					fab2.show();
+				}
+				else
+				{
+					fab2.hide();
+				}
 			}
 
 			@Override
 			public void onScroll(AbsListView absListView, int i, int i1, int i2) {
-				if(isFab==true)
-					fab.hide();
+				if(S.activeVersion().getShortName().equals("AYT-E"))
+				{
+					fab2.hide();
+				}
+
 			}
 		});
 
@@ -956,12 +1011,26 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 					fab.show();
 				else
 					fab.hide();
+
+				if(S.activeVersion().getShortName().equals("AYT-E"))
+				{
+
+					fab2.show();
+				}
+				else
+				{
+					fab2.hide();
+				}
 			}
 
 			@Override
 			public void onScroll(AbsListView absListView, int i, int i1, int i2) {
 				if(isFab==true)
 					fab.hide();
+				if(S.activeVersion().getShortName().equals("AYT-E"))
+				{
+					fab2.hide();
+				}
 			}
 		});
 		Button stopButton = (Button) findViewById(R.id.btnStop);
@@ -1054,7 +1123,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 			}
 		});
-		Animation makeInAnimation = AnimationUtils.makeInAnimation(getBaseContext(), false);
+		makeInAnimation = AnimationUtils.makeInAnimation(getBaseContext(), false);
 		makeInAnimation.setAnimationListener(new Animation.AnimationListener() {
 			@Override
 			public void onAnimationEnd(Animation animation) { }
@@ -1071,7 +1140,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			}
 		});
 
-		Animation makeOutAnimation = AnimationUtils.makeOutAnimation(getBaseContext(), true);
+		makeOutAnimation = AnimationUtils.makeOutAnimation(getBaseContext(), true);
 		makeOutAnimation.setAnimationListener(new Animation.AnimationListener() {
 			@Override
 			public void onAnimationEnd(Animation animation) {
@@ -1085,6 +1154,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			@Override
 			public void onAnimationStart(Animation animation) { }
 		});
+
 		if (fab.isShown()) {
 			fab.startAnimation(makeOutAnimation);
 		}
@@ -1092,32 +1162,84 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			fab.startAnimation(makeInAnimation);
 		}
 
+		makeInAnimationStrongNumber = AnimationUtils.makeInAnimation(getBaseContext(), false);
+		makeInAnimationStrongNumber.setAnimationListener(new Animation.AnimationListener() {
+			@Override
+			public void onAnimationEnd(Animation animation) { }
+
+			@Override
+			public void onAnimationRepeat(Animation animation) { }
+
+			@Override
+			public void onAnimationStart(Animation animation) {
+				if(S.activeVersion().getShortName().equals("AYT-E")||Preferences.getBoolean(Prefkey.StrongNumber,true))
+					fab.setVisibility(View.VISIBLE);
+				else
+					fab.setVisibility(View.GONE);
+			}
+		});
+		makeOutAnimationStrongNumber = AnimationUtils.makeOutAnimation(getBaseContext(), true);
+		makeOutAnimationStrongNumber.setAnimationListener(new Animation.AnimationListener() {
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				if(S.activeVersion().getShortName().equals("AYT-E")||Preferences.getBoolean(Prefkey.StrongNumber,true))
+					fab.setVisibility(View.INVISIBLE);
+			}
+
+			@Override
+			public void onAnimationRepeat(Animation animation) { }
+
+			@Override
+			public void onAnimationStart(Animation animation) { }
+		});
+
+		if (fab2.isShown()) {
+			fab2.startAnimation(makeOutAnimationStrongNumber);
+		}
+		else if (!fab2.isShown()) {
+			fab2.startAnimation(makeInAnimationStrongNumber);
+		}
+
+
 		final Handler thehandler = new Handler();
 		thehandler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				fab.setVisibility(View.VISIBLE);
+				ShowHideFab();
 			}
 		}, 2000);
 		setTheme(R.style.Theme_Alkitab2);
+
+		if(Preferences.getBoolean(Prefkey.StrongNumber, true)) {
+
+			ShowStrongNumber();
+		}
 
 
 	}
 	void ShowHideFab()
 	{
 		if( S.activeVersion().getShortName().equals("TB")||S.activeVersion().getShortName().equals("NKJV")) {
-
-
 			isFab = true;
 			fab.setVisibility(View.VISIBLE);
 
 		}
 		else
 		{
-
 			isFab = false;
 			fab.setVisibility(View.GONE);
+
 		}
+		if(S.activeVersion().getShortName().equals("AYT-E"))
+		{
+
+			fab2.setVisibility(View.VISIBLE);
+		}
+		else
+		{
+			fab2.setVisibility(View.GONE);
+		}
+
 	}
 
 	private Runnable UpdateSongTime = new Runnable() {
@@ -1218,7 +1340,29 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		}
 	}
 
+	void ShowStrongNumber()
+	{
+		lsSplit0.checkAllVerses(true);
+		lsSplit1.checkAllVerses(true);
+		final IntArrayList selected = lsSplit0.getSelectedVerses_1();
 
+
+		final CharSequence reference = referenceFromSelectedVerses(selected, activeBook);
+		final int ariBc = Ari.encode(IsiActivity.this.activeBook.bookId, IsiActivity.this.chapter_1, 0);
+		final SparseBooleanArray aris = new SparseBooleanArray();
+		for (int i = 0, len = selected.size(); i < len; i++) {
+			final int verse_1 = selected.get(i);
+			final int ari = Ari.encodeWithBc(ariBc, verse_1);
+			aris.put(ari, true);
+		}
+		if (Preferences.getBoolean(Prefkey.StrongNumber, true)) {
+			startDictionaryMode2(aris);
+		} else {
+			finishDictionaryMode();
+		}
+		lsSplit0.uncheckAllVerses(true);
+		lsSplit1.uncheckAllVerses(true);
+	}
 	/**
 	 * Call attention for verse to both splits is for setting the position of the verses
 	 *
@@ -1366,6 +1510,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 	@Override protected void onResume() {
 		super.onResume();
 		enableNfcForegroundDispatchIfAvailable();
+		AnimationVerse();
 
 	}
 
@@ -1449,6 +1594,8 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 			App.getLbm().sendBroadcast(new Intent(ACTION_ACTIVE_VERSION_CHANGED));
 			ShowHideFab();
+			AnimationVerse();
+			ShowStrongNumber();
 			return true;
 		} catch (Throwable e) { // so we don't crash on the beginning of the app
 			AppLog.e(TAG, "Error opening main version", e);
@@ -1790,6 +1937,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			finish();
 			startActivity(originalIntent);
 		}
+		AnimationVerse();
 	}
 
 	/**
@@ -1990,64 +2138,6 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		switch (item.getItemId()) {
 			case android.R.id.home:
 				leftDrawer.toggleDrawer();
-				return true;
-
-			case R.id.strongnumber:
-
-
-				SwitchCompat strongnumberswitchcompat = new SwitchCompat(this);
-
-				strongnumberswitchcompat.setChecked(Preferences.getBoolean(Prefkey.StrongNumber, true));
-				strongnumberswitchcompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-					@Override
-					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-						Preferences.hold();
-
-						Preferences.setBoolean(Prefkey.StrongNumber,isChecked);
-						Preferences.unhold();
-					}
-				});
-
-				AlertDialog dialog = new AlertDialog.Builder(this)
-						.setView(strongnumberswitchcompat)
-						.setMessage(getResources().getString(R.string.ShowHideSN))
-						.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog, int which) {
-								lsSplit0.checkAllVerses(true);
-								lsSplit1.checkAllVerses(true);
-								final IntArrayList selected = lsSplit0.getSelectedVerses_1();
-
-
-
-								final CharSequence reference = referenceFromSelectedVerses(selected, activeBook);
-								final int ariBc = Ari.encode(IsiActivity.this.activeBook.bookId, IsiActivity.this.chapter_1, 0);
-								final SparseBooleanArray aris = new SparseBooleanArray();
-								for (int i = 0, len = selected.size(); i < len; i++) {
-									final int verse_1 = selected.get(i);
-									final int ari = Ari.encodeWithBc(ariBc, verse_1);
-									aris.put(ari, true);
-								}
-								if(Preferences.getBoolean(Prefkey.StrongNumber, true)){
-									startDictionaryMode2(aris);
-								}
-								else {
-									finishDictionaryMode();
-								}
-								lsSplit0.uncheckAllVerses(true);
-								lsSplit1.uncheckAllVerses(true);
-							}
-						})
-						.create();
-
-				dialog.show();
-
-
-
-
-
-
 				return true;
 			case R.id.menuSearch:
 				App.trackEvent("nav_search_click");
@@ -2652,7 +2742,8 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 		}
 		if(fab.getVisibility()==View.GONE) PrepareMediaPlayer();
-
+		AnimationVerse();
+		ShowStrongNumber();
 
 	}
 
@@ -2686,9 +2777,24 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 		}
 		if(fab.getVisibility()==View.GONE) PrepareMediaPlayer();
+		AnimationVerse();
+		ShowStrongNumber();
+	}
+	void AnimationVerse()
+	{
+		final Handler thehandler = new Handler();
+		int itemposition = lsSplit0.getFirstVisiblePosition() + 1;
+		lsSplit0.smoothScrollToPosition(lsSplit0.getBottom());
+		thehandler.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				lsSplit0.smoothScrollToPosition(0);
+			}
+		}, 800);
+
+
 
 	}
-
 	/**
 	 * Occur when Button of changing the Version is clicked
 	 */

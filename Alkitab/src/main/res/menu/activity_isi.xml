@@ -9,7 +9,5 @@
     <item
         android:id="@+id/corcondance"
         android:title="@string/corcondance" />
-    <item
-        android:id="@+id/strongnumber"
-        android:title="@string/menuDictionary2" />
+
 </menu>

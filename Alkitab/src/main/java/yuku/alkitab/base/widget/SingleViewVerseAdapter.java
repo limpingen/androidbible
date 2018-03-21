@@ -109,9 +109,18 @@ public class SingleViewVerseAdapter extends VerseAdapter {
 			if ((dictionaryModeAris != null && dictionaryModeAris.get(ari))
 					|| (checked && Preferences.getBoolean(res.getContext().getString(R.string.pref_autoDictionaryAnalyze_key), res.getContext().getResources().getBoolean(R.bool.pref_autoDictionaryAnalyze_default)))
 					){
-				text = text.replace("<0>","");
-				text = text.replace("@<s@>","");
-				text = text.replace("@<@/s@>","");
+				if(mystatus.equals("dictionary1")) {
+					text = text.replace("[","").replace("]","");
+					text = text.replaceAll("@<s@>\\d+@<@/s@>","");
+				}
+				else
+				{
+					text = text.replace("@<s@>0@<@/s@>", "");
+					text = text.replace("<0>", "");
+					text = text.replace("@<s@>", "");
+					text = text.replace("@<@/s@>", "");
+
+				}
 			}
 			else
 			{
@@ -182,12 +191,15 @@ public class SingleViewVerseAdapter extends VerseAdapter {
 						while (c.moveToNext()) {
 							final int offset = c.getInt(col_offset);
 							final int len = c.getInt(col_len);
-							final String key = c.getString(col_key);
+							 String key = c.getString(col_key);
 							if(mystatus.equals("dictionary1"))
 							{
 								if (!isInteger(key)) {
+
 									verseText.setSpan(new CallbackSpan<>(new DictionaryLinkInfo(analyzeString.substring(offset, offset + len), key), dictionaryListener_), startVerseTextPos + offset, startVerseTextPos + offset + len, 0);
-								}	}
+								}
+
+							}
 							else if(mystatus.equals("dictionary2")) {
 								if (isInteger(key)) {
 

@@ -194,12 +194,18 @@ public class VersesDialog extends BaseDialog {
 				@Override
 				public String getVerse(int verse_0) {
 					// load version or take from existing if already loaded
-					final MVersion mversion = mversions.get(verse_0);
+					MVersion mversion = mversions.get(verse_0);
+
+
+
 					final Version loaded = displayedVersion[verse_0];
 
 					final Version version;
 					if (loaded == null) {
+						if(mversion.locale.equals("id"))
 						version = mversion.getVersion();
+						else
+						version = mversion.getVersion2();
 						displayedVersion[verse_0] = version;
 					} else {
 						version = loaded;
@@ -225,12 +231,18 @@ public class VersesDialog extends BaseDialog {
 				@Override
 				public String getVerseNumberText(int verse_0) {
 					// load version or take from existing if already loaded
-					final MVersion mversion = mversions.get(verse_0);
+
+					MVersion mversion = mversions.get(verse_0);
+
+
 					final Version loaded = displayedVersion[verse_0];
 
 					final Version version;
 					if (loaded == null) {
-						version = mversion.getVersion();
+						if(mversion.locale.equals("id"))
+							version = mversion.getVersion();
+						else
+							version = mversion.getVersion2();
 						displayedVersion[verse_0] = version;
 					} else {
 						version = loaded;
@@ -253,7 +265,8 @@ public class VersesDialog extends BaseDialog {
 
 				@Override
 				public float getTextSizeMult(final int verse_0) {
-					final MVersion mversion = mversions.get(verse_0);
+					MVersion mversion = mversions.get(verse_0);
+
 					return S.getDb().getPerVersionSettings(mversion.getVersionId()).fontSizeMultiplier;
 				}
 			}
