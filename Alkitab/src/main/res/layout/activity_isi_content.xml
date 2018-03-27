@@ -5,7 +5,7 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
-	<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:fab="http://schemas.android.com/apk/res-auto">
 		<yuku.alkitab.base.widget.Floater
 			android:id="@+id/floater"
 			android:layout_width="match_parent"
@@ -13,7 +13,7 @@
 			android:padding="8dp"
 			android:visibility="gone" />
 
-	<RelativeLayout android:id="@id/all_cont" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/view_media_player">
+	<RelativeLayout android:id="@id/all_cont" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/view_media_player" >
 
 		<LinearLayout
 		android:id="@+id/root"
@@ -115,7 +115,6 @@
 					android:clipToPadding="false"
 					android:paddingLeft="@dimen/text_side_padding"
 					android:paddingRight="@dimen/text_side_padding"
-
 					android:scrollbarStyle="outsideOverlay" />
 
 				<TextView
@@ -143,24 +142,91 @@
 			android:layout_alignParentRight="true"
 			android:layout_alignTop="@+id/root"
 			android:scaleType="center"
+			fab:fab_size="mini"
+			fab:fab_colorNormal="#0091EA"
 
 
 			/>
 	</RelativeLayout>
 		<include android:id="@+id/view_media_player" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/media_payer_view" android:layout_alignParentBottom="true" />
 
-		<android.support.design.widget.FloatingActionButton
-			android:layout_gravity="right"
-			android:id="@+id/fab_play_audio"
-			android:visibility="gone"
+
+
+
+
+
+		<com.github.clans.fab.FloatingActionMenu
+			android:id="@+id/menu"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_margin="10.0dip"
-			android:src="@drawable/ic_fab_audio"
+			android:layout_alignParentBottom="true"
+			android:layout_marginRight="10dp"
+			android:layout_marginBottom="10dp"
+			android:layout_marginLeft="10dp"
+			fab:menu_fab_size="normal"
+			fab:menu_showShadow="true"
+			fab:menu_shadowColor="#66000000"
+			fab:menu_shadowRadius="4dp"
+			fab:menu_shadowXOffset="1dp"
+			fab:menu_shadowYOffset="3dp"
+			fab:menu_colorNormal="#0091EA"
+			fab:menu_colorPressed="#E75043"
+			fab:menu_colorRipple="#99FFFFFF"
+			fab:menu_animationDelayPerItem="50"
+			fab:menu_icon="@drawable/audio"
+			fab:menu_buttonSpacing="0dp"
+			fab:menu_labels_margin="0dp"
+			fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
+			fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
+			fab:menu_labels_paddingTop="4dp"
+			fab:menu_labels_paddingRight="8dp"
+			fab:menu_labels_paddingBottom="4dp"
+			fab:menu_labels_paddingLeft="8dp"
+			fab:menu_labels_padding="8dp"
+			fab:menu_labels_textColor="#FFFFFF"
+			fab:menu_labels_textSize="14sp"
+			fab:menu_labels_cornerRadius="3dp"
+			fab:menu_labels_colorNormal="#333333"
+			fab:menu_labels_colorPressed="#444444"
+			fab:menu_labels_colorRipple="#66FFFFFF"
+			fab:menu_labels_showShadow="true"
+			fab:menu_labels_singleLine="false"
+			fab:menu_labels_ellipsize="none"
+			fab:menu_labels_maxLines="-1"
+			fab:menu_labels_position="left"
+			fab:menu_openDirection="up"
+			fab:menu_backgroundColor="@android:color/transparent"
+			fab:menu_fab_show_animation="@anim/show_from_bottom"
+			fab:menu_fab_hide_animation="@anim/hide_to_bottom"
 			android:layout_alignParentRight="true"
-			android:layout_alignBottom="@+id/all_cont"
+			android:layout_alignBottom="@+id/all_cont">
 
-			/>
+		<com.github.clans.fab.FloatingActionButton
+				android:id="@+id/menu_item"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@drawable/ic_action_play"
+				fab:fab_size="mini"
+				fab:fab_label="Audio"
+				fab:fab_colorNormal="#0091EA"/>
+		<com.github.clans.fab.FloatingActionButton
+			android:id="@+id/menu_item2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@drawable/ic_action_play"
+			fab:fab_size="mini"
+			fab:fab_label="Google TTS"
+			fab:fab_colorNormal="#0091EA"/>
+
+
+
+
+
+
+		</com.github.clans.fab.FloatingActionMenu>
+
+
+
 	</RelativeLayout>
 
 </FrameLayout>

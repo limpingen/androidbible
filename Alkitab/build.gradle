@@ -47,6 +47,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
+
     }
     dexOptions {
         javaMaxHeapSize "2g"
@@ -82,6 +83,7 @@ android {
 dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':Alkitabquotegenerator')
     compile project(':AlkitabFeedback')
     compile project(':AlkitabIntegration')
     compile project(':AlkitabIo')
@@ -97,6 +99,7 @@ dependencies {
     compile project(':AmbilWarna')
     compile project(':ATree')
     compile project(':ImportedDesktopVerseUtil')
+
     compile "com.afollestad.material-dialogs:core:$materialDialogsVersion"
     compile "com.afollestad.material-dialogs:commons:$materialDialogsVersion"
     testCompile 'junit:junit:4.12'
@@ -122,4 +125,5 @@ dependencies {
         transitive = true;
     }
     compile 'com.mindorks.android:prdownloader:0.2.0'
+    compile 'com.github.clans:fab:1.6.4'
 }

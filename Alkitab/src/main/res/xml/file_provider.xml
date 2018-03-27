@@ -1,4 +1,6 @@
 <paths>
+	<cache-path path="/" name="images" />
+	<external-path name="external_files" path="."/>
 	<files-path
 		name="internal_yes_dir"
 		path="bible/yes/" />

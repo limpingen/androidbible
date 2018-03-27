@@ -1,0 +1,75 @@
+<resources>
+
+    <!-- main -->
+    <string name="main__navdrawer__open">Open navigation drawer</string>
+    <string name="main__navdrawer__close">Close navigation drawer</string>
+
+    <string name="main__save_meme">Save Quote</string>
+    <string name="main__share_meme">Share Quote</string>
+    <string name="main__create_meme">Create Quote</string>
+    <string name="main__delete_meme">Delete Quote</string>
+
+    <string name="main__memecat__theme4" translatable="false">Theme 4</string>
+    <string name="main__memecat__theme1">Theme 1</string>
+    <string name="main__memecat__theme3">Theme 3</string>
+    <string name="main__memecat__theme2">Theme 2</string>
+
+    <string name="main__mode__saved">Yang direkam</string>
+    <string name="main__mode__favs">Favorit</string>
+    <string name="main__mode__create">Membuat</string>
+
+    <string name="main__get_picture_from_gallery">Mengambil gambar dari Gallery</string>
+    <string name="main__get_picture_from_camera">Mengambil gambar dari Camera</string>
+    <string name="main__error_camera_cannot_start">Camera tidak jalan.</string>
+    <string name="main__error_no_picture_selected">Tidak ada gambar yang dipilih.</string>
+    <string name="main__share_meme_prompt">Bagikan Quote anda via…</string>
+
+    <string name="main__donate_bitcoin">Donate Bitcoin</string>
+    <string name="main__recommend_app">Recommend</string>
+    <string name="main__changelog">Changelog</string>
+    <string name="main__exit">Keluar</string>
+    <string name="main__yes">Ya</string>
+
+    <!-- Creator -->
+    <string name="creator__press_back_again_to_exit">Tekan Back lagi untuk membatalkan edit Quote ini.</string>
+    <string name="creator__saved_successfully_message">Quote sudah direkam secara sukses pada perangkat anda. Apakah Anda ingin keluar dari mengedit Quote ini ?</string>
+    <string name="creator__text_size">Ukuran Teks Atas</string>
+    <string name="creator__text_size2">Ukuran Teks Bawah</string>
+    <string name="creator__text_color">Warna Teks </string>
+    <string name="creator__border_color">Warna bingkai</string>
+    <string name="creator__saved_successfully">Berhasil direkam!</string>
+    <string name="creator__hint_top_caption">Teks di atas</string>
+    <string name="creator__hint_bottom_caption">Teks di bawah</string>
+    <string name="creator__font">Jenis Font</string>
+    <string name="creator__no_keep_editing">Tidak, terus mengedit</string>
+
+    <!-- Info -->
+    <string name="info__info">Info</string>
+    <string name="info__developed_by">Developed by</string>
+    <string name="info__additionalContact">More informations</string>
+    <string name="info__licenses">Licenses</string>
+    <string name="info__show_licenses">Show licenses</string>
+    <string name="team" translatable="false">Team</string>
+    <string name="contributors">Contributors</string>
+    <string name="more_information">More information</string>
+    <string name="info__show_gplv3_license">Show GNU GPLv3 license</string>
+    <string name="info__show_third_party_licenses">Show 3rd party licenses</string>
+    <string name="miscellaneous">Lain-lain</string>
+
+    <!-- Settings -->
+    <string name="settings__settings">Setelan</string>
+    <string name="settings__all_caps">Semua Caps on</string>
+    <string name="settings__caps_off">Caps off</string>
+    <string name="settings__rotate">Putar</string>
+    <string name="settings__pref_render_quality_title">Kualitas Render</string>
+    <string name="settings__cleanup_thumbnails">Bersihkan thumbnails</string>
+    <string name="settings__pref_columns_portrait">Columns portrait</string>
+    <string name="settings__pref_columns_landscape">Columns landscape</string>
+    <string name="pref_title__appearance">Penampilan</string>
+    <string name="pref_title__size">Ukuran</string>
+    <string name="pref_title__default_main_mode">Default Mode</string>
+    <string name="pref_summary__default_main_mode">Default Mode to open at startup (Create, Favs or Saved)</string>
+    <string name="pref_title__functionality">Fungsionalitas</string>
+    <string name="pref_summary__auto_save_meme">Secara otomatis rekam Quote jika menekan Back dan jika ada data</string>
+    <string name="pref_title__auto_save_meme">Rekam ketika menekan Back</string>
+</resources>

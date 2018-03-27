@@ -28,9 +28,9 @@ import android.os.Handler;
 import android.os.Parcelable;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ShareCompat;
@@ -54,6 +54,7 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.URLSpan;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -80,10 +81,11 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.sabda.alkitabquotegenerator.activity.MainActivity;
+
 import yuku.afw.V;
 import yuku.afw.storage.Preferences;
 import yuku.alkitab.base.ac.GotoActivity;
@@ -157,7 +159,16 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import android.content.res.Configuration;
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
+
+
+
+
 
 import static yuku.alkitab.base.util.Literals.Array;
 
@@ -466,7 +477,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 	private SeekBar seekbar;
 	public static int oneTimeOnly = 0;
 	FloatingActionButton fab;
-	FloatingActionButton fab2;
+	android.support.design.widget.FloatingActionButton fab2;
 	Button pauseButton;
 	Button playButton;
 	boolean isStrongNumber = true;
@@ -474,10 +485,12 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 	boolean [] theXRef;
 	boolean theA, theB, theC;
-	Animation makeInAnimation;
-	Animation makeOutAnimation;
 	Animation makeInAnimationStrongNumber;
 	Animation makeOutAnimationStrongNumber;
+	FloatingActionMenu fabmenu;
+	TextToSpeech tts;
+	Locale myLocale;
+	FloatingActionButton fabTts;
 	/**
 	 * The Parallel listener.
 	 *  For Adding the user history of navigating the book chapter and verse
@@ -795,6 +808,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		lsSplit0.setOnVerseScrollListener(lsSplit0_verseScroll);
 		lsSplit0.setDictionaryListener(dictionaryListener);
 
+
 		// additional setup for split1
 		lsSplit1.setVerseSelectionMode(VersesView.VerseSelectionMode.multiple);
 		lsSplit1.setEmptyView(tSplitEmpty);
@@ -914,58 +928,105 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		mp = new MediaPlayer();
 		seekbar = (SeekBar)findViewById(R.id.progressBar);
 		seekbar.setClickable(false);
+		fabmenu = findViewById(R.id.menu);
 
-		fab = (FloatingActionButton) findViewById(R.id.fab_play_audio);
+
+		fab = (FloatingActionButton) findViewById(R.id.menu_item);
 		FrameLayout fl = (FrameLayout) findViewById(R.id.linearLayoutMusicList);
+
 		fab.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				if(mp.isPlaying()){
-					pauseButton.setVisibility(View.GONE);
-					playButton.setVisibility(View.VISIBLE);
-					mp.pause();
 
+				if(S.activeVersion().getShortName().equals("TB")||S.activeVersion().getShortName().equals("NKJV")) {
+
+
+					if (mp.isPlaying()) {
+						pauseButton.setVisibility(View.GONE);
+						playButton.setVisibility(View.VISIBLE);
+						mp.pause();
+
+					}
+					if (isFab) {
+						PrepareMediaPlayer();
+						fl.setVisibility(View.VISIBLE);
+						fabmenu.setVisibility(View.GONE);
+						isFab = false;
+					}
 				}
-				if(isFab==true) {
-					PrepareMediaPlayer();
-					fl.setVisibility(View.VISIBLE);
-					fab.setVisibility(View.GONE);
-					isFab = false;
+				else
+				{
+					Toast.makeText(IsiActivity.this, "No Audio for this Version", Toast.LENGTH_LONG).show();
 				}
 			}
 		});
+		fabTts = (FloatingActionButton) findViewById(R.id.menu_item2);
+
+		fabTts.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view)
+			{
+				if(tts!=null) {
+						tts.stop();
+						tts.shutdown();
+						tts = null;
+						fabTts.setImageResource(R.drawable.ic_action_play);
+
+				}
+				else if(S.activeVersion().getShortName().equals("TB")){
+
+					myLocale = new Locale("id","ID");
+					tts =  new TextToSpeech(getApplicationContext(),new TextToSpeech.OnInitListener(){
+
+						@Override
+						public void onInit(int status) {
+							// TODO Auto-generated method stub
+							if(status == TextToSpeech.SUCCESS){
+								int result=tts.setLanguage(myLocale);
+								if(result==TextToSpeech.LANG_MISSING_DATA ||
+										result==TextToSpeech.LANG_NOT_SUPPORTED){
+								}
+								else{
+
+									ConvertTextToSpeech();
+								}
+							}
+							else
+								Log.e("error", "Initilization Failed!");
+						}
+					});
+
+				}
 
 
-		fab2 = (FloatingActionButton) findViewById(R.id.fab_strong_number);
+			}
+
+		});
+
+
+
+
+		fab2 = (android.support.design.widget.FloatingActionButton) findViewById(R.id.fab_strong_number);
 		fab2.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				SwitchCompat strongnumberswitchcompat = new SwitchCompat(IsiActivity.this);
 
-				strongnumberswitchcompat.setChecked(Preferences.getBoolean(Prefkey.StrongNumber, true));
-				strongnumberswitchcompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-					@Override
-					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-						Preferences.hold();
+				if(Preferences.getBoolean(Prefkey.StrongNumber, true))
+				{
+					Preferences.hold();
+					Preferences.setBoolean(Prefkey.StrongNumber,false);
+					Preferences.unhold();
 
-						Preferences.setBoolean(Prefkey.StrongNumber,isChecked);
-						Preferences.unhold();
-					}
-				});
+				}
+				else
+				{
+					Preferences.hold();
+					Preferences.setBoolean(Prefkey.StrongNumber,true);
+					Preferences.unhold();
 
-				AlertDialog dialog = new AlertDialog.Builder(IsiActivity.this)
-						.setView(strongnumberswitchcompat)
-						.setMessage(getResources().getString(R.string.ShowHideSN))
-						.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog, int which) {
-								ShowStrongNumber();
-							}
-						})
-						.create();
-
-				dialog.show();
+				}
+				ShowStrongNumber();
 
 			}
 		});
@@ -977,10 +1038,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			@Override
 			public void onScrollStateChanged(AbsListView absListView, int i) {
 
-				if(isFab==true)
-				fab.show();
-				else
-					fab.hide();
+
+					fabmenu.showMenuButton(true);
+
 
 				if(S.activeVersion().getShortName().equals("AYT-E"))
 				{
@@ -999,7 +1059,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 				{
 					fab2.hide();
 				}
-
+				fabmenu.hideMenuButton(true);
 			}
 		});
 
@@ -1007,10 +1067,8 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			@Override
 			public void onScrollStateChanged(AbsListView absListView, int i) {
 
-				if(isFab==true)
-					fab.show();
-				else
-					fab.hide();
+
+				fabmenu.showMenuButton(true);
 
 				if(S.activeVersion().getShortName().equals("AYT-E"))
 				{
@@ -1025,12 +1083,12 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 			@Override
 			public void onScroll(AbsListView absListView, int i, int i1, int i2) {
-				if(isFab==true)
-					fab.hide();
+
 				if(S.activeVersion().getShortName().equals("AYT-E"))
 				{
 					fab2.hide();
 				}
+				fabmenu.hideMenuButton(true);
 			}
 		});
 		Button stopButton = (Button) findViewById(R.id.btnStop);
@@ -1044,10 +1102,20 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 				}
 				fl.setVisibility(View.GONE);
-				fab.setVisibility(View.VISIBLE);
+
+
 				isFab = true;
+				Handler thehandler = new Handler();
+				thehandler.postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						ShowHideFab();
+					}
+
+				}, 2000);
 			}
 		});
+
 
 
 		Button prevButton = (Button) findViewById(R.id.btnPrevious);
@@ -1123,44 +1191,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 			}
 		});
-		makeInAnimation = AnimationUtils.makeInAnimation(getBaseContext(), false);
-		makeInAnimation.setAnimationListener(new Animation.AnimationListener() {
-			@Override
-			public void onAnimationEnd(Animation animation) { }
 
-			@Override
-			public void onAnimationRepeat(Animation animation) { }
-
-			@Override
-			public void onAnimationStart(Animation animation) {
-				if(isFab==true)
-				fab.setVisibility(View.VISIBLE);
-				else
-					fab.setVisibility(View.GONE);
-			}
-		});
-
-		makeOutAnimation = AnimationUtils.makeOutAnimation(getBaseContext(), true);
-		makeOutAnimation.setAnimationListener(new Animation.AnimationListener() {
-			@Override
-			public void onAnimationEnd(Animation animation) {
-				if(isFab==true)
-				fab.setVisibility(View.INVISIBLE);
-			}
-
-			@Override
-			public void onAnimationRepeat(Animation animation) { }
-
-			@Override
-			public void onAnimationStart(Animation animation) { }
-		});
-
-		if (fab.isShown()) {
-			fab.startAnimation(makeOutAnimation);
-		}
-		else if (!fab.isShown()) {
-			fab.startAnimation(makeInAnimation);
-		}
 
 		makeInAnimationStrongNumber = AnimationUtils.makeInAnimation(getBaseContext(), false);
 		makeInAnimationStrongNumber.setAnimationListener(new Animation.AnimationListener() {
@@ -1173,9 +1204,9 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			@Override
 			public void onAnimationStart(Animation animation) {
 				if(S.activeVersion().getShortName().equals("AYT-E")||Preferences.getBoolean(Prefkey.StrongNumber,true))
-					fab.setVisibility(View.VISIBLE);
+					fab2.setVisibility(View.VISIBLE);
 				else
-					fab.setVisibility(View.GONE);
+					fab2.setVisibility(View.GONE);
 			}
 		});
 		makeOutAnimationStrongNumber = AnimationUtils.makeOutAnimation(getBaseContext(), true);
@@ -1183,7 +1214,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			@Override
 			public void onAnimationEnd(Animation animation) {
 				if(S.activeVersion().getShortName().equals("AYT-E")||Preferences.getBoolean(Prefkey.StrongNumber,true))
-					fab.setVisibility(View.INVISIBLE);
+					fab2.setVisibility(View.INVISIBLE);
 			}
 
 			@Override
@@ -1207,6 +1238,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			public void run() {
 				ShowHideFab();
 			}
+
 		}, 2000);
 		setTheme(R.style.Theme_Alkitab2);
 
@@ -1221,14 +1253,12 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 	{
 		if( S.activeVersion().getShortName().equals("TB")||S.activeVersion().getShortName().equals("NKJV")) {
 			isFab = true;
-			fab.setVisibility(View.VISIBLE);
+			fabmenu.setVisibility(View.VISIBLE);
 
 		}
 		else
 		{
 			isFab = false;
-			fab.setVisibility(View.GONE);
-
 		}
 		if(S.activeVersion().getShortName().equals("AYT-E"))
 		{
@@ -1239,7 +1269,8 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 		{
 			fab2.setVisibility(View.GONE);
 		}
-
+		fabmenu.showMenuButton(true);
+		fabmenu.showMenu(true);
 	}
 
 	private Runnable UpdateSongTime = new Runnable() {
@@ -1339,6 +1370,68 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 		}
 	}
+	void ConvertTextToSpeech(){
+		lsSplit0.checkAllVerses(true);
+		Handler thehandler = new Handler();
+		thehandler.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				ShowHideFab();
+			}
+
+		}, 2000);
+
+		final IntArrayList selected = lsSplit0.getSelectedVerses_1();
+
+
+
+		final CharSequence reference = referenceFromSelectedVerses(selected, activeBook);
+		final String[] t;
+		t = prepareTextForCopyShare2(selected, reference, false);
+
+
+		final String textToCopy = t[0];
+		final String textToSubmit = t[1];
+		String text =textToCopy;
+		lsSplit0.uncheckAllVerses(true);
+		if(text==null||"".equals(text))
+		{
+			text = "Content not available";
+			tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+		}else {
+			fabTts.setImageResource(R.drawable.ic_action_stop);
+			speech(text);
+		}
+
+
+	}
+	private void speech(String charSequence) {
+		///
+		Pattern re = Pattern.compile("[^.!?\\s][^.!?]*(?:[.!?](?!['\"]?\\s|$)[^.!?]*)*[.!?]?['\"]?(?=\\s|$)", Pattern.MULTILINE | Pattern.COMMENTS);
+		Matcher reMatcher = re.matcher(charSequence);
+		/////
+		int position=0 ;
+		int sizeOfChar= charSequence.length();
+		String testStri= charSequence.substring(position,sizeOfChar);
+		while(reMatcher.find()) {
+			String temp="";
+
+			try {
+
+				temp = testStri.substring(charSequence.lastIndexOf(reMatcher.group()), charSequence.indexOf(reMatcher.group())+reMatcher.group().length());
+				tts.speak(temp, TextToSpeech.QUEUE_ADD, null);
+
+
+			} catch (Exception e) {
+				temp = testStri.substring(0, testStri.length());
+				tts.speak(temp, TextToSpeech.QUEUE_ADD, null);
+				break;
+
+			}
+
+		}
+
+	}
 
 	void ShowStrongNumber()
 	{
@@ -1396,6 +1489,12 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 	 */
 	@Override
 	protected void onDestroy() {
+		if(tts != null){
+
+			tts.stop();
+			tts.shutdown();
+			tts = null;
+		}
 		super.onDestroy();
 
 		App.getLbm().unregisterReceiver(reloadAttributeMapReceiver);
@@ -1488,6 +1587,11 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 	}
 
 	@Override protected void onPause() {
+		if(tts !=null){
+			tts.stop();
+			tts.shutdown();
+			tts=null;
+		}
 		super.onPause();
 		disableNfcForegroundDispatchIfAvailable();
 	}
@@ -1593,9 +1697,17 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			}
 
 			App.getLbm().sendBroadcast(new Intent(ACTION_ACTIVE_VERSION_CHANGED));
-			ShowHideFab();
+
 			AnimationVerse();
 			ShowStrongNumber();
+			Handler thehandler = new Handler();
+			thehandler.postDelayed(new Runnable() {
+				@Override
+				public void run() {
+					ShowHideFab();
+				}
+
+			}, 2000);
 			return true;
 		} catch (Throwable e) { // so we don't crash on the beginning of the app
 			AppLog.e(TAG, "Error opening main version", e);
@@ -1858,8 +1970,63 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 		return Array(res0.toString(), res1.toString());
 	}
+	String[] prepareTextForCopyShare2(IntArrayList selectedVerses_1, CharSequence reference, boolean isSplitVersion) {
+		final StringBuilder res0 = new StringBuilder();
+		final StringBuilder res1 = new StringBuilder();
 
 
+
+			res0.append("  ");
+
+			// append each selected verse without verse number prepended
+			for (int i = 1; i < selectedVerses_1.size(); i++) {
+				final int verse_1 = selectedVerses_1.get(i);
+				final String verseText = isSplitVersion ? lsSplit1.getVerseText(verse_1) : lsSplit0.getVerseText(verse_1);
+
+				if (verseText != null) {
+					final String verseTextPlain = U.removeSpecialCodes(verseText);
+
+					if (i != 0) {
+						res0.append('\n');
+						res1.append('\n');
+					}
+					res0.append(verseTextPlain);
+					res1.append(verseText);
+				}
+			}
+
+
+		return Array(res0.toString(), res1.toString());
+	}
+
+	String[] prepareTextForCopyShare3(IntArrayList selectedVerses_1, CharSequence reference, boolean isSplitVersion) {
+		final StringBuilder res0 = new StringBuilder();
+		final StringBuilder res1 = new StringBuilder();
+
+
+
+		res0.append("  ");
+
+		// append each selected verse without verse number prepended
+		for (int i = 0; i < selectedVerses_1.size(); i++) {
+			final int verse_1 = selectedVerses_1.get(i);
+			final String verseText = isSplitVersion ? lsSplit1.getVerseText(verse_1) : lsSplit0.getVerseText(verse_1);
+
+			if (verseText != null) {
+				final String verseTextPlain = U.removeSpecialCodes(verseText);
+
+				if (i != 0) {
+					res0.append('\n');
+					res1.append('\n');
+				}
+				res0.append(verseTextPlain);
+				res1.append(verseText);
+			}
+		}
+
+
+		return Array(res0.toString(), reference.toString());
+	}
 	private void applyPreferences() {
 		// make sure S applied variables are set first
 		S.recalculateAppliedValuesBasedOnPreferences();
@@ -1897,7 +2064,12 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 	 */
 	@Override protected void onStop() {
 		super.onStop();
+		if(tts != null){
 
+			tts.stop();
+			tts.shutdown();
+			tts = null;
+		}
 		Preferences.hold();
 		try {
 			/**
@@ -2741,7 +2913,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			mp.pause();
 
 		}
-		if(fab.getVisibility()==View.GONE) PrepareMediaPlayer();
+		if(fabmenu.getVisibility()==View.GONE) PrepareMediaPlayer();
 		AnimationVerse();
 		ShowStrongNumber();
 
@@ -2776,12 +2948,13 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			mp.pause();
 
 		}
-		if(fab.getVisibility()==View.GONE) PrepareMediaPlayer();
+		if(fabmenu.getVisibility()==View.GONE) PrepareMediaPlayer();
 		AnimationVerse();
 		ShowStrongNumber();
 	}
 	void AnimationVerse()
 	{
+		/*
 		final Handler thehandler = new Handler();
 		int itemposition = lsSplit0.getFirstVisiblePosition() + 1;
 		lsSplit0.smoothScrollToPosition(lsSplit0.getBottom());
@@ -2791,7 +2964,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 				lsSplit0.smoothScrollToPosition(0);
 			}
 		}, 800);
-
+*/
 
 
 	}
@@ -3260,7 +3433,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			final MenuItem menuAddBookmark = menu.findItem(R.id.menuAddBookmark);
 			final MenuItem menuAddNote = menu.findItem(R.id.menuAddNote);
 			final MenuItem menuCompare = menu.findItem(R.id.menuCompare);
-
+			final MenuItem menuQuoteGenerator = menu.findItem(R.id.menuQuoteGenerator);
 			final IntArrayList selected = lsSplit0.getSelectedVerses_1();
 			final boolean single = selected.size() == 1;
 
@@ -3319,13 +3492,13 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			menuGuide.setShowAsActionFlags(showAsAction);
 			menuCommentary.setShowAsActionFlags(showAsAction);
 			menuDictionary.setShowAsActionFlags(showAsAction);
-
+			menuQuoteGenerator.setShowAsActionFlags(showAsAction);
 
 			// set visibility according to appconfig
 			final AppConfig c = AppConfig.get();
 			menuGuide.setVisible(c.menuGuide);
 			menuCommentary.setVisible(c.menuCommentary);
-
+			menuQuoteGenerator.setVisible(true);
 			// do not show dictionary item if not needed because of auto-lookup from
 			menuDictionary.setVisible(c.menuDictionary
 					&& !Preferences.getBoolean(getString(R.string.pref_autoDictionaryAnalyze_key), getResources().getBoolean(R.bool.pref_autoDictionaryAnalyze_default))
@@ -3371,7 +3544,23 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 			case R.id.menuCopy:
 			case R.id.menuCopySplit0:
 			case R.id.menuCopySplit1:
-				//Menu For Copy Both Splite
+			case R.id.menuQuoteGenerator:
+			{
+				final String[] t;
+				t = prepareTextForCopyShare3(selected, reference, false);
+
+						Intent i = new Intent(IsiActivity.this,MainActivity.class);
+
+						i.putExtra("ayatteks", t[0].toString());
+						i.putExtra("lokasiteks", t[1]);
+						startActivity(i);
+
+
+
+
+
+			}
+			return true; //Menu For Copy Both Splite
 			case R.id.menuCopyBothSplits: { // copy, can be multiple verses
 				final String[] t;
 

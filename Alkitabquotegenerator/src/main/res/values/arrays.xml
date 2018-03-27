@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="meme_categories" translatable="false">
+        <item>@string/main__memecat__theme1</item>
+        <item>@string/main__memecat__theme2</item>
+        <item>@string/main__memecat__theme3</item>
+        <item>@string/main__memecat__theme4</item>
+    </string-array>
+
+    <string-array name="main_modes" translatable="false">
+        <item>@string/main__mode__create</item>
+        <item>@string/main__mode__favs</item>
+        <item>@string/main__mode__saved</item>
+    </string-array>
+
+    <string-array name="values__zero_to_two" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+</resources>

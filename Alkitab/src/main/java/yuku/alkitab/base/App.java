@@ -284,4 +284,6 @@ public class App extends yuku.afw.App {
 		}
 		return picasso;
 	}
+
+
 }

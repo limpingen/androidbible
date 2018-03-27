@@ -1,0 +1,6 @@
+Matthias Ringwald: Initial builds of app
+Naofumi Fukue: Japanese translation
+François Vincent: French translation
+Danilo Raffaelli: Italian translation
+pskosinski: Polish translation
+

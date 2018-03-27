@@ -340,22 +340,18 @@ public class SearchActivity extends BaseActivity {
 		searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 			@Override
 			public boolean onQueryTextSubmit(String query1) {
-				String myquery = "";
+
 				if(isStringInt(query1))
-				{
-					myquery = "\"<" + query1 + ">\"";
-				}
-				else
-				{
-					myquery = query1;
-				}
-				search(myquery);
+					searchView.setQuery("\"" + query1.trim() + "\"",true);
+				search(query1);
 				return true;
 			}
 
 			@Override
-			public boolean onQueryTextChange(String newText) {
-				searchHistoryAdapter.setQuery(newText);
+			public boolean onQueryTextChange(String query1) {
+
+
+				searchHistoryAdapter.setQuery(query1);
 				return false;
 			}
 		});
@@ -720,6 +716,8 @@ public class SearchActivity extends BaseActivity {
 			return;
 		}
 
+
+
 		{ // check if there is anything chosen
 			int firstSelected = selectedBookIds.indexOfValue(true);
 			if (firstSelected < 0) {
@@ -954,7 +952,7 @@ public class SearchActivity extends BaseActivity {
 				lSnippet.setTextColor(checkedTextColor);
 			}
 
-			String verseText = U.removeSpecialCodes(searchInVersion.loadVerseText(ari));
+			String verseText = U.removeSpecialCodes(searchInVersion.loadVerseText(ari)).replaceAll("@<s@>\\d+@<@/s@>","").replace("[","").replace("]","");
 
 			if(concordance_word!="") {
 				String[] verseWord = verseText.split(" ");
@@ -980,8 +978,7 @@ public class SearchActivity extends BaseActivity {
 					verseText += verseWord[x] + " ";
 				}
 				verseText=  "... " + verseText.trim() + " ...";
-				verseText = verseText.replace("[","").replace("]","");
-				verseText = verseText.replaceAll("<\\d+>","");
+
 			}
 
 			if (verseText != null) {

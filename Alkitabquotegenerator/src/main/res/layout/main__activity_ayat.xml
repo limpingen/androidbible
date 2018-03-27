@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+
+    <EditText
+        android:id="@+id/textViewAyat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/creator__hint_top_caption"
+        android:inputType="textMultiLine"
+        android:textSize="15sp"
+        android:text=""
+        android:textColor="@color/primary_text"
+        android:layout_marginTop="10dp"/>
+
+
+
+    <EditText
+        android:id="@+id/textViewLokasiAyat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/creator__hint_bottom_caption"
+        android:textSize="15sp"
+        android:textColor="@color/primary_text"
+        android:text=""
+ />
+
+        <Button
+            android:id="@+id/buttonclear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bersihkan" />
+
+
+</LinearLayout>

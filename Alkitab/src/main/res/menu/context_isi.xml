@@ -57,6 +57,7 @@
 		android:title="@string/menu_compare"
 		app:showAsAction="always" />
 
+
 	<item
 		android:id="@+id/menuAddSomething"
 		android:icon="@drawable/ic_menu_add_light"
@@ -86,6 +87,13 @@
 		tools:ignore="HardcodedText" />
 
 	<!-- For the following 3 items, the showAsAction value is set in code -->
+
+	<item
+		android:id="@+id/menuQuoteGenerator"
+		android:icon="@drawable/ic_menu_compare"
+		android:title="Quote Generator"
+		/>
+
 	<item
 		android:id="@+id/menuGuide"
 		android:icon="@drawable/ic_menu_pedia"

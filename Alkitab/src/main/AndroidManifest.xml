@@ -45,6 +45,9 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/Theme.Alkitab"
         tools:ignore="UnusedAttribute">
+
+
+
         <activity
             android:name="yuku.alkitab.base.IsiActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale|layoutDirection|fontScale">
@@ -66,6 +69,49 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name="org.sabda.alkitabquotegenerator.activity.MainActivity"
+            android:label="Quote Generator"
+            />
+
+
+        <activity
+            android:name="org.sabda.alkitabquotegenerator.activity.MemeCreateActivity"
+
+            >
+
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="org.sabda.alkitabquotegenerator.activity.SettingsActivity"
+
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.sabda.alkitabquotegenerator.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name="org.sabda.alkitabquotegenerator.activity.InfoActivity"
+
+>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.sabda.alkitabquotegenerator.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name="org.sabda.alkitabquotegenerator.activity.ImageViewActivity"
+            android:parentActivityName="org.sabda.alkitabquotegenerator.activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.sabda.alkitabquotegenerator.activity.MainActivity" />
         </activity>
         <activity
             android:name="yuku.alkitab.base.ac.GotoActivity"
