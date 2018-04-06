@@ -484,6 +484,8 @@
             android:name="yuku.alkitab.base.sv.VersionConfigUpdaterService"
             android:exported="false" />
 
+
+
         <!-- sync components -->
         <service android:name="yuku.alkitab.base.sync.AuthenticatorService">
             <intent-filter>
@@ -494,7 +496,7 @@
                 android:name="android.accounts.AccountAuthenticator"
                 android:resource="@xml/authenticator" />
         </service>
-
+        <service android:name="yuku.alkitab.base.util.Downloader" />
         <provider
             android:name="yuku.alkitab.base.sync.StubProvider"
             android:authorities="@string/sync_provider_authority"
@@ -579,6 +581,7 @@
             android:value="88fa9dcee81c62d7913a3fd0abd7cb6a652698dc" />
 
         <activity android:name="yuku.alkitab.base.ac.XRefActivity" />
+        <activity android:name="yuku.alkitab.base.ac.AudioBibleActivity" />
     </application>
 
 </manifest>

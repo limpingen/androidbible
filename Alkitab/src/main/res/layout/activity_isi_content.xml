@@ -215,7 +215,7 @@
 			android:layout_height="wrap_content"
 			android:src="@drawable/ic_action_play"
 			fab:fab_size="mini"
-			fab:fab_label="Google TTS"
+			fab:fab_label="Text to Speech"
 			fab:fab_colorNormal="#0091EA"/>
 
 

@@ -1,0 +1,6386 @@
+﻿{
+	"english": {
+		"1": {
+			"audio_bookdir": "01_genesis",
+			"audio_bookfile": "01_gen"
+		},
+		"2": {
+			"audio_bookdir": "02_exodus",
+			"audio_bookfile": "02_exo"
+		},
+		"3": {
+			"audio_bookdir": "03_leviticus",
+			"audio_bookfile": "03_lev"
+		},
+		"4": {
+			"audio_bookdir": "04_numbers",
+			"audio_bookfile": "04_num"
+		},
+		"5": {
+			"audio_bookdir": "05_deuteronomy",
+			"audio_bookfile": "05_deu"
+		},
+		"6": {
+			"audio_bookdir": "06_joshua",
+			"audio_bookfile": "06_jos"
+		},
+		"7": {
+			"audio_bookdir": "07_judges",
+			"audio_bookfile": "07_jdg"
+		},
+		"8": {
+			"audio_bookdir": "08_ruth",
+			"audio_bookfile": "08_rth"
+		},
+		"9": {
+			"audio_bookdir": "09_1samuel",
+			"audio_bookfile": "09_1sa"
+		},
+		"10": {
+			"audio_bookdir": "10_2samuel",
+			"audio_bookfile": "10_2sa"
+		},
+		"11": {
+			"audio_bookdir": "11_1kings",
+			"audio_bookfile": "11_1ki"
+		},
+		"12": {
+			"audio_bookdir": "12_2kings",
+			"audio_bookfile": "12_2ki"
+		},
+		"13": {
+			"audio_bookdir": "13_1chronicles",
+			"audio_bookfile": "13_1ch"
+		},
+		"14": {
+			"audio_bookdir": "14_2chronicles",
+			"audio_bookfile": "14_2ch"
+		},
+		"15": {
+			"audio_bookdir": "15_ezra",
+			"audio_bookfile": "15_ezr"
+		},
+		"16": {
+			"audio_bookdir": "16_nehemiah",
+			"audio_bookfile": "16_neh"
+		},
+		"17": {
+			"audio_bookdir": "17_esther",
+			"audio_bookfile": "17_est"
+		},
+		"18": {
+			"audio_bookdir": "18_job",
+			"audio_bookfile": "18_job"
+		},
+		"19": {
+			"audio_bookdir": "19_psalms",
+			"audio_bookfile": "19_ps1"
+		},
+		"20": {
+			"audio_bookdir": "20_proverbs",
+			"audio_bookfile": "20_pro"
+		},
+		"21": {
+			"audio_bookdir": "21_ecclesiastes",
+			"audio_bookfile": "21_ecc"
+		},
+		"22": {
+			"audio_bookdir": "22_songs",
+			"audio_bookfile": "22_son"
+		},
+		"23": {
+			"audio_bookdir": "23_isaiah",
+			"audio_bookfile": "23_isa"
+		},
+		"24": {
+			"audio_bookdir": "24_jeremiah",
+			"audio_bookfile": "24_jer"
+		},
+		"25": {
+			"audio_bookdir": "25_lamentations",
+			"audio_bookfile": "25_lam"
+		},
+		"26": {
+			"audio_bookdir": "26_ezekiel",
+			"audio_bookfile": "26_eze"
+		},
+		"27": {
+			"audio_bookdir": "27_daniel",
+			"audio_bookfile": "27_dan"
+		},
+		"28": {
+			"audio_bookdir": "28_hosea",
+			"audio_bookfile": "28_hos"
+		},
+		"29": {
+			"audio_bookdir": "29_joel",
+			"audio_bookfile": "29_joe"
+		},
+		"30": {
+			"audio_bookdir": "30_amos",
+			"audio_bookfile": "30_amo"
+		},
+		"31": {
+			"audio_bookdir": "31_obadiah",
+			"audio_bookfile": "31_oba"
+		},
+		"32": {
+			"audio_bookdir": "32_jonah",
+			"audio_bookfile": "32_jon"
+		},
+		"33": {
+			"audio_bookdir": "33_micah",
+			"audio_bookfile": "33_mic"
+		},
+		"34": {
+			"audio_bookdir": "34_nahum",
+			"audio_bookfile": "34_nah"
+		},
+		"35": {
+			"audio_bookdir": "35_habakkuk",
+			"audio_bookfile": "35_hab"
+		},
+		"36": {
+			"audio_bookdir": "36_zephaniah",
+			"audio_bookfile": "36_zep"
+		},
+		"37": {
+			"audio_bookdir": "37_haggai",
+			"audio_bookfile": "37_hag"
+		},
+		"38": {
+			"audio_bookdir": "38_zechariah",
+			"audio_bookfile": "38_zec"
+		},
+		"39": {
+			"audio_bookdir": "39_malachi",
+			"audio_bookfile": "39_mal"
+		},
+		"40": {
+			"audio_bookdir": "01_matthew",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_mark",
+			"audio_bookfile": "02_mrk"
+		},
+		"42": {
+			"audio_bookdir": "03_luke",
+			"audio_bookfile": "03_luk"
+		},
+		"43": {
+			"audio_bookdir": "04_john",
+			"audio_bookfile": "04_joh"
+		},
+		"44": {
+			"audio_bookdir": "05_acts",
+			"audio_bookfile": "05_act"
+		},
+		"45": {
+			"audio_bookdir": "06_romans",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1corinthians",
+			"audio_bookfile": "07_1co"
+		},
+		"47": {
+			"audio_bookdir": "08_2corinthians",
+			"audio_bookfile": "08_2co"
+		},
+		"48": {
+			"audio_bookdir": "09_galatians",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_ephesians",
+			"audio_bookfile": "10_eph"
+		},
+		"50": {
+			"audio_bookdir": "11_philippians",
+			"audio_bookfile": "11_php"
+		},
+		"51": {
+			"audio_bookdir": "12_colossians",
+			"audio_bookfile": "12_col"
+		},
+		"52": {
+			"audio_bookdir": "13_1thessalonians",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2thessalonians",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timothy",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timothy",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_titus",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_philemon",
+			"audio_bookfile": "18_phm"
+		},
+		"58": {
+			"audio_bookdir": "19_hebrews",
+			"audio_bookfile": "19_heb"
+		},
+		"59": {
+			"audio_bookdir": "20_james",
+			"audio_bookfile": "20_jas"
+		},
+		"60": {
+			"audio_bookdir": "21_1peter",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2peter",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1john",
+			"audio_bookfile": "23_1jo"
+		},
+		"63": {
+			"audio_bookdir": "24_2john",
+			"audio_bookfile": "24_2jo"
+		},
+		"64": {
+			"audio_bookdir": "25_3john",
+			"audio_bookfile": "25_3jo"
+		},
+		"65": {
+			"audio_bookdir": "26_jude",
+			"audio_bookfile": "26_jud"
+		},
+		"66": {
+			"audio_bookdir": "27_revelation",
+			"audio_bookfile": "27_rev"
+		}
+	},
+	"tagalog": {
+		"1": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"2": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"3": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"4": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"5": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"6": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"7": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"8": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"9": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"10": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"11": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"12": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"13": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"14": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"15": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"16": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"17": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"18": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"19": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"20": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"21": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"22": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"23": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"24": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"25": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"26": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"27": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"28": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"29": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"30": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"31": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"32": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"33": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"34": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"35": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"36": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"37": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"38": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"39": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"40": {
+			"audio_bookdir": "01_mateo",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_marcos",
+			"audio_bookfile": "02_mar"
+		},
+		"42": {
+			"audio_bookdir": "03_lucas",
+			"audio_bookfile": "03_luc"
+		},
+		"43": {
+			"audio_bookdir": "04_juan",
+			"audio_bookfile": "04_jua"
+		},
+		"44": {
+			"audio_bookdir": "05_gawa",
+			"audio_bookfile": "05_gaw"
+		},
+		"45": {
+			"audio_bookdir": "06_roma",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1corinto",
+			"audio_bookfile": "07_1co"
+		},
+		"47": {
+			"audio_bookdir": "08_2corinto",
+			"audio_bookfile": "08_2co"
+		},
+		"48": {
+			"audio_bookdir": "09_galacia",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_efeso",
+			"audio_bookfile": "10_efe"
+		},
+		"50": {
+			"audio_bookdir": "11_filipos",
+			"audio_bookfile": "11_fil"
+		},
+		"51": {
+			"audio_bookdir": "12_colosas",
+			"audio_bookfile": "12_col"
+		},
+		"52": {
+			"audio_bookdir": "13_1tesalonica",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2tesalonica",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timoteo",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timoteo",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_tito",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_filemon",
+			"audio_bookfile": "18_flm"
+		},
+		"58": {
+			"audio_bookdir": "19_hebreo",
+			"audio_bookfile": "19_heb"
+		},
+		"59": {
+			"audio_bookdir": "20_santiago",
+			"audio_bookfile": "20_san"
+		},
+		"60": {
+			"audio_bookdir": "21_1pedro",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2pedro",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1juan",
+			"audio_bookfile": "23_1ju"
+		},
+		"63": {
+			"audio_bookdir": "24_2juan",
+			"audio_bookfile": "24_2ju"
+		},
+		"64": {
+			"audio_bookdir": "25_3juan",
+			"audio_bookfile": "25_3ju"
+		},
+		"65": {
+			"audio_bookdir": "26_judas",
+			"audio_bookfile": "26_jud"
+		},
+		"66": {
+			"audio_bookdir": "27_pahayag",
+			"audio_bookfile": "27_pah"
+		}
+	},
+	"indonesia": {
+		"1": {
+			"audio_bookdir": "01_kejadian",
+			"audio_bookfile": "01_kej"
+		},
+		"2": {
+			"audio_bookdir": "02_keluaran",
+			"audio_bookfile": "02_kel"
+		},
+		"3": {
+			"audio_bookdir": "03_imamat",
+			"audio_bookfile": "03_ima"
+		},
+		"4": {
+			"audio_bookdir": "04_bilangan",
+			"audio_bookfile": "04_bil"
+		},
+		"5": {
+			"audio_bookdir": "05_ulangan",
+			"audio_bookfile": "05_ula"
+		},
+		"6": {
+			"audio_bookdir": "06_yosua",
+			"audio_bookfile": "06_yos"
+		},
+		"7": {
+			"audio_bookdir": "07_hakim",
+			"audio_bookfile": "07_hak"
+		},
+		"8": {
+			"audio_bookdir": "08_rut",
+			"audio_bookfile": "08_rut"
+		},
+		"9": {
+			"audio_bookdir": "09_1samuel",
+			"audio_bookfile": "09_1sa"
+		},
+		"10": {
+			"audio_bookdir": "10_2samuel",
+			"audio_bookfile": "10_2sa"
+		},
+		"11": {
+			"audio_bookdir": "11_1raja",
+			"audio_bookfile": "11_1ra"
+		},
+		"12": {
+			"audio_bookdir": "12_2raja",
+			"audio_bookfile": "12_2ra"
+		},
+		"13": {
+			"audio_bookdir": "13_1tawarikh",
+			"audio_bookfile": "13_1ta"
+		},
+		"14": {
+			"audio_bookdir": "14_2tawarikh",
+			"audio_bookfile": "14_2ta"
+		},
+		"15": {
+			"audio_bookdir": "15_ezra",
+			"audio_bookfile": "15_ezr"
+		},
+		"16": {
+			"audio_bookdir": "16_nehemia",
+			"audio_bookfile": "16_neh"
+		},
+		"17": {
+			"audio_bookdir": "17_ester",
+			"audio_bookfile": "17_est"
+		},
+		"18": {
+			"audio_bookdir": "18_ayub",
+			"audio_bookfile": "18_ayb"
+		},
+		"19": {
+			"audio_bookdir": "19_mazmur",
+			"audio_bookfile": "19_mzm"
+		},
+		"20": {
+			"audio_bookdir": "20_amsal",
+			"audio_bookfile": "20_ams"
+		},
+		"21": {
+			"audio_bookdir": "21_pengkhotbah",
+			"audio_bookfile": "21_pkh"
+		},
+		"22": {
+			"audio_bookdir": "22_kidung",
+			"audio_bookfile": "22_kid"
+		},
+		"23": {
+			"audio_bookdir": "23_yesaya",
+			"audio_bookfile": "23_yes"
+		},
+		"24": {
+			"audio_bookdir": "24_yeremia",
+			"audio_bookfile": "24_yer"
+		},
+		"25": {
+			"audio_bookdir": "25_ratapan",
+			"audio_bookfile": "25_rat"
+		},
+		"26": {
+			"audio_bookdir": "26_yehezkiel",
+			"audio_bookfile": "26_yeh"
+		},
+		"27": {
+			"audio_bookdir": "27_daniel",
+			"audio_bookfile": "27_dan"
+		},
+		"28": {
+			"audio_bookdir": "28_hosea",
+			"audio_bookfile": "28_hos"
+		},
+		"29": {
+			"audio_bookdir": "29_yoel",
+			"audio_bookfile": "29_yoe"
+		},
+		"30": {
+			"audio_bookdir": "30_amos",
+			"audio_bookfile": "30_amo"
+		},
+		"31": {
+			"audio_bookdir": "31_obaja",
+			"audio_bookfile": "31_oba"
+		},
+		"32": {
+			"audio_bookdir": "32_yunus",
+			"audio_bookfile": "32_yun"
+		},
+		"33": {
+			"audio_bookdir": "33_mikha",
+			"audio_bookfile": "33_mik"
+		},
+		"34": {
+			"audio_bookdir": "34_nahum",
+			"audio_bookfile": "34_nah"
+		},
+		"35": {
+			"audio_bookdir": "35_habakuk",
+			"audio_bookfile": "35_hab"
+		},
+		"36": {
+			"audio_bookdir": "36_zefanya",
+			"audio_bookfile": "36_zef"
+		},
+		"37": {
+			"audio_bookdir": "37_hagai",
+			"audio_bookfile": "37_hag"
+		},
+		"38": {
+			"audio_bookdir": "38_zakharia",
+			"audio_bookfile": "38_zak"
+		},
+		"39": {
+			"audio_bookdir": "39_maleakhi",
+			"audio_bookfile": "39_mal"
+		},
+		"40": {
+			"audio_bookdir": "01_matius",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_markus",
+			"audio_bookfile": "02_mrk"
+		},
+		"42": {
+			"audio_bookdir": "03_lukas",
+			"audio_bookfile": "03_luk"
+		},
+		"43": {
+			"audio_bookdir": "04_yohanes",
+			"audio_bookfile": "04_yoh"
+		},
+		"44": {
+			"audio_bookdir": "05_kisah",
+			"audio_bookfile": "05_kis"
+		},
+		"45": {
+			"audio_bookdir": "06_roma",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1korintus",
+			"audio_bookfile": "07_1ko"
+		},
+		"47": {
+			"audio_bookdir": "08_2korintus",
+			"audio_bookfile": "08_2ko"
+		},
+		"48": {
+			"audio_bookdir": "09_galatia",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_efesus",
+			"audio_bookfile": "10_efe"
+		},
+		"50": {
+			"audio_bookdir": "11_filipi",
+			"audio_bookfile": "11_fil"
+		},
+		"51": {
+			"audio_bookdir": "12_kolose",
+			"audio_bookfile": "12_kol"
+		},
+		"52": {
+			"audio_bookdir": "13_1tesalonika",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2tesalonika",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timotius",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timotius",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_titus",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_filemon",
+			"audio_bookfile": "18_flm"
+		},
+		"58": {
+			"audio_bookdir": "19_ibrani",
+			"audio_bookfile": "19_ibr"
+		},
+		"59": {
+			"audio_bookdir": "20_yakobus",
+			"audio_bookfile": "20_yak"
+		},
+		"60": {
+			"audio_bookdir": "21_1petrus",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2petrus",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1yohanes",
+			"audio_bookfile": "23_1yo"
+		},
+		"63": {
+			"audio_bookdir": "24_2yohanes",
+			"audio_bookfile": "24_2yo"
+		},
+		"64": {
+			"audio_bookdir": "25_3yohanes",
+			"audio_bookfile": "25_3yo"
+		},
+		"65": {
+			"audio_bookdir": "26_yudas",
+			"audio_bookfile": "26_yud"
+		},
+		"66": {
+			"audio_bookdir": "27_wahyu",
+			"audio_bookfile": "27_wah"
+		}
+	},
+	"rote": {
+		"1": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"2": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"3": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"4": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"5": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"6": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"7": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"8": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"9": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"10": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"11": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"12": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"13": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"14": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"15": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"16": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"17": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"18": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"19": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"20": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"21": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"22": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"23": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"24": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"25": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"26": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"27": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"28": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"29": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"30": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"31": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"32": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"33": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"34": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"35": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"36": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"37": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"38": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"39": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"40": {
+			"audio_bookdir": "01_mateos",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_markus",
+			"audio_bookfile": "02_mrk"
+		},
+		"42": {
+			"audio_bookdir": "03_lukas",
+			"audio_bookfile": "03_luk"
+		},
+		"43": {
+			"audio_bookdir": "04_yohanes",
+			"audio_bookfile": "04_yoh"
+		},
+		"44": {
+			"audio_bookdir": "05_lamatua_ka_hataholi",
+			"audio_bookfile": "05_kis"
+		},
+		"45": {
+			"audio_bookdir": "06_roma",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1korintus",
+			"audio_bookfile": "07_1ko"
+		},
+		"47": {
+			"audio_bookdir": "08_2korintus",
+			"audio_bookfile": "08_2ko"
+		},
+		"48": {
+			"audio_bookdir": "09_galatia",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_efesus",
+			"audio_bookfile": "10_efe"
+		},
+		"50": {
+			"audio_bookdir": "11_filipi",
+			"audio_bookfile": "11_fil"
+		},
+		"51": {
+			"audio_bookdir": "12_kolose",
+			"audio_bookfile": "12_kol"
+		},
+		"52": {
+			"audio_bookdir": "13_1tesalonika",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2tesalonika",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timotius",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timotius",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_titus",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_filemon",
+			"audio_bookfile": "18_flm"
+		},
+		"58": {
+			"audio_bookdir": "19_ibrani",
+			"audio_bookfile": "19_ibr"
+		},
+		"59": {
+			"audio_bookdir": "20_yakobus",
+			"audio_bookfile": "20_yak"
+		},
+		"60": {
+			"audio_bookdir": "21_1petrus",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2petrus",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1yohanes",
+			"audio_bookfile": "23_1yo"
+		},
+		"63": {
+			"audio_bookdir": "24_2yohanes",
+			"audio_bookfile": "24_2yo"
+		},
+		"64": {
+			"audio_bookdir": "25_3yohanes",
+			"audio_bookfile": "25_3yo"
+		},
+		"65": {
+			"audio_bookdir": "26_yudas",
+			"audio_bookfile": "26_yud"
+		},
+		"66": {
+			"audio_bookdir": "27_ninitak",
+			"audio_bookfile": "27_wah"
+		}
+	},
+	"makasar": {
+		"1": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"2": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"3": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"4": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"5": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"6": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"7": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"8": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"9": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"10": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"11": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"12": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"13": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"14": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"15": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"16": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"17": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"18": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"19": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"20": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"21": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"22": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"23": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"24": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"25": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"26": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"27": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"28": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"29": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"30": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"31": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"32": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"33": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"34": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"35": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"36": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"37": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"38": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"39": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"40": {
+			"audio_bookdir": "01_matius",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_markus",
+			"audio_bookfile": "02_mrk"
+		},
+		"42": {
+			"audio_bookdir": "03_lukas",
+			"audio_bookfile": "03_luk"
+		},
+		"43": {
+			"audio_bookdir": "04_yohanes",
+			"audio_bookfile": "04_yoh"
+		},
+		"44": {
+			"audio_bookdir": "05_kisah",
+			"audio_bookfile": "05_kis"
+		},
+		"45": {
+			"audio_bookdir": "06_roma",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1korintus",
+			"audio_bookfile": "07_1ko"
+		},
+		"47": {
+			"audio_bookdir": "08_2korintus",
+			"audio_bookfile": "08_2ko"
+		},
+		"48": {
+			"audio_bookdir": "09_galatia",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_efesus",
+			"audio_bookfile": "10_efe"
+		},
+		"50": {
+			"audio_bookdir": "11_filipi",
+			"audio_bookfile": "11_fil"
+		},
+		"51": {
+			"audio_bookdir": "12_kolose",
+			"audio_bookfile": "12_kol"
+		},
+		"52": {
+			"audio_bookdir": "13_1tesalonika",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2tesalonika",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timotius",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timotius",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_titus",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_filemon",
+			"audio_bookfile": "18_flm"
+		},
+		"58": {
+			"audio_bookdir": "19_ibrani",
+			"audio_bookfile": "19_ibr"
+		},
+		"59": {
+			"audio_bookdir": "20_yakobus",
+			"audio_bookfile": "20_yak"
+		},
+		"60": {
+			"audio_bookdir": "21_1petrus",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2petrus",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1yohanes",
+			"audio_bookfile": "23_1yo"
+		},
+		"63": {
+			"audio_bookdir": "24_2yohanes",
+			"audio_bookfile": "24_2yo"
+		},
+		"64": {
+			"audio_bookdir": "25_3yohanes",
+			"audio_bookfile": "25_3yo"
+		},
+		"65": {
+			"audio_bookdir": "26_yudas",
+			"audio_bookfile": "26_yud"
+		},
+		"66": {
+			"audio_bookdir": "27_wahyu",
+			"audio_bookfile": "27_wah"
+		}
+	},
+	"mentawai": {
+		"1": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"2": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"3": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"4": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"5": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"6": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"7": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"8": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"9": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"10": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"11": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"12": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"13": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"14": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"15": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"16": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"17": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"18": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"19": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"20": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"21": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"22": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"23": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"24": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"25": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"26": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"27": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"28": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"29": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"30": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"31": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"32": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"33": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"34": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"35": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"36": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"37": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"38": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"39": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"40": {
+			"audio_bookdir": "01_matius",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_markus",
+			"audio_bookfile": "02_mrk"
+		},
+		"42": {
+			"audio_bookdir": "03_lukas",
+			"audio_bookfile": "03_luk"
+		},
+		"43": {
+			"audio_bookdir": "04_yohannes",
+			"audio_bookfile": "04_yoh"
+		},
+		"44": {
+			"audio_bookdir": "05_pugagalaira_tai_apostel",
+			"audio_bookfile": "05_kis"
+		},
+		"45": {
+			"audio_bookdir": "06_roma",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1korintus",
+			"audio_bookfile": "07_1ko"
+		},
+		"47": {
+			"audio_bookdir": "08_2korintus",
+			"audio_bookfile": "08_2ko"
+		},
+		"48": {
+			"audio_bookdir": "09_galatia",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_epesus",
+			"audio_bookfile": "10_efe"
+		},
+		"50": {
+			"audio_bookdir": "11_pilippi",
+			"audio_bookfile": "11_fil"
+		},
+		"51": {
+			"audio_bookdir": "12_kolose",
+			"audio_bookfile": "12_kol"
+		},
+		"52": {
+			"audio_bookdir": "13_1tesalonika",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2tesalonika",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timotius",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timotius",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_titus",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_pilemon",
+			"audio_bookfile": "18_flm"
+		},
+		"58": {
+			"audio_bookdir": "19_ibrani",
+			"audio_bookfile": "19_ibr"
+		},
+		"59": {
+			"audio_bookdir": "20_yakobus",
+			"audio_bookfile": "20_yak"
+		},
+		"60": {
+			"audio_bookdir": "21_1petrus",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2petrus",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1yohannes",
+			"audio_bookfile": "23_1yo"
+		},
+		"63": {
+			"audio_bookdir": "24_2yohannes",
+			"audio_bookfile": "24_2yo"
+		},
+		"64": {
+			"audio_bookdir": "25_3yohannes",
+			"audio_bookfile": "25_3yo"
+		},
+		"65": {
+			"audio_bookdir": "26_yudas",
+			"audio_bookfile": "26_yud"
+		},
+		"66": {
+			"audio_bookdir": "27_pamoilianan",
+			"audio_bookfile": "27_wah"
+		}
+	},
+	"napu": {
+		"1": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"2": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"3": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"4": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"5": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"6": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"7": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"8": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"9": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"10": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"11": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"12": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"13": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"14": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"15": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"16": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"17": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"18": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"19": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"20": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"21": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"22": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"23": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"24": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"25": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"26": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"27": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"28": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"29": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"30": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"31": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"32": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"33": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"34": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"35": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"36": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"37": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"38": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"39": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"40": {
+			"audio_bookdir": "01_matiu",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_markus",
+			"audio_bookfile": "02_mrk"
+		},
+		"42": {
+			"audio_bookdir": "03_lukasi",
+			"audio_bookfile": "03_luk"
+		},
+		"43": {
+			"audio_bookdir": "04_yohane",
+			"audio_bookfile": "04_yoh"
+		},
+		"44": {
+			"audio_bookdir": "05_suro",
+			"audio_bookfile": "05_kis"
+		},
+		"45": {
+			"audio_bookdir": "06_roma",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1korintu",
+			"audio_bookfile": "07_1ko"
+		},
+		"47": {
+			"audio_bookdir": "08_2korintu",
+			"audio_bookfile": "08_2ko"
+		},
+		"48": {
+			"audio_bookdir": "09_galatia",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_epesu",
+			"audio_bookfile": "10_efe"
+		},
+		"50": {
+			"audio_bookdir": "11_pilipi",
+			"audio_bookfile": "11_fil"
+		},
+		"51": {
+			"audio_bookdir": "12_kolose",
+			"audio_bookfile": "12_kol"
+		},
+		"52": {
+			"audio_bookdir": "13_1tesalonika",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2tesalonika",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timotiu",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timotiu",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_titu",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_pilemo",
+			"audio_bookfile": "18_flm"
+		},
+		"58": {
+			"audio_bookdir": "19_ibrani",
+			"audio_bookfile": "19_ibr"
+		},
+		"59": {
+			"audio_bookdir": "20_yakobu",
+			"audio_bookfile": "20_yak"
+		},
+		"60": {
+			"audio_bookdir": "21_1peturu",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2peturu",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1yohane",
+			"audio_bookfile": "23_1yo"
+		},
+		"63": {
+			"audio_bookdir": "24_2yohane",
+			"audio_bookfile": "24_2yo"
+		},
+		"64": {
+			"audio_bookdir": "25_3yohane",
+			"audio_bookfile": "25_3yo"
+		},
+		"65": {
+			"audio_bookdir": "26_yudasi",
+			"audio_bookfile": "26_yud"
+		},
+		"66": {
+			"audio_bookdir": "27_pampetudungia",
+			"audio_bookfile": "27_wah"
+		}
+	},
+	"balantak": {
+		"1": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"2": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"3": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"4": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"5": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"6": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"7": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"8": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"9": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"10": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"11": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"12": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"13": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"14": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"15": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"16": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"17": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"18": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"19": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"20": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"21": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"22": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"23": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"24": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"25": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"26": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"27": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"28": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"29": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"30": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"31": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"32": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"33": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"34": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"35": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"36": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"37": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"38": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"39": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"40": {
+			"audio_bookdir": "01_matius",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_markus",
+			"audio_bookfile": "02_mrk"
+		},
+		"42": {
+			"audio_bookdir": "03_lukas",
+			"audio_bookfile": "03_luk"
+		},
+		"43": {
+			"audio_bookdir": "04_yohanes",
+			"audio_bookfile": "04_yoh"
+		},
+		"44": {
+			"audio_bookdir": "05_tundunan",
+			"audio_bookfile": "05_kis"
+		},
+		"45": {
+			"audio_bookdir": "06_roma",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1korintus",
+			"audio_bookfile": "07_1ko"
+		},
+		"47": {
+			"audio_bookdir": "08_2korintus",
+			"audio_bookfile": "08_2ko"
+		},
+		"48": {
+			"audio_bookdir": "09_galatia",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_efesus",
+			"audio_bookfile": "10_efe"
+		},
+		"50": {
+			"audio_bookdir": "11_filipi",
+			"audio_bookfile": "11_fil"
+		},
+		"51": {
+			"audio_bookdir": "12_kolose",
+			"audio_bookfile": "12_kol"
+		},
+		"52": {
+			"audio_bookdir": "13_1tesalonika",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2tesalonika",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timotius",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timotius",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_titus",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_filemon",
+			"audio_bookfile": "18_flm"
+		},
+		"58": {
+			"audio_bookdir": "19_ibrani",
+			"audio_bookfile": "19_ibr"
+		},
+		"59": {
+			"audio_bookdir": "20_yakobus",
+			"audio_bookfile": "20_yak"
+		},
+		"60": {
+			"audio_bookdir": "21_1petrus",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2petrus",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1yohanes",
+			"audio_bookfile": "23_1yo"
+		},
+		"63": {
+			"audio_bookdir": "24_2yohanes",
+			"audio_bookfile": "24_2yo"
+		},
+		"64": {
+			"audio_bookdir": "25_3yohanes",
+			"audio_bookfile": "25_3yo"
+		},
+		"65": {
+			"audio_bookdir": "26_yudas",
+			"audio_bookfile": "26_yud"
+		},
+		"66": {
+			"audio_bookdir": "27_wahyu",
+			"audio_bookfile": "27_wah"
+		}
+	},
+	"batak_simalungun": {
+		"1": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"2": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"3": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"4": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"5": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"6": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"7": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"8": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"9": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"10": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"11": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"12": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"13": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"14": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"15": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"16": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"17": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"18": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"19": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"20": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"21": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"22": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"23": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"24": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"25": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"26": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"27": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"28": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"29": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"30": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"31": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"32": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"33": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"34": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"35": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"36": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"37": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"38": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"39": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"40": {
+			"audio_bookdir": "01_mateus",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_markus",
+			"audio_bookfile": "02_mrk"
+		},
+		"42": {
+			"audio_bookdir": "03_lukas",
+			"audio_bookfile": "03_luk"
+		},
+		"43": {
+			"audio_bookdir": "04_johannes",
+			"audio_bookfile": "04_yoh"
+		},
+		"44": {
+			"audio_bookdir": "05_lahoan_ni_apostel",
+			"audio_bookfile": "05_kis"
+		},
+		"45": {
+			"audio_bookdir": "06_rom",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1korint",
+			"audio_bookfile": "07_1ko"
+		},
+		"47": {
+			"audio_bookdir": "08_2korint",
+			"audio_bookfile": "08_2ko"
+		},
+		"48": {
+			"audio_bookdir": "09_galatia",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_epesu",
+			"audio_bookfile": "10_efe"
+		},
+		"50": {
+			"audio_bookdir": "11_pilippi",
+			"audio_bookfile": "11_fil"
+		},
+		"51": {
+			"audio_bookdir": "12_kolosse",
+			"audio_bookfile": "12_kol"
+		},
+		"52": {
+			"audio_bookdir": "13_1tessalonika",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2tessalonika",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timoteus",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timoteus",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_titus",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_pilemon",
+			"audio_bookfile": "18_flm"
+		},
+		"58": {
+			"audio_bookdir": "19_heber",
+			"audio_bookfile": "19_ibr"
+		},
+		"59": {
+			"audio_bookdir": "20_jakobus",
+			"audio_bookfile": "20_yak"
+		},
+		"60": {
+			"audio_bookdir": "21_1petrus",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2petrus",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1johannes",
+			"audio_bookfile": "23_1yo"
+		},
+		"63": {
+			"audio_bookdir": "24_2johannes",
+			"audio_bookfile": "24_2yo"
+		},
+		"64": {
+			"audio_bookdir": "25_3johannes",
+			"audio_bookfile": "25_3yo"
+		},
+		"65": {
+			"audio_bookdir": "26_yudas",
+			"audio_bookfile": "26_yud"
+		},
+		"66": {
+			"audio_bookdir": "27_pangungkabon",
+			"audio_bookfile": "27_wah"
+		}
+	},
+	"batak_karo": {
+		"1": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"2": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"3": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"4": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"5": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"6": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"7": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"8": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"9": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"10": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"11": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"12": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"13": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"14": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"15": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"16": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"17": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"18": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"19": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"20": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"21": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"22": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"23": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"24": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"25": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"26": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"27": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"28": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"29": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"30": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"31": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"32": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"33": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"34": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"35": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"36": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"37": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"38": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"39": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"40": {
+			"audio_bookdir": "01_matius",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_markus",
+			"audio_bookfile": "02_mrk"
+		},
+		"42": {
+			"audio_bookdir": "03_lukas",
+			"audio_bookfile": "03_luk"
+		},
+		"43": {
+			"audio_bookdir": "04_johanes",
+			"audio_bookfile": "04_yoh"
+		},
+		"44": {
+			"audio_bookdir": "05_perbahanen_rasul-rasul",
+			"audio_bookfile": ""
+		},
+		"45": {
+			"audio_bookdir": "06_roma",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1korinti",
+			"audio_bookfile": "07_1ko"
+		},
+		"47": {
+			"audio_bookdir": "08_2korinti",
+			"audio_bookfile": "08_2ko"
+		},
+		"48": {
+			"audio_bookdir": "09_galati",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_epesu",
+			"audio_bookfile": "10_efe"
+		},
+		"50": {
+			"audio_bookdir": "11_pilipi",
+			"audio_bookfile": "11_fil"
+		},
+		"51": {
+			"audio_bookdir": "12_kolose",
+			"audio_bookfile": "12_kol"
+		},
+		"52": {
+			"audio_bookdir": "13_1tesalonika",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2tesalonika",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timotius",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timotius",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_titus",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_filemon",
+			"audio_bookfile": "18_flm"
+		},
+		"58": {
+			"audio_bookdir": "19_heber",
+			"audio_bookfile": "19_ibr"
+		},
+		"59": {
+			"audio_bookdir": "20_jakup",
+			"audio_bookfile": "20_yak"
+		},
+		"60": {
+			"audio_bookdir": "21_1petrus",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2petrus",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1johanes",
+			"audio_bookfile": "23_1yo"
+		},
+		"63": {
+			"audio_bookdir": "24_2johanes",
+			"audio_bookfile": "24_2yo"
+		},
+		"64": {
+			"audio_bookdir": "25_3johanes",
+			"audio_bookfile": "25_3yo"
+		},
+		"65": {
+			"audio_bookdir": "26_judas",
+			"audio_bookfile": "26_yud"
+		},
+		"66": {
+			"audio_bookdir": "27_ketangkasen",
+			"audio_bookfile": "27_wah"
+		}
+	},
+	"gorontalo": {
+		"1": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"2": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"3": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"4": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"5": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"6": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"7": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"8": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"9": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"10": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"11": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"12": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"13": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"14": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"15": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"16": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"17": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"18": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"19": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"20": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"21": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"22": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"23": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"24": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"25": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"26": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"27": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"28": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"29": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"30": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"31": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"32": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"33": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"34": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"35": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"36": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"37": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"38": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"39": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"40": {
+			"audio_bookdir": "01_matiwus",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_markus",
+			"audio_bookfile": "02_mrk"
+		},
+		"42": {
+			"audio_bookdir": "03_lukas",
+			"audio_bookfile": "03_luk"
+		},
+		"43": {
+			"audio_bookdir": "04_yahya",
+			"audio_bookfile": "04_yoh"
+		},
+		"44": {
+			"audio_bookdir": "05_kisah",
+			"audio_bookfile": "05_kis"
+		},
+		"45": {
+			"audio_bookdir": "06_roma",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1korintus",
+			"audio_bookfile": "07_1ko"
+		},
+		"47": {
+			"audio_bookdir": "08_2korintus",
+			"audio_bookfile": "08_2ko"
+		},
+		"48": {
+			"audio_bookdir": "09_galatia",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_efesus",
+			"audio_bookfile": "10_efe"
+		},
+		"50": {
+			"audio_bookdir": "11_filipi",
+			"audio_bookfile": "11_fil"
+		},
+		"51": {
+			"audio_bookdir": "12_kolose",
+			"audio_bookfile": "12_kol"
+		},
+		"52": {
+			"audio_bookdir": "13_1tesalonika",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2tesalonika",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timotius",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timotius",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_titus",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_filemon",
+			"audio_bookfile": "18_flm"
+		},
+		"58": {
+			"audio_bookdir": "19_ibrani",
+			"audio_bookfile": "19_ibr"
+		},
+		"59": {
+			"audio_bookdir": "20_yakobus",
+			"audio_bookfile": "20_yak"
+		},
+		"60": {
+			"audio_bookdir": "21_1petrus",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2petrus",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1yahya",
+			"audio_bookfile": "23_1yo"
+		},
+		"63": {
+			"audio_bookdir": "24_2yahya",
+			"audio_bookfile": "24_2yo"
+		},
+		"64": {
+			"audio_bookdir": "25_3yahya",
+			"audio_bookfile": "25_3yo"
+		},
+		"65": {
+			"audio_bookdir": "26_yudas",
+			"audio_bookfile": "26_yud"
+		},
+		"66": {
+			"audio_bookdir": "27_wahyu",
+			"audio_bookfile": "27_wah"
+		}
+	},
+	"kaili_daa": {
+		"1": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"2": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"3": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"4": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"5": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"6": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"7": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"8": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"9": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"10": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"11": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"12": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"13": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"14": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"15": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"16": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"17": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"18": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"19": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"20": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"21": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"22": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"23": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"24": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"25": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"26": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"27": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"28": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"29": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"30": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"31": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"32": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"33": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"34": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"35": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"36": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"37": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"38": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"39": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"40": {
+			"audio_bookdir": "01_matius",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_markus",
+			"audio_bookfile": "02_mrk"
+		},
+		"42": {
+			"audio_bookdir": "03_lukas",
+			"audio_bookfile": "03_luk"
+		},
+		"43": {
+			"audio_bookdir": "04_yohanes",
+			"audio_bookfile": "04_yoh"
+		},
+		"44": {
+			"audio_bookdir": "05_suro-suro",
+			"audio_bookfile": "05_kis"
+		},
+		"45": {
+			"audio_bookdir": "06_roma",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1korintus",
+			"audio_bookfile": "07_1ko"
+		},
+		"47": {
+			"audio_bookdir": "08_2korintus",
+			"audio_bookfile": "08_2ko"
+		},
+		"48": {
+			"audio_bookdir": "09_galatia",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_efesus",
+			"audio_bookfile": "10_efe"
+		},
+		"50": {
+			"audio_bookdir": "11_filipi",
+			"audio_bookfile": "11_fil"
+		},
+		"51": {
+			"audio_bookdir": "12_kolose",
+			"audio_bookfile": "12_kol"
+		},
+		"52": {
+			"audio_bookdir": "13_1tesalonika",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2tesalonika",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timotius",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timotius",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_titus",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_filemon",
+			"audio_bookfile": "18_flm"
+		},
+		"58": {
+			"audio_bookdir": "19_ibrani",
+			"audio_bookfile": "19_ibr"
+		},
+		"59": {
+			"audio_bookdir": "20_yakobus",
+			"audio_bookfile": "20_yak"
+		},
+		"60": {
+			"audio_bookdir": "21_1petrus",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2petrus",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1yohanes",
+			"audio_bookfile": "23_1yo"
+		},
+		"63": {
+			"audio_bookdir": "24_2yohanes",
+			"audio_bookfile": "24_2yo"
+		},
+		"64": {
+			"audio_bookdir": "25_3yohanes",
+			"audio_bookfile": "25_3yo"
+		},
+		"65": {
+			"audio_bookdir": "26_yudas",
+			"audio_bookfile": "26_yud"
+		},
+		"66": {
+			"audio_bookdir": "27_panggita",
+			"audio_bookfile": "27_wah"
+		}
+	},
+	"sasak": {
+		"1": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"2": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"3": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"4": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"5": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"6": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"7": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"8": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"9": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"10": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"11": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"12": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"13": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"14": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"15": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"16": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"17": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"18": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"19": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"20": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"21": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"22": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"23": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"24": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"25": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"26": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"27": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"28": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"29": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"30": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"31": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"32": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"33": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"34": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"35": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"36": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"37": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"38": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"39": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"40": {
+			"audio_bookdir": "01_matius",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_markus",
+			"audio_bookfile": "02_mrk"
+		},
+		"42": {
+			"audio_bookdir": "03_lukas",
+			"audio_bookfile": "03_luk"
+		},
+		"43": {
+			"audio_bookdir": "04_yahya",
+			"audio_bookfile": "04_yoh"
+		},
+		"44": {
+			"audio_bookdir": "05_kisah",
+			"audio_bookfile": "05_kis"
+		},
+		"45": {
+			"audio_bookdir": "06_roma",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1korintus",
+			"audio_bookfile": "07_1ko"
+		},
+		"47": {
+			"audio_bookdir": "08_2korintus",
+			"audio_bookfile": "08_2ko"
+		},
+		"48": {
+			"audio_bookdir": "09_galatia",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_epesu",
+			"audio_bookfile": "10_efe"
+		},
+		"50": {
+			"audio_bookdir": "11_pilipi",
+			"audio_bookfile": "11_fil"
+		},
+		"51": {
+			"audio_bookdir": "12_kolose",
+			"audio_bookfile": "12_kol"
+		},
+		"52": {
+			"audio_bookdir": "13_1tesalonika",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2tesalonika",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timotius",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timotius",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_titus",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_pilemon",
+			"audio_bookfile": "18_flm"
+		},
+		"58": {
+			"audio_bookdir": "19_ibrani",
+			"audio_bookfile": "19_ibr"
+		},
+		"59": {
+			"audio_bookdir": "20_yakub",
+			"audio_bookfile": "20_yak"
+		},
+		"60": {
+			"audio_bookdir": "21_1petrus",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2petrus",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1yahya",
+			"audio_bookfile": "23_1yo"
+		},
+		"63": {
+			"audio_bookdir": "24_2yahya",
+			"audio_bookfile": "24_2yo"
+		},
+		"64": {
+			"audio_bookdir": "25_3yahya",
+			"audio_bookfile": "25_3yo"
+		},
+		"65": {
+			"audio_bookdir": "26_yudas",
+			"audio_bookfile": "26_yud"
+		},
+		"66": {
+			"audio_bookdir": "27_wahyu",
+			"audio_bookfile": "27_wah"
+		}
+	},
+	"iban": {
+		"1": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"2": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"3": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"4": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"5": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"6": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"7": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"8": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"9": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"10": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"11": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"12": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"13": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"14": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"15": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"16": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"17": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"18": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"19": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"20": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"21": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"22": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"23": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"24": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"25": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"26": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"27": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"28": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"29": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"30": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"31": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"32": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"33": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"34": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"35": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"36": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"37": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"38": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"39": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"40": {
+			"audio_bookdir": "01_matius",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_markus",
+			"audio_bookfile": "02_mrk"
+		},
+		"42": {
+			"audio_bookdir": "03_lukas",
+			"audio_bookfile": "03_luk"
+		},
+		"43": {
+			"audio_bookdir": "04_yohanes",
+			"audio_bookfile": "04_yoh"
+		},
+		"44": {
+			"audio_bookdir": "05_kisah",
+			"audio_bookfile": "05_kis"
+		},
+		"45": {
+			"audio_bookdir": "06_roma",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1korintus",
+			"audio_bookfile": "07_1ko"
+		},
+		"47": {
+			"audio_bookdir": "08_2korintus",
+			"audio_bookfile": "08_2ko"
+		},
+		"48": {
+			"audio_bookdir": "09_galatia",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_efesus",
+			"audio_bookfile": "10_efe"
+		},
+		"50": {
+			"audio_bookdir": "11_filipi",
+			"audio_bookfile": "11_fil"
+		},
+		"51": {
+			"audio_bookdir": "12_kolose",
+			"audio_bookfile": "12_kol"
+		},
+		"52": {
+			"audio_bookdir": "13_1tesalonika",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2tesalonika",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timotius",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timotius",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_titus",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_filemon",
+			"audio_bookfile": "18_flm"
+		},
+		"58": {
+			"audio_bookdir": "19_ibrani",
+			"audio_bookfile": "19_ibr"
+		},
+		"59": {
+			"audio_bookdir": "20_yakobus",
+			"audio_bookfile": "20_yak"
+		},
+		"60": {
+			"audio_bookdir": "21_1petrus",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2petrus",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1yohanes",
+			"audio_bookfile": "23_1yo"
+		},
+		"63": {
+			"audio_bookdir": "24_2yohanes",
+			"audio_bookfile": "24_2yo"
+		},
+		"64": {
+			"audio_bookdir": "25_3yohanes",
+			"audio_bookfile": "25_3yo"
+		},
+		"65": {
+			"audio_bookdir": "26_yudas",
+			"audio_bookfile": "26_yud"
+		},
+		"66": {
+			"audio_bookdir": "27_wahyu",
+			"audio_bookfile": "27_wah"
+		}
+	},
+	"galela": {
+		"1": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"2": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"3": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"4": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"5": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"6": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"7": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"8": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"9": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"10": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"11": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"12": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"13": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"14": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"15": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"16": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"17": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"18": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"19": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"20": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"21": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"22": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"23": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"24": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"25": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"26": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"27": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"28": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"29": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"30": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"31": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"32": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"33": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"34": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"35": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"36": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"37": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"38": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"39": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"40": {
+			"audio_bookdir": "01_matius",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_markus",
+			"audio_bookfile": "02_mrk"
+		},
+		"42": {
+			"audio_bookdir": "03_lukas",
+			"audio_bookfile": "03_luk"
+		},
+		"43": {
+			"audio_bookdir": "04_yohanes",
+			"audio_bookfile": "04_yoh"
+		},
+		"44": {
+			"audio_bookdir": "05_kisah",
+			"audio_bookfile": "05_kis"
+		},
+		"45": {
+			"audio_bookdir": "06_roma",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1korintus",
+			"audio_bookfile": "07_1ko"
+		},
+		"47": {
+			"audio_bookdir": "08_2korintus",
+			"audio_bookfile": "08_2ko"
+		},
+		"48": {
+			"audio_bookdir": "09_galatia",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_efesus",
+			"audio_bookfile": "10_efe"
+		},
+		"50": {
+			"audio_bookdir": "11_filipi",
+			"audio_bookfile": "11_fil"
+		},
+		"51": {
+			"audio_bookdir": "12_kolose",
+			"audio_bookfile": "12_kol"
+		},
+		"52": {
+			"audio_bookdir": "13_1tesalonika",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2tesalonika",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timotius",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timotius",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_titus",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_filemon",
+			"audio_bookfile": "18_flm"
+		},
+		"58": {
+			"audio_bookdir": "19_ibrani",
+			"audio_bookfile": "19_ibr"
+		},
+		"59": {
+			"audio_bookdir": "20_yakobus",
+			"audio_bookfile": "20_yak"
+		},
+		"60": {
+			"audio_bookdir": "21_1petrus",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2petrus",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1yohanes",
+			"audio_bookfile": "23_1yo"
+		},
+		"63": {
+			"audio_bookdir": "24_2yohanes",
+			"audio_bookfile": "24_2yo"
+		},
+		"64": {
+			"audio_bookdir": "25_3yohanes",
+			"audio_bookfile": "25_3yo"
+		},
+		"65": {
+			"audio_bookdir": "26_yudas",
+			"audio_bookfile": "26_yud"
+		},
+		"66": {
+			"audio_bookdir": "27_gogelelo",
+			"audio_bookfile": "27_wah"
+		}
+	},
+	"ngaju": {
+		"1": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"2": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"3": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"4": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"5": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"6": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"7": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"8": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"9": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"10": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"11": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"12": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"13": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"14": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"15": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"16": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"17": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"18": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"19": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"20": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"21": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"22": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"23": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"24": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"25": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"26": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"27": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"28": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"29": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"30": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"31": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"32": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"33": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"34": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"35": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"36": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"37": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"38": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"39": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"40": {
+			"audio_bookdir": "01_matius",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_markus",
+			"audio_bookfile": "02_mrk"
+		},
+		"42": {
+			"audio_bookdir": "03_lukas",
+			"audio_bookfile": "03_luk"
+		},
+		"43": {
+			"audio_bookdir": "04_yohanes",
+			"audio_bookfile": "04_yoh"
+		},
+		"44": {
+			"audio_bookdir": "05_kisah",
+			"audio_bookfile": "05_kis"
+		},
+		"45": {
+			"audio_bookdir": "06_roma",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1korintus",
+			"audio_bookfile": "07_1ko"
+		},
+		"47": {
+			"audio_bookdir": "08_2korintus",
+			"audio_bookfile": "08_2ko"
+		},
+		"48": {
+			"audio_bookdir": "09_galatia",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_efesus",
+			"audio_bookfile": "10_efe"
+		},
+		"50": {
+			"audio_bookdir": "11_filipi",
+			"audio_bookfile": "11_fil"
+		},
+		"51": {
+			"audio_bookdir": "12_kolose",
+			"audio_bookfile": "12_kol"
+		},
+		"52": {
+			"audio_bookdir": "13_1tesalonika",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2tesalonika",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timotius",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timotius",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_titus",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_filemon",
+			"audio_bookfile": "18_flm"
+		},
+		"58": {
+			"audio_bookdir": "19_ibrani",
+			"audio_bookfile": "19_ibr"
+		},
+		"59": {
+			"audio_bookdir": "20_yakobus",
+			"audio_bookfile": "20_yak"
+		},
+		"60": {
+			"audio_bookdir": "21_1petrus",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2petrus",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1yohanes",
+			"audio_bookfile": "23_1yo"
+		},
+		"63": {
+			"audio_bookdir": "24_2yohanes",
+			"audio_bookfile": "24_2yo"
+		},
+		"64": {
+			"audio_bookdir": "25_3yohanes",
+			"audio_bookfile": "25_3yo"
+		},
+		"65": {
+			"audio_bookdir": "26_yudas",
+			"audio_bookfile": "26_yud"
+		},
+		"66": {
+			"audio_bookdir": "27_wahyu",
+			"audio_bookfile": "27_wah"
+		}
+	},
+	"yawa": {
+		"1": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"2": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"3": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"4": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"5": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"6": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"7": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"8": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"9": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"10": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"11": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"12": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"13": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"14": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"15": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"16": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"17": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"18": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"19": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"20": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"21": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"22": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"23": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"24": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"25": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"26": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"27": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"28": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"29": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"30": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"31": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"32": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"33": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"34": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"35": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"36": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"37": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"38": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"39": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"40": {
+			"audio_bookdir": "01_matius",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_markus",
+			"audio_bookfile": "02_mrk"
+		},
+		"42": {
+			"audio_bookdir": "03_lukas",
+			"audio_bookfile": "03_luk"
+		},
+		"43": {
+			"audio_bookdir": "04_yohanes",
+			"audio_bookfile": "04_yoh"
+		},
+		"44": {
+			"audio_bookdir": "05_kisah",
+			"audio_bookfile": "05_kis"
+		},
+		"45": {
+			"audio_bookdir": "06_roma",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1korintus",
+			"audio_bookfile": "07_1ko"
+		},
+		"47": {
+			"audio_bookdir": "08_2korintus",
+			"audio_bookfile": "08_2ko"
+		},
+		"48": {
+			"audio_bookdir": "09_galatia",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_efesus",
+			"audio_bookfile": "10_efe"
+		},
+		"50": {
+			"audio_bookdir": "11_filipi",
+			"audio_bookfile": "11_fil"
+		},
+		"51": {
+			"audio_bookdir": "12_kolose",
+			"audio_bookfile": "12_kol"
+		},
+		"52": {
+			"audio_bookdir": "13_1tesalonika",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2tesalonika",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timotius",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timotius",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_titus",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_filemon",
+			"audio_bookfile": "18_flm"
+		},
+		"58": {
+			"audio_bookdir": "19_ibrani",
+			"audio_bookfile": "19_ibr"
+		},
+		"59": {
+			"audio_bookdir": "20_yakobus",
+			"audio_bookfile": "20_yak"
+		},
+		"60": {
+			"audio_bookdir": "21_1petrus",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2petrus",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1yohanes",
+			"audio_bookfile": "23_1yo"
+		},
+		"63": {
+			"audio_bookdir": "24_2yohanes",
+			"audio_bookfile": "24_2yo"
+		},
+		"64": {
+			"audio_bookdir": "25_3yohanes",
+			"audio_bookfile": "25_3yo"
+		},
+		"65": {
+			"audio_bookdir": "26_yudas",
+			"audio_bookfile": "26_yud"
+		},
+		"66": {
+			"audio_bookdir": "27_wahyu",
+			"audio_bookfile": "27_wah"
+		}
+	},
+	"ledo_kaili": {
+		"1": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"2": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"3": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"4": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"5": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"6": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"7": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"8": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"9": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"10": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"11": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"12": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"13": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"14": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"15": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"16": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"17": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"18": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"19": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"20": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"21": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"22": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"23": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"24": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"25": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"26": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"27": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"28": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"29": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"30": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"31": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"32": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"33": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"34": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"35": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"36": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"37": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"38": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"39": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"40": {
+			"audio_bookdir": "01_matius",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_markus",
+			"audio_bookfile": "02_mrk"
+		},
+		"42": {
+			"audio_bookdir": "03_lukas",
+			"audio_bookfile": "03_luk"
+		},
+		"43": {
+			"audio_bookdir": "04_yohanes",
+			"audio_bookfile": "04_yoh"
+		},
+		"44": {
+			"audio_bookdir": "05_kisah",
+			"audio_bookfile": "05_kis"
+		},
+		"45": {
+			"audio_bookdir": "06_roma",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1korintus",
+			"audio_bookfile": "07_1ko"
+		},
+		"47": {
+			"audio_bookdir": "08_2korintus",
+			"audio_bookfile": "08_2ko"
+		},
+		"48": {
+			"audio_bookdir": "09_galatia",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_efesus",
+			"audio_bookfile": "10_efe"
+		},
+		"50": {
+			"audio_bookdir": "11_filipi",
+			"audio_bookfile": "11_fil"
+		},
+		"51": {
+			"audio_bookdir": "12_kolose",
+			"audio_bookfile": "12_kol"
+		},
+		"52": {
+			"audio_bookdir": "13_1tesalonika",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2tesalonika",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timotius",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timotius",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_titus",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_filemon",
+			"audio_bookfile": "18_flm"
+		},
+		"58": {
+			"audio_bookdir": "19_ibrani",
+			"audio_bookfile": "19_ibr"
+		},
+		"59": {
+			"audio_bookdir": "20_yakobus",
+			"audio_bookfile": "20_yak"
+		},
+		"60": {
+			"audio_bookdir": "21_1petrus",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2petrus",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1yohanes",
+			"audio_bookfile": "23_1yo"
+		},
+		"63": {
+			"audio_bookdir": "24_2yohanes",
+			"audio_bookfile": "24_2yo"
+		},
+		"64": {
+			"audio_bookdir": "25_3yohanes",
+			"audio_bookfile": "25_3yo"
+		},
+		"65": {
+			"audio_bookdir": "26_yudas",
+			"audio_bookfile": "26_yud"
+		},
+		"66": {
+			"audio_bookdir": "27_wahyu",
+			"audio_bookfile": "27_wah"
+		}
+	},
+	"toraja": {
+		"1": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"2": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"3": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"4": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"5": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"6": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"7": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"8": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"9": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"10": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"11": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"12": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"13": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"14": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"15": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"16": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"17": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"18": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"19": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"20": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"21": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"22": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"23": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"24": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"25": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"26": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"27": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"28": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"29": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"30": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"31": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"32": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"33": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"34": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"35": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"36": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"37": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"38": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"39": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"40": {
+			"audio_bookdir": "01_matius",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_markus",
+			"audio_bookfile": "02_mrk"
+		},
+		"42": {
+			"audio_bookdir": "03_lukas",
+			"audio_bookfile": "03_luk"
+		},
+		"43": {
+			"audio_bookdir": "04_yohanes",
+			"audio_bookfile": "04_yoh"
+		},
+		"44": {
+			"audio_bookdir": "05_kisah",
+			"audio_bookfile": "05_kis"
+		},
+		"45": {
+			"audio_bookdir": "06_roma",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1korintus",
+			"audio_bookfile": "07_1ko"
+		},
+		"47": {
+			"audio_bookdir": "08_2korintus",
+			"audio_bookfile": "08_2ko"
+		},
+		"48": {
+			"audio_bookdir": "09_galatia",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_efesus",
+			"audio_bookfile": "10_efe"
+		},
+		"50": {
+			"audio_bookdir": "11_filipi",
+			"audio_bookfile": "11_fil"
+		},
+		"51": {
+			"audio_bookdir": "12_kolose",
+			"audio_bookfile": "12_kol"
+		},
+		"52": {
+			"audio_bookdir": "13_1tesalonika",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2tesalonika",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timotius",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timotius",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_titus",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_filemon",
+			"audio_bookfile": "18_flm"
+		},
+		"58": {
+			"audio_bookdir": "19_ibrani",
+			"audio_bookfile": "19_ibr"
+		},
+		"59": {
+			"audio_bookdir": "20_yakobus",
+			"audio_bookfile": "20_yak"
+		},
+		"60": {
+			"audio_bookdir": "21_1petrus",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2petrus",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1yohanes",
+			"audio_bookfile": "23_1yo"
+		},
+		"63": {
+			"audio_bookdir": "24_2yohanes",
+			"audio_bookfile": "24_2yo"
+		},
+		"64": {
+			"audio_bookdir": "25_3yohanes",
+			"audio_bookfile": "25_3yo"
+		},
+		"65": {
+			"audio_bookdir": "26_yudas",
+			"audio_bookfile": "26_yud"
+		},
+		"66": {
+			"audio_bookdir": "27_wahyu",
+			"audio_bookfile": "27_wah"
+		}
+	},
+	"uma": {
+		"1": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"2": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"3": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"4": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"5": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"6": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"7": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"8": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"9": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"10": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"11": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"12": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"13": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"14": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"15": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"16": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"17": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"18": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"19": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"20": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"21": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"22": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"23": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"24": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"25": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"26": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"27": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"28": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"29": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"30": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"31": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"32": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"33": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"34": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"35": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"36": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"37": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"38": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"39": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"40": {
+			"audio_bookdir": "01_matius",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_markus",
+			"audio_bookfile": "02_mrk"
+		},
+		"42": {
+			"audio_bookdir": "03_lukas",
+			"audio_bookfile": "03_luk"
+		},
+		"43": {
+			"audio_bookdir": "04_yohanes",
+			"audio_bookfile": "04_yoh"
+		},
+		"44": {
+			"audio_bookdir": "05_kisah",
+			"audio_bookfile": "05_kis"
+		},
+		"45": {
+			"audio_bookdir": "06_roma",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1korintus",
+			"audio_bookfile": "07_1ko"
+		},
+		"47": {
+			"audio_bookdir": "08_2korintus",
+			"audio_bookfile": "08_2ko"
+		},
+		"48": {
+			"audio_bookdir": "09_galatia",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_efesus",
+			"audio_bookfile": "10_efe"
+		},
+		"50": {
+			"audio_bookdir": "11_filipi",
+			"audio_bookfile": "11_fil"
+		},
+		"51": {
+			"audio_bookdir": "12_kolose",
+			"audio_bookfile": "12_kol"
+		},
+		"52": {
+			"audio_bookdir": "13_1tesalonika",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2tesalonika",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timotius",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timotius",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_titus",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_filemon",
+			"audio_bookfile": "18_flm"
+		},
+		"58": {
+			"audio_bookdir": "19_ibrani",
+			"audio_bookfile": "19_ibr"
+		},
+		"59": {
+			"audio_bookdir": "20_yakobus",
+			"audio_bookfile": "20_yak"
+		},
+		"60": {
+			"audio_bookdir": "21_1petrus",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2petrus",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1yohanes",
+			"audio_bookfile": "23_1yo"
+		},
+		"63": {
+			"audio_bookdir": "24_2yohanes",
+			"audio_bookfile": "24_2yo"
+		},
+		"64": {
+			"audio_bookdir": "25_3yohanes",
+			"audio_bookfile": "25_3yo"
+		},
+		"65": {
+			"audio_bookdir": "26_yudas",
+			"audio_bookfile": "26_yud"
+		},
+		"66": {
+			"audio_bookdir": "27_wahyu",
+			"audio_bookfile": "27_wah"
+		}
+	},
+	"tobelo": {
+		"1": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"2": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"3": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"4": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"5": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"6": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"7": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"8": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"9": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"10": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"11": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"12": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"13": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"14": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"15": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"16": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"17": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"18": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"19": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"20": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"21": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"22": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"23": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"24": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"25": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"26": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"27": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"28": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"29": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"30": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"31": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"32": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"33": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"34": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"35": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"36": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"37": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"38": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"39": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"40": {
+			"audio_bookdir": "01_matius",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_markus",
+			"audio_bookfile": "02_mrk"
+		},
+		"42": {
+			"audio_bookdir": "03_lukas",
+			"audio_bookfile": "03_luk"
+		},
+		"43": {
+			"audio_bookdir": "04_yohanes",
+			"audio_bookfile": "04_yoh"
+		},
+		"44": {
+			"audio_bookdir": "05_kisah",
+			"audio_bookfile": "05_kis"
+		},
+		"45": {
+			"audio_bookdir": "06_roma",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1korintus",
+			"audio_bookfile": "07_1ko"
+		},
+		"47": {
+			"audio_bookdir": "08_2korintus",
+			"audio_bookfile": "08_2ko"
+		},
+		"48": {
+			"audio_bookdir": "09_galatia",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_efesus",
+			"audio_bookfile": "10_efe"
+		},
+		"50": {
+			"audio_bookdir": "11_filipi",
+			"audio_bookfile": "11_fil"
+		},
+		"51": {
+			"audio_bookdir": "12_kolose",
+			"audio_bookfile": "12_kol"
+		},
+		"52": {
+			"audio_bookdir": "13_1tesalonika",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2tesalonika",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timotius",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timotius",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_titus",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_filemon",
+			"audio_bookfile": "18_flm"
+		},
+		"58": {
+			"audio_bookdir": "19_ibrani",
+			"audio_bookfile": "19_ibr"
+		},
+		"59": {
+			"audio_bookdir": "20_yakobus",
+			"audio_bookfile": "20_yak"
+		},
+		"60": {
+			"audio_bookdir": "21_1petrus",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2petrus",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1yohanes",
+			"audio_bookfile": "23_1yo"
+		},
+		"63": {
+			"audio_bookdir": "24_2yohanes",
+			"audio_bookfile": "24_2yo"
+		},
+		"64": {
+			"audio_bookdir": "25_3yohanes",
+			"audio_bookfile": "25_3yo"
+		},
+		"65": {
+			"audio_bookdir": "26_yudas",
+			"audio_bookfile": "26_yud"
+		},
+		"66": {
+			"audio_bookdir": "27_wahyu",
+			"audio_bookfile": "27_wah"
+		}
+	},
+	"duri": {
+		"1": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"2": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"3": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"4": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"5": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"6": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"7": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"8": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"9": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"10": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"11": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"12": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"13": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"14": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"15": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"16": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"17": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"18": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"19": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"20": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"21": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"22": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"23": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"24": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"25": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"26": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"27": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"28": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"29": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"30": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"31": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"32": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"33": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"34": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"35": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"36": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"37": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"38": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"39": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"40": {
+			"audio_bookdir": "01_matius",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_markus",
+			"audio_bookfile": "02_mrk"
+		},
+		"42": {
+			"audio_bookdir": "03_lukas",
+			"audio_bookfile": "03_luk"
+		},
+		"43": {
+			"audio_bookdir": "04_yohanes",
+			"audio_bookfile": "04_yoh"
+		},
+		"44": {
+			"audio_bookdir": "05_kisah",
+			"audio_bookfile": "05_kis"
+		},
+		"45": {
+			"audio_bookdir": "06_roma",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1korintus",
+			"audio_bookfile": "07_1ko"
+		},
+		"47": {
+			"audio_bookdir": "08_2korintus",
+			"audio_bookfile": "08_2ko"
+		},
+		"48": {
+			"audio_bookdir": "09_galatia",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_efesus",
+			"audio_bookfile": "10_efe"
+		},
+		"50": {
+			"audio_bookdir": "11_filipi",
+			"audio_bookfile": "11_fil"
+		},
+		"51": {
+			"audio_bookdir": "12_kolose",
+			"audio_bookfile": "12_kol"
+		},
+		"52": {
+			"audio_bookdir": "13_1tesalonika",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2tesalonika",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timotius",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timotius",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_titus",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_filemon",
+			"audio_bookfile": "18_flm"
+		},
+		"58": {
+			"audio_bookdir": "19_ibrani",
+			"audio_bookfile": "19_ibr"
+		},
+		"59": {
+			"audio_bookdir": "20_yakobus",
+			"audio_bookfile": "20_yak"
+		},
+		"60": {
+			"audio_bookdir": "21_1petrus",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2petrus",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1yohanes",
+			"audio_bookfile": "23_1yo"
+		},
+		"63": {
+			"audio_bookdir": "24_2yohanes",
+			"audio_bookfile": "24_2yo"
+		},
+		"64": {
+			"audio_bookdir": "25_3yohanes",
+			"audio_bookfile": "25_3yo"
+		},
+		"65": {
+			"audio_bookdir": "26_yudas",
+			"audio_bookfile": "26_yud"
+		},
+		"66": {
+			"audio_bookdir": "27_pengkitanna_yahya",
+			"audio_bookfile": "27_wah"
+		}
+	},
+	"aralle_tabulahan": {
+		"1": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"2": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"3": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"4": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"5": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"6": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"7": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"8": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"9": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"10": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"11": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"12": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"13": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"14": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"15": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"16": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"17": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"18": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"19": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"20": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"21": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"22": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"23": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"24": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"25": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"26": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"27": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"28": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"29": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"30": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"31": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"32": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"33": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"34": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"35": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"36": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"37": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"38": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"39": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"40": {
+			"audio_bookdir": "01_matius",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_markus",
+			"audio_bookfile": "02_mrk"
+		},
+		"42": {
+			"audio_bookdir": "03_lukas",
+			"audio_bookfile": "03_luk"
+		},
+		"43": {
+			"audio_bookdir": "04_yohanes",
+			"audio_bookfile": "04_yoh"
+		},
+		"44": {
+			"audio_bookdir": "05_kisah",
+			"audio_bookfile": "05_kis"
+		},
+		"45": {
+			"audio_bookdir": "06_roma",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1korintus",
+			"audio_bookfile": "07_1ko"
+		},
+		"47": {
+			"audio_bookdir": "08_2korintus",
+			"audio_bookfile": "08_2ko"
+		},
+		"48": {
+			"audio_bookdir": "09_galatia",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_efesus",
+			"audio_bookfile": "10_efe"
+		},
+		"50": {
+			"audio_bookdir": "11_filipi",
+			"audio_bookfile": "11_fil"
+		},
+		"51": {
+			"audio_bookdir": "12_kolose",
+			"audio_bookfile": "12_kol"
+		},
+		"52": {
+			"audio_bookdir": "13_1tesalonika",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2tesalonika",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timotius",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timotius",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_titus",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_filemon",
+			"audio_bookfile": "18_flm"
+		},
+		"58": {
+			"audio_bookdir": "19_ibrani",
+			"audio_bookfile": "19_ibr"
+		},
+		"59": {
+			"audio_bookdir": "20_yakobus",
+			"audio_bookfile": "20_yak"
+		},
+		"60": {
+			"audio_bookdir": "21_1petrus",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2petrus",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1yohanes",
+			"audio_bookfile": "23_1yo"
+		},
+		"63": {
+			"audio_bookdir": "24_2yohanes",
+			"audio_bookfile": "24_2yo"
+		},
+		"64": {
+			"audio_bookdir": "25_3yohanes",
+			"audio_bookfile": "25_3yo"
+		},
+		"65": {
+			"audio_bookdir": "26_yudas",
+			"audio_bookfile": "26_yud"
+		},
+		"66": {
+			"audio_bookdir": "27_wahyu",
+			"audio_bookfile": "27_wah"
+		}
+	},
+	"lampung": {
+		"1": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"2": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"3": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"4": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"5": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"6": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"7": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"8": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"9": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"10": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"11": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"12": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"13": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"14": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"15": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"16": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"17": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"18": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"19": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"20": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"21": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"22": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"23": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"24": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"25": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"26": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"27": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"28": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"29": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"30": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"31": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"32": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"33": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"34": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"35": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"36": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"37": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"38": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"39": {
+			"audio_bookdir": "",
+			"audio_bookfile": ""
+		},
+		"40": {
+			"audio_bookdir": "01_matius",
+			"audio_bookfile": "01_mat"
+		},
+		"41": {
+			"audio_bookdir": "02_markus",
+			"audio_bookfile": "02_mrk"
+		},
+		"42": {
+			"audio_bookdir": "03_lukas",
+			"audio_bookfile": "03_luk"
+		},
+		"43": {
+			"audio_bookdir": "04_yohanes",
+			"audio_bookfile": "04_yoh"
+		},
+		"44": {
+			"audio_bookdir": "05_kisah_rasul-rasul",
+			"audio_bookfile": "05_kis"
+		},
+		"45": {
+			"audio_bookdir": "06_roma",
+			"audio_bookfile": "06_rom"
+		},
+		"46": {
+			"audio_bookdir": "07_1korintus",
+			"audio_bookfile": "07_1ko"
+		},
+		"47": {
+			"audio_bookdir": "08_2korintus",
+			"audio_bookfile": "08_2ko"
+		},
+		"48": {
+			"audio_bookdir": "09_galatia",
+			"audio_bookfile": "09_gal"
+		},
+		"49": {
+			"audio_bookdir": "10_efesus",
+			"audio_bookfile": "10_efe"
+		},
+		"50": {
+			"audio_bookdir": "11_filipi",
+			"audio_bookfile": "11_fil"
+		},
+		"51": {
+			"audio_bookdir": "12_kolose",
+			"audio_bookfile": "12_kol"
+		},
+		"52": {
+			"audio_bookdir": "13_1tesalonika",
+			"audio_bookfile": "13_1te"
+		},
+		"53": {
+			"audio_bookdir": "14_2tesalonika",
+			"audio_bookfile": "14_2te"
+		},
+		"54": {
+			"audio_bookdir": "15_1timotius",
+			"audio_bookfile": "15_1ti"
+		},
+		"55": {
+			"audio_bookdir": "16_2timotius",
+			"audio_bookfile": "16_2ti"
+		},
+		"56": {
+			"audio_bookdir": "17_titus",
+			"audio_bookfile": "17_tit"
+		},
+		"57": {
+			"audio_bookdir": "18_filemon",
+			"audio_bookfile": "18_flm"
+		},
+		"58": {
+			"audio_bookdir": "19_ibrani",
+			"audio_bookfile": "19_ibr"
+		},
+		"59": {
+			"audio_bookdir": "20_yakobus",
+			"audio_bookfile": "20_yak"
+		},
+		"60": {
+			"audio_bookdir": "21_1petrus",
+			"audio_bookfile": "21_1pe"
+		},
+		"61": {
+			"audio_bookdir": "22_2petrus",
+			"audio_bookfile": "22_2pe"
+		},
+		"62": {
+			"audio_bookdir": "23_1yohanes",
+			"audio_bookfile": "23_1yo"
+		},
+		"63": {
+			"audio_bookdir": "24_2yohanes",
+			"audio_bookfile": "24_2yo"
+		},
+		"64": {
+			"audio_bookdir": "25_3yohanes",
+			"audio_bookfile": "25_3yo"
+		},
+		"65": {
+			"audio_bookdir": "26_yudas",
+			"audio_bookfile": "26_yud"
+		},
+		"66": {
+			"audio_bookdir": "27_wahyu",
+			"audio_bookfile": "27_wah"
+		}
+	}
+}

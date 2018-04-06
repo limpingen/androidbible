@@ -32,6 +32,7 @@ import yuku.alkitab.base.App;
 import yuku.alkitab.base.IsiActivity;
 import yuku.alkitab.base.S;
 import yuku.alkitab.base.ac.AboutActivity;
+import yuku.alkitab.base.ac.AudioBibleActivity;
 import yuku.alkitab.base.ac.DevotionActivity;
 import yuku.alkitab.base.ac.ReadingPlanActivity;
 import yuku.alkitab.base.ac.SettingsActivity;
@@ -55,6 +56,7 @@ public abstract class LeftDrawer extends NestedScrollView {
 	TextView bSongs;
 	View bSettings;
 	View XRefSettings;
+	View AudioBible;
 	View bHelp;
 
 	// for launching other activities
@@ -82,6 +84,7 @@ public abstract class LeftDrawer extends NestedScrollView {
 		bSongs = V.get(this, R.id.bSongs);
 		bSettings = V.get(this, R.id.bSettings);
 		XRefSettings = V.get(this,R.id.XRefSettings);
+		AudioBible = V.get(this, R.id.AudioBible);
 		bHelp = V.get(this, R.id.bHelp);
 
 		final int selectedTextColor = ResourcesCompat.getColor(getResources(), R.color.accent, getContext().getTheme());
@@ -124,6 +127,10 @@ public abstract class LeftDrawer extends NestedScrollView {
 			XRefSettings_click();
 			closeDrawer();
 		});
+		AudioBible.setOnClickListener(v -> {
+			AudioBible_click();
+			closeDrawer();
+		});
 		bHelp.setOnClickListener(v -> {
 			bHelp_click();
 			closeDrawer();
@@ -164,6 +171,11 @@ public abstract class LeftDrawer extends NestedScrollView {
 
 
 		activity.startActivity(XRefActivity.createIntent());
+	}
+	void AudioBible_click() {
+
+
+		activity.startActivity(AudioBibleActivity.createIntent());
 	}
 	/**
 	 * When the current activity is not {@link yuku.alkitab.base.IsiActivity},

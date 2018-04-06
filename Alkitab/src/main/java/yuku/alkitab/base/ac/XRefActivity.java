@@ -38,7 +38,7 @@ import yuku.alkitab.base.IsiActivity;
 import yuku.alkitab.base.storage.Prefkey;
 import yuku.alkitab.debug.R;
 import yuku.alkitab.base.ac.base.BaseActivity;
-import yuku.alkitab.yes2.section.XrefsSection;
+
 
 
 public class XRefActivity extends BaseActivity {

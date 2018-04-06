@@ -319,6 +319,19 @@ public class VersesView extends ListView implements AbsListView.OnScrollListener
 		}
 	}
 
+	public void uncheckAllVerses2(boolean callListener) {
+		SparseBooleanArray checkedPositions = getCheckedItemPositions();
+		if (checkedPositions != null && checkedPositions.size() > 0) {
+			for (int i = checkedPositions.size() - 1; i >= 0; i--) {
+				if (checkedPositions.valueAt(i)) {
+					setItemChecked(checkedPositions.keyAt(i), false);
+				}
+			}
+		}
+
+
+	}
+
 	public void checkAllVerses(boolean callListener) {
 
 		if(callListener)
@@ -327,6 +340,14 @@ public class VersesView extends ListView implements AbsListView.OnScrollListener
 		}
 
 
+
+
+	}
+	public void checkUncheckVerses(int position, boolean callListener) {
+
+
+				setItemChecked(position, callListener);
+	;
 	}
 
 

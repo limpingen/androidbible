@@ -6,8 +6,8 @@
 	<dimen name="panel_text_appearance_width">240dp</dimen>
 
 	<dimen name="reading_plan_day_heading_side_padding">0dp</dimen>
-	<dimen name="small_button_width">28.0dip</dimen>
+	<dimen name="small_button_width">27.0dip</dimen>
 	<dimen name="left_drawer_width">280dp</dimen>
-	<dimen name="small_image_art_width">60.0dip</dimen>
+	<dimen name="small_image_art_width">65.0dip</dimen>
 	<dimen name="small_image_art_height">85.0dip</dimen>
 </resources>
